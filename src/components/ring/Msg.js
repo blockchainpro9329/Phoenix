@@ -3,38 +3,37 @@ import React from "react";
 
 class RingMsg extends React.Component {
 
-   
+
     render() {
         return (
             <>
                 <div className="custom-container mx-auto informations-container">
                     <div className="info-container">
-                        <img alt="" className="info-data-icon" src="./img/my-node-list-icon.svg" />
+                        <img alt="" className="info-data-icon" src="./img/myNode.svg" />
                         <div className="info-datas">
                             <div className="info-data-value">0<span style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>/
-                                100 Max</span></div>
-                            <div className="text-purple" style={{ marginTop: "4px" }}>My Nodes</div>
+                                100</span></div>
+                            <div className="c-yellow" style={{ marginTop: "4px" }}>My Nodes</div>
                         </div>
+                        <div className="flex1"></div>
+                        <div className="btn action-btn outline m-r-20" style={{ width: "160px", height: "40px" }}>CREATE NODE</div>
                     </div>
                     <div className="info-container">
-                        <img alt="" className="info-data-icon" src="./img/all-node-icon.svg" />
+                        <img alt="" className="info-data-icon" src="./img/allNode.svg" />
                         <div className="info-datas">
                             <div className="info-data-value">30.000</div>
-                            <div className="text-orange" style={{ marginTop: "4px" }}>All Nodes</div>
+                            <div className="c-yellow" style={{ marginTop: "4px" }}>All Nodes</div>
                         </div>
                     </div>
                     <div className="info-container"><img alt="" className="info-data-icon"
-                        src="./img/reward-icon.svg" />
+                        src="./img/rewards.svg" />
                         <div className="info-datas">
                             <div className="info-data-value" title="0">0.0000<span className="ml-1"
-                                style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>FIRE</span></div>
-                            <div className="text-green" style={{ marginTop: "4px" }}>My Rewards</div>
+                                style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>Phoenix</span></div>
+                            <div className="c-4cce13" style={{ marginTop: "4px" }}>My Rewards</div>
                         </div>
-                        <div style={{ marginLeft: "auto" }}>
-                            <div>
-                                <div className="claim-button text-green"> CLAIM ALL </div>
-                            </div>
-                        </div>
+                        <div className="flex1"></div>
+                        {/* <div className="btn action-btn outline m-r-20" style={{ width: "120px", height: "40px" }}>CLAIM ALL</div> */}
                     </div>
                 </div>
                 <div id="welcome-message" className="custom-container mx-auto text-gray-300">
@@ -57,7 +56,7 @@ class RingMsg extends React.Component {
                                 rewards: <b className="ml-1 mr-1 text-green">0.556</b> per node, per day</span></div>
                     </div>
                 </div>
-         </>
+            </>
         );
     }
 };

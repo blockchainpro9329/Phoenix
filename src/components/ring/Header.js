@@ -37,12 +37,64 @@ class RingHeader extends React.Component {
     render() {
         return (
             <>
-                <link rel="stylesheet" href="./css2/theme.css"></link>
+                {/* <link rel="stylesheet" href="./css2/theme.css"></link>
                 <link href="./css2/css2" rel="stylesheet"></link>
                 <link href="./css2/2.chunk.css" rel="stylesheet"></link>
-                <link href="./css2/main.css" rel="stylesheet"></link>
+                <link href="./css2/main.css" rel="stylesheet"></link> */}
                 <ToastContainer />
-                <nav className="container mx-auto">
+
+                {/* <> */}
+                <div className='header'>
+                    <div className="content mx-auto">
+                        <div className='flex align-center'>
+                            <img alt='' src='./img/logo.png' style={{ height: "54px" }} />
+                            <span className='logo-title'>
+                                PHOENIX
+                            </span>
+                        </div>
+                        <div className='flex1 flex justify-center'>
+                            <span className='menu flex flex-col align-center'>
+                                <a>MY NODES</a>
+                                {/* <br/> */}
+                                <a>123</a>
+                            </span>
+                            <span className='menu flex flex-col align-center'>
+                                <a>ALL NODES</a>
+                                {/* <br/> */}
+                                <a>123</a>
+                            </span>
+                            <span className='menu flex flex-col align-center'>
+                                <a>MINING</a>
+                                {/* <br/> */}
+                                <a>123</a>
+                            </span>
+
+                        </div>
+                        <div className="f-row f1-end">
+                            {
+                                !this.props.account ?
+                                    <div className="action-btn outline flex align-center justify-center" onClick={this.handleConnect}>
+                                        <span><i className="fas fa-wallet" style={{ marginRight: "1rem" }}></i>
+                                            Connect Wallet
+                                        </span>
+                                    </div>
+                                    :
+                                    <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+                                        <div className="c-green connected-account-text">{this.props.account.slice(0, 8) + "..." + this.props.account.slice(34)}</div>
+                                        <div className="connected-text">WALLET CONNECTED</div>
+                                    </div>
+                            }
+                        </div>
+
+
+                    </div>
+                </div>
+                <div className='header_border'></div>
+                {/* </> */}
+
+
+
+                {/* <nav className="container mx-auto">
                     <div className="f-row f2-center gap-2" style={{ width: "167px" }}><img alt="" className="img-spin" width="48" height="48"
                         src="./img/logo-color.png" /><span id="brand-name">FIRE</span></div>
                     <div className="nav" id="topbar-links"><a role="button" className="nav-link-selected nav-link" tabIndex="0">My
@@ -71,7 +123,7 @@ class RingHeader extends React.Component {
 
                         }
                     </div>
-                </nav>
+                </nav> */}
 
             </>
         );
@@ -80,7 +132,7 @@ class RingHeader extends React.Component {
 
 const mapStateToProps = state => {
     console.log("ring header: ", state);
-    return {account: state.account, web3: state.web3};
+    return { account: state.account, web3: state.web3 };
 }
 
 const mapDispatchToProps = dispatch => {
