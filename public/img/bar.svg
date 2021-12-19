@@ -1,0 +1,31 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 197 73" width="197" height="73">
+	<title>Home (Desktop)</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-985-762h1440v5218h-1440z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.s0 { opacity: .3;fill: #30fc00 } 
+		.s1 { fill: #30fc00 } 
+	</style>
+	<g id="Home (Desktop)" clip-path="url(#cp1)">
+		<g id="Group 7780">
+			<path id="Rectangle 2504" class="s0" d="m0 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2506" class="s0" d="m32 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2508" class="s0" d="m64 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2510" class="s0" d="m96 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2512" class="s0" d="m125 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2514" class="s0" d="m154 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2516" class="s0" d="m183 4c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v65c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-65z" />
+			<path id="Rectangle 2505" class="s1" d="m0 33c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v36c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-36z" />
+			<path id="Rectangle 2507" class="s1" d="m32 50c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v19c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-19z" />
+			<path id="Rectangle 2509" class="s1" d="m64 13c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v56c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-56z" />
+			<path id="Rectangle 2511" class="s1" d="m96 40c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v29c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-29z" />
+			<path id="Rectangle 2513" class="s1" d="m125 48c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v21c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-21z" />
+			<path id="Rectangle 2515" class="s1" d="m154 30c0-2.21 1.79-4 4-4h6c2.21 0 4 1.79 4 4v39c0 2.21-1.79 4-4 4h-6c-2.21 0-4-1.79-4-4v-39z" />
+			<path id="Rectangle 2517" class="s1" d="m183 70.5c0-1.38 1.12-2.5 2.5-2.5h9c1.38 0 2.5 1.12 2.5 2.5v0c0 1.38-1.12 2.5-2.5 2.5h-9c-1.38 0-2.5-1.12-2.5-2.5v0z" />
+		</g>
+	</g>
+</svg>

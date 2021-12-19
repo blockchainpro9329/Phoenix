@@ -1,0 +1,244 @@
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+.align-end {
+    align-items: flex-end;
+}
+.align-start {
+    align-items: flex-start;
+}
+
+.justify-center {
+    justify-content: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.flex1 {
+    flex:1;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+
+
+
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+/* color */
+
+.c-w {
+    color:white;
+}
+
+
+.c-3080be {
+    color: #3080be;
+}
+
+.c-a4a3a2 {
+    color: #a4a3a2;
+}
+
+.c-purple {
+    color: #9f7aea;
+}
+
+.c-8fced5 {
+    color: #8fced5;
+}
+.c-yellow {
+    color: #ffa286;
+}
+
+.c-a3a3a2 {
+    color: #a3a3a2;
+}
+
+
+/* background color */
+
+.bg-344d61 {
+    background-color: #344d61bb;
+}
+
+
+
+
+
+/* margin */
+
+.m-t-20 {
+    margin-top:20px;
+}
+
+.m-t-30 {
+    margin-top:30px;
+}
+
+.m-t-50 {
+    margin-top: 50px;
+}
+.m-t-60 {
+    margin-top: 60px;
+}
+
+.m-t-110 {
+    margin-top: 110px;
+}
+
+.m-t-130 {
+    margin-top: 130px;
+}
+
+
+
+
+
+
+.m-r-20 {
+    margin-right: 20px;
+}
+
+.m-r-30 {
+    margin-right: 30px;
+}
+
+.m-l-30 {
+    margin-left: 30px;
+}
+
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+
+
+
+.pos-rel {
+    position:relative;
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+
+
+.fs-12 {
+    font-size: 12px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fs-16 {
+    font-size: 16px;
+}
+.fs-18 {
+    font-size: 18px;
+}
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
+.fs-28 {
+    font-size: 28px;
+}
+
+.fs-30 {
+    font-size: 30px;
+}
+
+.fs-40 {
+    font-size: 40px;
+}
+
+.fs-60 {
+    font-size: 60px;
+}
+
+.fs-80 {
+    font-size: 80px;
+}
+
+.fs-82 {
+    font-size: 82px;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+
+.noto-regular {
+    font-weight: 200;
+}
+.noto-medium {
+    font-weight: 400;
+}
+.noto-bold {
+    font-weight: 600;
+}
+
+
+.l-h-1-1 {
+    line-height: 1.1;
+}
+
+
+.h-30 {
+    height: 30px;
+}
+
+.h-60 {
+    height: 60px;
+}
+
+.h-80 {
+    height: 80px;
+}
+
+.h-100 {
+    height: 100px !important;
+}

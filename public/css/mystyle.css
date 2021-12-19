@@ -1,0 +1,245 @@
+.text-third {
+    color: var(--primary);
+  }
+  .text-gradient {
+    background: linear-gradient(
+      175deg,
+      var(--blue) 0%,
+      var(--purple) 20%,
+      var(--pink) 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .f-row {
+    display: flex;
+  }
+  .f-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .gap-1 {
+    gap: 0.25rem;
+  }
+  .gap-2 {
+    gap: 0.5rem;
+  }
+  .gap-3 {
+    gap: 0.75rem;
+  }
+  .gap-4 {
+    gap: 1.5rem;
+  }
+  .gap-5 {
+    gap: 3rem;
+  }
+  .mt-1 {
+    margin-top: 0.25rem;
+  }
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  .mt-3 {
+    margin-top: 0.75rem;
+  }
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  .mt-large {
+    margin-top: 50px;
+  }
+  .mt-x-large {
+    margin-top: 75px;
+  }
+  .mb-x-large {
+    margin-bottom: 75px;
+  }
+  .pb-x-large {
+    padding-bottom: 75px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .f2-center {
+    align-items: center;
+  }
+  .f1-center {
+    justify-content: center;
+  }
+  .f1-between {
+    justify-content: space-between;
+  }
+  
+  .launch-button {
+    border: solid 1px var(--pink);
+    padding: 8px 32px;
+    background-color: var(--primary);
+    border-radius: 5px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .launch-button:hover {
+    animation: breath 3s ease-in-out infinite;
+  }
+  
+  .breath:hover {
+    transition: all 0.3s ease-in-out;
+    animation: breath 3s ease-in-out infinite;
+  }
+  
+  .docs-button-wrapper {
+    background: var(--primary-text);
+    padding: 1px;
+    display: flex;
+    max-height: 31px;
+    border-radius: 5px;
+  }
+  .docs-button {
+    padding: 1px 32px;
+    line-height: 2;
+    background-color: var(--primary);
+    border-radius: 5px;
+  }
+  .text-xxx-large {
+    font-size: xxx-large;
+  }
+  .text-xx-large {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  .text-large {
+    font-size: large;
+  }
+  .w-25 {
+    width: 25%;
+  }
+  .w-40 {
+    width: 40%;
+  }
+  .w-50 {
+    width: 50%;
+  }
+  .w-75 {
+    width: 75%;
+  }
+  .w-100 {
+    width: 100%;
+  }
+  
+  .line-15 {
+    line-height: 1.5;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .bg-third {
+    background-color: var(--third);
+  }
+  
+  @keyframes pulse {
+    0% {
+      filter: brightness(0.7);
+    }
+    50% {
+      filter: brightness(1);
+    }
+    100% {
+      filter: brightness(0.7);
+    }
+  }
+  
+  @keyframes breath {
+    0% {
+      color: white;
+    }
+    50% {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      color: white;
+    }
+  }
+  
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  .img-spin {
+    -webkit-animation: spin 12s linear infinite;
+    -moz-animation: spin 12s linear infinite;
+    animation: spin 12s linear infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translatey(20px);
+    }
+    50% {
+      transform: translatey(-30px);
+    }
+    100% {
+      transform: translatey(20px);
+    }
+  }
+  
+  @keyframes float-shadow {
+    0% {
+      box-shadow: 0px 30px 19px -4px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+      box-shadow: 0px 30px 19px -4px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+      box-shadow: 0px 30px 19px -4px rgba(0, 0, 0, 0.4);
+    }
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: #111827;
+    border: solid 1px black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    color: var(--gray-500);
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    left: -12px;
+    top: 32px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  
