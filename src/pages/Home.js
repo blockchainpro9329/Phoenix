@@ -111,7 +111,7 @@ class Home extends Component {
                 <HomeVision></HomeVision>
                 <HomeWork></HomeWork>
                 <Faq></Faq>
-                <Footer></Footer>
+                <Footer></Footer> 
             </>
         );
     }

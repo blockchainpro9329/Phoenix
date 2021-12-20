@@ -19,29 +19,50 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
   <link rel="apple-touch-icon" sizes="180x180"
     href="https://cdn.frog.tech/cdn-cgi/image/width=180,height=180,quality=75,fit=crop,format=png/648/617d0e7789aec/GAf04osef4CCU2MZ6ErMsQqaFUBUEOfHsHc77bp3.png">
-  
+
   <link rel="icon" href="%PUBLIC_URL%/logo-color.png" color="#0090ab">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap-min.css"></link>
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap-min.css">
+  </link>
 
   <!-- <link rel="stylesheet" href="%PUBLIC_URL%/css/inter.css"> -->
   <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
   <!-- <link rel="stylesheet" href="%PUBLIC_URL%/css/index.css"> -->
   <!-- <link rel="stylesheet" href="%PUBLIC_URL%/css/mystyle.css"> -->
-  <link href="%PUBLIC_URL%/css/last.css" rel="stylesheet"></link>
-  <link href="%PUBLIC_URL%/css/theme.css" rel="stylesheet"></link>
+  <link href="%PUBLIC_URL%/css/last.css" rel="stylesheet">
+  </link>
+  <link href="%PUBLIC_URL%/css/media.css" rel="stylesheet">
+  </link>
+  <link href="%PUBLIC_URL%/css/theme.css" rel="stylesheet">
+  </link>
 
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
   <!-- <link href="%PUBLIC_URL%/css/css2" rel="stylesheet"> -->
-
-
-
 </head>
 
-<body>
-  <div id="root"></div>
+
+<body id="body">
+  <div id="root" class="bg-img"
+    style="background-image: url(./img/spiral.svg), url(./img/ok.svg), url(./img/flower.png); background-repeat: no-repeat;">
+  </div>
 </body>
+<script>
+  window.addEventListener('resize', function (event) {
+    var base_width = "1500";
+    var low_width = "780"
+    var cur_width = window.innerWidth;
+    var scale = 1;
+    var element = document.getElementById("body");
+    if (low_width < cur_width) {
+      scale = cur_width / base_width;
+      element.style.zoom = scale;
+    }
+  });
+
+
+</script>
+
 </html>

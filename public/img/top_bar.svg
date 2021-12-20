@@ -1,0 +1,26 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 22" width="28" height="22">
+	<title>Home (Mobile)</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-327-16h375v6647h-375z" />
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m0-3h28v28h-28v-28z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.s0 { fill: #ffce00 } 
+	</style>
+	<g id="Home (Mobile)" clip-path="url(#cp1)">
+		<g id="Header (Mobile)">
+			<g id="Burger Menu">
+				<g id="Mask Group 34" clip-path="url(#cp2)">
+					<path id="Rectangle 1949" class="s0" d="m0 0h28v4h-28v-4z" />
+					<path id="Rectangle 1950" class="s0" d="m0 9h28v4h-28v-4z" />
+					<path id="Rectangle 1951" class="s0" d="m0 18h28v4h-28v-4z" />
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

@@ -47,12 +47,12 @@ class RingHeader extends React.Component {
                 <div className='header'>
                     <div className="content mx-auto">
                         <div className='flex align-center'>
-                            <img alt='' src='./img/logo.png' style={{ height: "54px" }} />
+                            <img alt='' src='./img/logo.png' className="logo-img" />
                             <span className='logo-title'>
                                 PHOENIX
                             </span>
                         </div>
-                        <div className='flex1 flex justify-center'>
+                        <div className='menu-container flex1 flex justify-center'>
                             <span className='menu flex flex-col align-center'>
                                 <a>MY NODES</a>
                                 {/* <br/> */}
@@ -70,7 +70,7 @@ class RingHeader extends React.Component {
                             </span>
 
                         </div>
-                        <div className="f-row f1-end">
+                        <div className="launch_wallet f-row f1-end">
                             {
                                 !this.props.account ?
                                     <div className="action-btn outline flex align-center justify-center" onClick={this.handleConnect}>
@@ -86,45 +86,12 @@ class RingHeader extends React.Component {
                             }
                         </div>
 
-
+                        <a id='launch_sm_btn' href='/app'>
+                            <img src='./img/top_bar.svg' />
+                        </a>
                     </div>
                 </div>
                 <div className='header_border'></div>
-                {/* </> */}
-
-
-
-                {/* <nav className="container mx-auto">
-                    <div className="f-row f2-center gap-2" style={{ width: "167px" }}><img alt="" className="img-spin" width="48" height="48"
-                        src="./img/logo-color.png" /><span id="brand-name">FIRE</span></div>
-                    <div className="nav" id="topbar-links"><a role="button" className="nav-link-selected nav-link" tabIndex="0">My
-                        Nodes</a><a role="button" className="nav-link" tabIndex="0">
-                            <div style={{ cursor: "no-drop", color: "var(--secondary-text)" }}>All Nodes<br /><span
-                                style={{ color: "var(--secondary-text)", fontSize: "12px", display: "block", width: "91px" }}>(coming
-                                soon...)</span></div>
-                        </a><a role="button" className="nav-link" tabIndex="0">
-                            <div style={{ cursor: "no-drop", color: "var(--secondary-text)" }}>Mining<br /><span
-                                style={{ color: "var(--secondary-text)", fontSize: "12px", display: "block", width: "91px" }}>(coming
-                                soon...)</span></div>
-                        </a></div>
-                    <div className="f-row f1-end">
-                        {
-                            !this.props.account ?
-                                <div className="connect-button" onClick={this.handleConnect}>
-                                    <span><i className="fas fa-wallet" style={{ marginRight: "1rem" }}></i>
-                                        Connect Wallet
-                                    </span>
-                                </div>
-                                :
-                                <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
-                                    <div className="text-green connected-account-text">{this.props.account.slice(0, 8) +"..."+ this.props.account.slice(34)}</div>
-                                    <div className="connected-text">WALLET CONNECTED</div>
-                                </div>
-
-                        }
-                    </div>
-                </nav> */}
-
             </>
         );
     }

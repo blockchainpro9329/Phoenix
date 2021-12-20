@@ -2,7 +2,7 @@
 
 import React from "react";
 import Modal from "react-modal";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 Modal.setAppElement("#root");
@@ -57,7 +57,7 @@ class Create extends React.Component {
     }
 
     selectItem(index) {
-        this.setState({selected_item: index});
+        this.setState({ selected_item: index });
     }
 
 
@@ -65,12 +65,15 @@ class Create extends React.Component {
     render() {
         return (
             <div className="custom-container mx-auto text-justify info-container"
-                style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginLeft: "30px", marginRight: "30px", height: "260px", width: "1048px" }}>
+                style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop:"40px", marginBottom: "150px", marginLeft: "30px", marginRight: "30px", height: "fit-content", padding: "20px" }}>
+                <div className="create_title">
+                    Create a Node with 10 Phoenix
+                </div>
                 <p id="create-ring">Create a FIRE-node with <strong>10</strong> <span
                     className="sc-gsTEea cdmEaM">$FIRE</span> tokens to earn lifetime high-yield <span
                         className="sc-gsTEea cdmEaM">$FIRE</span> token rewards.<br />Currently estimated rewards:
                     <strong>0.556</strong> <span className="sc-gsTEea cdmEaM">$FIRE</span>/day.</p>
-                <div className="container f-row f1-center mt-4"><button id="node-list-create-button" onClick={this.openModal}>CREATE A NODE</button>
+                <div className="container flex justify-center mt-4"><button className="action-btn btn" onClick={this.openModal}>CREATE A NODE</button>
                 </div>
                 <Modal
                     isOpen={this.state.modalIsOpen}

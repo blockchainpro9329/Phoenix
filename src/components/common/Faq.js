@@ -9,17 +9,19 @@ class Faq extends React.Component {
 
     clickItem(index) {
         if (this.state.selId === index) {
-            this.setState({selId : -1});
+            this.setState({ selId: -1 });
         } else {
-            this.setState({selId : index});
+            this.setState({ selId: index });
         }
     }
-  
+
 
     render() {
         return (
             <section id="section-faq">
-                <h2 className="c-w">Frequently Asked Questions</h2>
+                <div className="faq-title">
+                    Frequently Asked Questions
+                </div>
                 <div id="faq-content" className="container mx-auto">
                     <button className={this.state.selId === 1 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(1) }} >What is the FIRE token ?</button>
                     <div className="panel" >
@@ -44,7 +46,7 @@ class Faq extends React.Component {
                             <br />
                             You can create a FIRE-node with 10 FIRE tokens. Once your node is
                             created, it can’t be undone and it generates
-                             <span className="c-purple" data-nsfw-filter-status="swf"> lifetime returns</span> in FIRE tokens for
+                            <span className="c-purple" data-nsfw-filter-status="swf"> lifetime returns</span> in FIRE tokens for
                             you.
                         </p>
                     </div>

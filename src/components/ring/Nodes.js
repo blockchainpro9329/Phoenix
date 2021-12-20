@@ -35,7 +35,7 @@ class Nodes extends React.Component {
         this.setState({ list: list });
 
         setInterval(() => {
-            this.updateRewards();            
+            this.updateRewards();
         }, 1000);
     }
 
@@ -64,10 +64,10 @@ class Nodes extends React.Component {
             return (
                 <div key={index} style={{ display: "flex" }}>
                     <div style={{ flex: "4" }}>{item.id}</div>
-                    <div style={{ flex: "1" }}>{item.content}</div>
-                    <div style={{ flex: "1" }}>{item.content}</div>
-                    <div style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
-                    <div style={{ flex: "1" }}>
+                    <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
+                    <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button text-green"> CLAIM </div>
                     </div>
                 </div>
@@ -77,32 +77,34 @@ class Nodes extends React.Component {
 
         return (
             <>
-                <div className="mx-auto" style={{ height: "90px", width: "1048px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ display: "flex" }}>
-                        <img alt="" src="./img/all-node-icon.svg" style={{ marginRight: "10px", width: "40px" }} />
+                <div className="mx-auto m-t-20" style={{ height: "90px", width: "1150px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div className='c-yellow' style={{ display: "flex" }}>
+                        <img alt="" src="./img/myNode.svg" style={{ marginRight: "10px" }} />
                         My Nodes
                     </div>
                     <div>
-                        <span style={{ color: "rgb(160, 174, 192)", marginRight: "0.5rem" }}>
+                        <span className='c-green' style={{ marginRight: "0.5rem" }}>
                             Current rewards cycle estimation is
                         </span>
-
-                        {4} <span>
+                        <span className='c-w m-r-10'>
+                            {4}
+                        </span>
+                        <span className='c-green'>
                             hours
                         </span>
-                        <input type="text" style={{ border: "1px solid #1a202c", borderRadius: "2px", marginLeft: "0.5rem" }} placeholder="Search..." onChange={this.onSearch}></input>
+                        <input type="text" style={{ border: "1px solid #eee", background:"#031420ee", paddingLeft:"5px", borderRadius: "3px", marginLeft: "0.5rem" }} placeholder="Search..." onChange={this.onSearch}></input>
 
                     </div>
                 </div>
-                <div className="mx-auto" style={{ flexDirection: "column", marginLeft: "30px", marginRight: "30px", height: "560px", width: "1048px" }}>
+                <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30" style={{padding:"20px", flexDirection: "column", marginLeft: "30px", marginRight: "30px", height: "560px" }}>
 
 
-                    <div style={{ display: "flex", width: "100%" }}>
-                        <div style={{ flex: "4" }}>NAME</div>
-                        <div style={{ flex: "1" }}>CREATED</div>
-                        <div style={{ flex: "1" }}>NEXT REWARD IN</div>
-                        <div style={{ flex: "1" }}>REWARDS</div>
-                        <div style={{ flex: "1" }}></div>
+                    <div className='h-40 flex align-center' style={{ width: "100%" }}>
+                        <div className='c-4cce13' style={{ flex: "4" }}>NAME</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}>CREATED</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}>NEXT REWARD IN</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}>REWARDS</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
                     </div>
                     <div style={{ height: "500px", width: "100%" }}>
                         <CustomScrollbars autoHide autoHideTimeout={500} autoHideDuration={200}>
