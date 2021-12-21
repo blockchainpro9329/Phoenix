@@ -16,14 +16,17 @@ const customStyles = {
         // zIndex: "100",
         overflow: "unset",
         height: "fit-content",
-        padding: "none"
+        padding: "none",
+        position: "unset !important"
     },
 };
 
 Modal.defaultStyles.overlay.backgroundColor = "rgba(0,0,0,0.4)";
 Modal.defaultStyles.overlay.display = "flex";
 Modal.defaultStyles.overlay.overflow = "auto";
-Modal.defaultStyles.overlay.paddingBottom = "100px";
+// Modal.defaultStyles.overlay.paddingBottom = "100px";
+Modal.defaultStyles.overlay.justifyContent = "center";
+Modal.defaultStyles.overlay.alignItems = "center";
 
 
 class Create extends React.Component {
@@ -84,12 +87,12 @@ class Create extends React.Component {
                 >
                     <div className="">
                         <div className="modal-header">
-                            <div className="modal-title h4">
+                            <div className="modal-title h4 c-w">
                                 <div className="h2 col-12 text-center" style={{ marginTop: "10px" }}>Create your <span
                                     className="sc-gsTEea cdmEaM">Node</span></div>
                             </div><button type="button" className="btn-close btn-close-white" aria-label="Close" onClick={this.closeModal}></button>
                         </div>
-                        <div className="modal-body">
+                        <div className="modal-body c-w">
                             <div className="row justify-content-center">
                                 <div className="col-8 text-center" style={{ lineHeight: "1.75" }}>Start earning lifetime high-yield <span
                                     className="sc-gsTEea cdmEaM">$RING</span> token rewards. Rewards calculations are based on many factors,
@@ -121,10 +124,10 @@ class Create extends React.Component {
                             </div>
                             <div style={{ marginTop: "25px", fontSize: "12px" }}>*the rate is calculated with the actual $RING price and it may vary
                                 depending on various factors.</div>
-                            <div className="label" style={{ marginTop: "10px" }}>Node Name</div>
+                            {/* <div className="label" style={{ marginTop: "10px" }}>Node Name</div>
                             <div className="input-group mb-3">
                                 <input placeholder="My Node" type="text" className="form-control" id="name" value="" />
-                            </div>
+                            </div> */}
                             <div style={{ marginTop: "40px" }}>
                                 <p>A contribution of $RING tokens to the <span className="sc-gsTEea cdmEaM">RING</span> community is required to
                                     create a node and participate in rewards. </p>
@@ -140,7 +143,7 @@ class Create extends React.Component {
                                 <form className="">
                                     <div className="form-check"><input type="checkbox" className="form-check-input" value="false" /><label title=""
                                         className="form-check-label"><span>I have read the <a
-                                            href="https://ring.financial/disclaimer.html">disclaimer</a> and I want to create my
+                                            href="/disclaimer">disclaimer</a> and I want to create my
                                             RING-node.</span></label></div>
                                 </form>
                             </div>

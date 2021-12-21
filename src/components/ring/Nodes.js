@@ -19,7 +19,7 @@ const CustomScrollbars = props => (
 );
 
 class Nodes extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +55,7 @@ class Nodes extends React.Component {
     render() {
         const List = this.state.node_list.map((item, index) => {
             return (
-                <div key={index} className='fs-18' style={{ display: "flex", height: "50px" }}>
+                <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
                         <img src='./img/meat1.png' style={{ width: "20px" }} />
                         <img src='./img/covid1.png' style={{ width: "20px" }} />

@@ -754,3 +754,42 @@ footer {
     height: 500px;
     width: 100%;
 }
+
+
+.cdmEaM {
+    color: var(--green);
+    font-weight: bold;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+
+.approuval-button {
+    width: 125px;
+    height: 40px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--purple);
+    color: #e2e8f0;
+}
+
+.approuval-button:hover {
+    background-color: var(--purple)
+}
+
+.disclaim-content {
+    font-size: 20px;
+}
+
+.disclaim-title {
+    font-size: 24px;
+}

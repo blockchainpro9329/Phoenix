@@ -543,7 +543,28 @@
     .mynode-header {
         width: 100%;
         height: 60px;
+        padding-right: 40px;
+        padding-left: 40px;
     }
     
+    .accordion {
+        font-size: 20px;
+    }
+
+    .footer-privacy {
+        font-size: 30px;
+    }
+
+    .disclaim-content {
+        font-size: 3vw;
+    }
+    
+    .disclaim-title {
+        font-size: 5vw;
+    }
+
+
+
+
 
 }

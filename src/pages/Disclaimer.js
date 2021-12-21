@@ -3,7 +3,7 @@ import Header from "../components/home/HomeHeader";
 import {connect} from "react-redux";
 import Content from "../components/discliam/content";
 import React from "react";
-import Footer from "../components/discliam/footer";
+import Footer from "../components/common/Footer";
 
 
 class Disclaimer extends React.Component {

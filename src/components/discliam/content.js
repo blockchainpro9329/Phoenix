@@ -4,9 +4,11 @@ class Content extends React.Component {
     render() {
         return (
             <>
-                <section className="f-column f2-center" style={{ marginBottom: "35px" }}>
-                    <h2>Disclaimer</h2>
-                    <div style={{ fontSize: "large", width: "75%", lineHeight: "31px", marginTop: "25px" }}>
+                <section className="c-w flex flex-col align-center" style={{ marginTop: "60px" }}>
+                    <div className="disclaim-title ">
+                        Disclaimer
+                    </div>
+                    <div className="disclaim-content" style={{width: "75%", marginTop: "25px" }}>
                         The information on the ring.financial and app.ring.financial websites and communications from the RING
                         Financial entity (whether on Twitter, Discord or Telegram) are not financial investment advice.
                         The purchase of $RING tokens constitutes an investment so it is inherently risky, and it is even more so as
