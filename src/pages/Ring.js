@@ -17,7 +17,7 @@ class Ring extends React.Component {
             <>
                 <RingHeader></RingHeader>
                 <RingMsg></RingMsg>
-                {/* <MyNodes></MyNodes> */}
+                <MyNodes></MyNodes>
                 <Create></Create>
                 {/* <RingNext></RingNext> */}
                 <Faq></Faq>

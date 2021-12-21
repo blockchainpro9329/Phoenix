@@ -1,7 +1,7 @@
 const HomeWork = () => {
     return (
         <section id="section-work" className="pos-rel">
-            <img className="pos-abs ok-img" style={{ top: "-350px", left: "0px" }} src="./img/ok.svg" />
+            {/* <img className="pos-abs ok-img" style={{ top: "-350px", left: "0px" }} src="./img/ok.svg" /> */}
             <div className="work-content mx-auto">
                 <div className="work-text">
                     <div>

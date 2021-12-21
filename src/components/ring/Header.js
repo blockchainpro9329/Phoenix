@@ -8,26 +8,13 @@ class RingHeader extends React.Component {
     constructor(props) {
         super(props);
         this.handleConnect = this.handleConnect.bind(this);
-        // toast.info("wow so easy!", {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //     hideProgressBar: true,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        // });
     }
 
     async handleConnect() {
         await window.ethereum.enable();
-        this.props.web3.eth.getAccounts((err, accounts) => {
-            // this.setState({account: accounts[0]});
-            this.props.dispatch({
-                type: "UPDATE_WALLET_ACCOUNT",
-                payload: { account: accounts[0] }
-            });
-        })
+        this.props.dispatch({
+            type:"CONNECT_WALLET"
+        });
     }
 
     componentDidMount() {
@@ -37,12 +24,7 @@ class RingHeader extends React.Component {
     render() {
         return (
             <>
-                {/* <link rel="stylesheet" href="./css2/theme.css"></link>
-                <link href="./css2/css2" rel="stylesheet"></link>
-                <link href="./css2/2.chunk.css" rel="stylesheet"></link>
-                <link href="./css2/main.css" rel="stylesheet"></link> */}
                 <ToastContainer />
-
                 {/* <> */}
                 <div className='header'>
                     <div className="content mx-auto">
@@ -68,7 +50,6 @@ class RingHeader extends React.Component {
                                 {/* <br/> */}
                                 <a>123</a>
                             </span>
-
                         </div>
                         <div className="launch_wallet f-row f1-end">
                             {
@@ -85,7 +66,6 @@ class RingHeader extends React.Component {
                                     </div>
                             }
                         </div>
-
                         <a id='launch_sm_btn' href='/app'>
                             <img src='./img/top_bar.svg' />
                         </a>
@@ -98,7 +78,6 @@ class RingHeader extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("ring header: ", state);
     return { account: state.account, web3: state.web3 };
 }
 

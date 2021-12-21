@@ -3,7 +3,7 @@ const HomeHero = () => {
     <section id="section-hero" className="pos-rel">
       <img src="./img/ellipse_left.png" className="pos-abs" style={{ top: "0px", left: "0px", opacity: "0.4" }} />
       <img src="./img/ellipse_right.png" className="pos-abs" style={{ top: "90px", right: "0px", opacity: "0.4" }} />
-      <img src="./img/flower.png" className="pos-abs flower-pos" style={{ top: "90px", right: "20px" }} />
+      {/* <img src="./img/flower.png" className="pos-abs flower-pos" style={{ top: "90px", right: "20px" }} /> */}
 
       <div className="content mx-auto">
         <div className="fs-24 c-3080be flex align-center earn-title" style={{ height: "280px" }}>

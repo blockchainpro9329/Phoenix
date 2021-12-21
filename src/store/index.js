@@ -5,18 +5,21 @@ import config from '../contract/config';
 const _initialState = {
     price_usd: 0,
     price_bnb: 0,
-    account: ""
+    account: "",
+    node_list: []
 }
 
 
 const init = (init) => {
-    console.log("config", config);
-    const provider = Web3.providers.HttpProvider(config.testNetUrl);
-    init.provider = provider;
-    console.log("init", provider);
-    init.web3 = new Web3(Web3.givenProvider || provider);
+
     return init;
 }
+
+const provider = Web3.providers.HttpProvider(config.testNetUrl);
+const web3 = new Web3(Web3.givenProvider || provider);
+
+console.log("web3", web3);
+
 
 
 const reducer = (state = init(_initialState), action) => {
@@ -35,7 +38,23 @@ const reducer = (state = init(_initialState), action) => {
         return Object.assign({}, state, {
             chainId: action.payload.chainId
         });
+    } else if (action.type === 'GET_NODE_LIST') {
+        var list = [];
+        for (var i = 0; i < 100; i++) {
+            list.push({ id: i, content: i, rewards: i });
+        }
+        return Object.assign({}, state, {
+            node_list: list
+        });
+    } else if (action.type === 'CONNET_WALLET') {
+        web3.eth.getAccounts((err, accounts) => {
+            store.dispatch({
+                type: "UPDATE_WALLET_ACCOUNT",
+                payload: { account: accounts[0] }
+            });
+        })
     }
+
     return state;
 }
 
@@ -47,15 +66,15 @@ if (window.ethereum) {
 
         store.dispatch({
             type: "UPDATE_WALLET_ACCOUNT",
-            payload: {account: accounts[0]}
+            payload: { account: accounts[0] }
         });
     })
-    
+
     window.ethereum.on('chainChanged', function (networkId) {
 
         store.dispatch({
-            type:"UPDATE_CHAIN_ID",
-            payload: {chainId: networkId}
+            type: "UPDATE_CHAIN_ID",
+            payload: { chainId: networkId }
         });
     });
 }

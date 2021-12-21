@@ -36,9 +36,7 @@ class RingMsg extends React.Component {
                         {/* <div className="btn action-btn outline m-r-20" style={{ width: "120px", height: "40px" }}>CLAIM ALL</div> */}
                     </div>
                 </div>
-
-                <img src="./img/cake.svg" className="pos-abs" style={{ top: "100px", right: "0px", zIndex: -1 }} />
-
+                {/* <img src="./img/cake.svg" className="pos-abs" style={{ top: "100px", right: "0px", zIndex: -1 }} /> */}
                 <div id="welcome-message" className="flex custom-container mx-auto m-t-100">
                     <div className="c-w">
                         <div className="msg-title">

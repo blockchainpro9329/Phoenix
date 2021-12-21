@@ -14,15 +14,14 @@ class Faq extends React.Component {
             this.setState({ selId: index });
         }
     }
-
-
+    
     render() {
         return (
             <section id="section-faq">
                 <div className="faq-title">
                     Frequently Asked Questions
                 </div>
-                <div id="faq-content" className="container mx-auto">
+                <div id="faq-content" className="mx-auto">
                     <button className={this.state.selId === 1 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(1) }} >What is the FIRE token ?</button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
