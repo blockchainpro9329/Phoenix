@@ -737,3 +737,20 @@ footer {
     font-size: 20px;
     margin-top: 30px;
 }
+
+.mynode-header {
+    width: 1150px;
+    height: 60px;
+}
+
+.mynode-list {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+}
+
+.mynode-list-content {
+    height: 500px;
+    width: 100%;
+}

@@ -1,4 +1,4 @@
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1080px) {
 
 
 
@@ -478,6 +478,7 @@
     }
 
     .informations-container {
+        margin-top: 20px;
         padding-right: 40px;
         padding-left: 40px;
         width: 100%;
@@ -538,5 +539,11 @@
         max-width: unset;
     }
 
+
+    .mynode-header {
+        width: 100%;
+        height: 60px;
+    }
+    
 
 }
