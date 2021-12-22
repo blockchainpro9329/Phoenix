@@ -793,3 +793,8 @@ footer {
 .disclaim-title {
     font-size: 24px;
 }
+
+.menu > a {
+    color: white;
+    text-decoration: none;
+}

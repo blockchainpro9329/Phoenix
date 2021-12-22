@@ -18,9 +18,6 @@ const init = (init) => {
 const provider = Web3.providers.HttpProvider(config.testNetUrl);
 const web3 = new Web3(Web3.givenProvider || provider);
 
-console.log("web3", web3);
-
-
 
 const reducer = (state = init(_initialState), action) => {
 
@@ -53,6 +50,18 @@ const reducer = (state = init(_initialState), action) => {
                 payload: { account: accounts[0] }
             });
         })
+    } else if (action.type === 'SET_CONTRACT_STATUS') {
+        console.log("state in redux", state);
+
+
+
+        
+    } else if (action.type === "SET_NFT_URL" ) {
+        if (action.payload.type === "master") {
+
+        } else if (action.payload.type === "grand") {
+
+        }
     }
 
     return state;

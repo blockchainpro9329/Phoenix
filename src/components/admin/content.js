@@ -2,9 +2,10 @@ import React from "react";
 import { create } from 'ipfs-http-client'
 import Web3 from "web3"; 
 import config from "../../contract/config";
+import {connect} from 'react-redux';
 
 
-const client = create('https://ipfs.infura.io:5001/api/v0')
+const client = create('https://ipfs.infura.io:5001/api/v0');
 
 class Content extends React.Component {
 
@@ -16,12 +17,10 @@ class Content extends React.Component {
             grand_url:"../img/empty_img1.png"
         }
         this.connectWeb3 = this.connectWeb3.bind(this);
+        this.setContractStatus = this.setContractStatus.bind(this);
     }
 
    async onSelectFile(event, type) {
-        console.log(event);
-        console.log(type);
-
         const file = event.target.files[0]
         try {
             const added = await client.add(file)
@@ -37,16 +36,20 @@ class Content extends React.Component {
                 },
             };
 
-
             const cid = await client.add(JSON.stringify(tokenObject));
             let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
-            console.log(cid);
 
+            this.props.dispatch({
+                action:"SET_NFT_URL",
+                payload: {
+                    type:type,
+                    url: cid.path
+                }
+            })
 
             let temp_url = {};
             temp_url[type + "_url"] = url;
             this.setState(temp_url);
-            console.log("tokenURI", tokenURI);
 
         } catch (error) {
             console.log('Error uploading file: ', error)
@@ -66,6 +69,14 @@ class Content extends React.Component {
         contract.methods.mintNFT(0).send({from:"0x8695CAfcaAA4F8C6Ce1ea23a45c628C7D3FBFb07"})
         .then(console.log);
  
+    }
+
+    setContractStatus(param) {
+        console.log(param);
+        this.props.dispatch({
+            type:"SET_CONTRACT_STATUS",
+            payload: {param: param}
+        });
     }
 
     render() {
@@ -95,8 +106,8 @@ class Content extends React.Component {
                     </div>
                 </section>
                 <section id="section-start-stop-service" style={{display:"flex", justifyContent:"center"}}>
-                    <button className="btn action-btn outline m-r-20" onClick={this.startService}>Start Service</button>
-                    <button className="btn action-btn"  onClick={this.stopService}>Stop Service</button>
+                    <button className="btn action-btn outline m-r-20" onClick={this.setContractStatus.bind(this, 1)}>Start Service</button>
+                    <button className="btn action-btn"  onClick={this.setContractStatus.bind(this, 0)}>Stop Service</button>
                 </section>
             </>
 
@@ -105,4 +116,14 @@ class Content extends React.Component {
 }
 
 
-export default Content;
+const mapStateToProps = state => {
+    return state;
+}
+
+const mapDispatchToProps = dispatch => {
+    return { dispatch }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

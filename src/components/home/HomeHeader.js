@@ -25,7 +25,7 @@ class HomeHeader extends React.Component {
                         </div>
                         <div className='menu-container flex1 flex justify-center'>
                             <span className='menu'>
-                                <a>HOME</a>
+                                <a href='/'>HOME</a>
                             </span>
                             <span className='menu'>
                                 <a>STORY</a>
