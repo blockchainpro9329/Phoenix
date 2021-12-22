@@ -1,8 +1,8 @@
 import Home from "./pages/Home";
 import Ring from './pages/Ring';
-import Nft from "./pages/Nft";
 import Disclaimer from "./pages/Disclaimer";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Admin from "./pages/Admin";
 
 
 
@@ -22,7 +22,7 @@ function App() {
         </Route>
         <Route path="/app" element={<Ring />}>
         </Route>
-        <Route path="/nft" element={<Nft />}>
+        <Route path="/admin" element={<Admin />}>
         </Route>
         <Route path="/disclaimer" element={<Disclaimer />}>
         </Route>

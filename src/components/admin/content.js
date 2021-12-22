@@ -71,12 +71,11 @@ class Content extends React.Component {
     render() {
         return (
             <>
-                <h1>FIRE ADMIN PAGE</h1>
-                <section id="section-started">
+                <section id="section-started" className="c-w flex flex-col align-center">
                     <h2>Setting FIRE NFT ART</h2>
                     <span className="subtitle" data-nsfw-filter-status="swf"> Only owners can change and update NFT arts.</span>
 
-                    <div id="started-content" className="container mx-auto f-row" style={{ justifyContent: "space-around" }}>
+                    <div id="started-content" className="flex mx-auto m-t-40" style={{ justifyContent: "space-around" }}>
                         <div className="card-action shadow">
                             <div className="badge-title text-purple" style={{ marginTop: "10px" }}>Master</div>
                             <img alt="" style={{ height: "250px", width: "250px", marginTop: "20px", marginBottom: "20px" }} src={this.state.master_url}></img>
@@ -95,9 +94,9 @@ class Content extends React.Component {
                         </div>
                     </div>
                 </section>
-                <section id="section-start-stop-service" style={{display:"flex", justifyContent:"center", backgroundColor:"#0d1119"}}>
-                    <button style={{width:"100px", height:"30px", background:"green", marginRight:"20px"}} onClick={this.startService}>Start Service</button>
-                    <button style={{width:"100px", height:"30px", background:"red"}} onClick={this.stopService}>Stop Service</button>
+                <section id="section-start-stop-service" style={{display:"flex", justifyContent:"center"}}>
+                    <button className="btn action-btn outline m-r-20" onClick={this.startService}>Start Service</button>
+                    <button className="btn action-btn"  onClick={this.stopService}>Stop Service</button>
                 </section>
             </>
 
