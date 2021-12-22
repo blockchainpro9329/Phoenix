@@ -13,7 +13,7 @@ class RingHeader extends React.Component {
     async handleConnect() {
         await window.ethereum.enable();
         this.props.dispatch({
-            type:"CONNECT_WALLET"
+            type: "CONNECT_WALLET"
         });
     }
 
@@ -78,6 +78,7 @@ class RingHeader extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log("props  lll ", state);
     return { account: state.account, web3: state.web3 };
 }
 

@@ -43,7 +43,7 @@ const reducer = (state = init(_initialState), action) => {
         return Object.assign({}, state, {
             node_list: list
         });
-    } else if (action.type === 'CONNET_WALLET') {
+    } else if (action.type === 'CONNECT_WALLET') {
         web3.eth.getAccounts((err, accounts) => {
             store.dispatch({
                 type: "UPDATE_WALLET_ACCOUNT",
@@ -55,7 +55,7 @@ const reducer = (state = init(_initialState), action) => {
 
 
 
-        
+
     } else if (action.type === "SET_NFT_URL" ) {
         if (action.payload.type === "master") {
 
