@@ -1,3 +1,4 @@
+import { act } from 'react-dom/cjs/react-dom-test-utils.production.min';
 import { createStore } from 'redux'
 import Web3 from 'web3';
 import config from '../contract/config';
@@ -62,6 +63,9 @@ const reducer = (state = init(_initialState), action) => {
         } else if (action.payload.type === "grand") {
 
         }
+    } else if (action.type === "CLAIM_NODE") {
+        
+        console.log("Claim node id", action.payload.node_id);
     }
 
     return state;

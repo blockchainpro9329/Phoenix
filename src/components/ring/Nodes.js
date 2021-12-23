@@ -38,7 +38,7 @@ class Nodes extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
-        return {node_list: nextProps.node_list};
+        return { node_list: nextProps.node_list };
     }
 
     updateRewards() {
@@ -51,6 +51,18 @@ class Nodes extends React.Component {
         }
         this.setState({ node_list: list });
     }
+
+    claimNode(id) {
+        console.log(id);
+        this.props.dispatch({
+            type:"CLAIM_NODE",
+            payload:{
+                node_id: id
+            }
+        });
+    }
+
+
 
     render() {
         const List = this.state.node_list.map((item, index) => {
@@ -66,14 +78,14 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
                     <div className='text-center' style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button c-green"> 
-                        {/* <a className='text-green cursor-pointer'> */}
+                        <div className="claim-button c-green">
+                            {/* <a className='text-green cursor-pointer'> */}
                             Pay Fee
-                        {/* </a> */}
+                            {/* </a> */}
                         </div>
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button text-green"> CLAIM </div>
+                        <div className="claim-button text-green" onClick={this.claimNode.bind(this, item.id)}> CLAIM </div>
                     </div>
                 </div>
             )
@@ -83,22 +95,11 @@ class Nodes extends React.Component {
             <>
                 <div className="mx-auto m-t-20 mynode-header flex align-center justify-between">
                     <div className='c-yellow fs-30 flex align-center'>
-                        <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width:"30px"}} />
+                        <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
                         My Nodes
                     </div>
                     <div>
-                        <div className='claim-button c-green' style={{width:"150px", height:"50px"}}> CLAIM ALL</div>
-                        {/* <span className='c-green' style={{ marginRight: "0.5rem" }}>
-                            Current rewards cycle estimation is
-                        </span>
-                        <span className='c-w m-r-10'>
-                            {4}
-                        </span>
-                        <span className='c-green'>
-                            hours
-                        </span>
-                        <input type="text" style={{ border: "1px solid #eee", background: "#031420ee", paddingLeft: "5px", borderRadius: "3px", marginLeft: "0.5rem" }} placeholder="Search..." onChange={this.onSearch}></input> */}
-
+                        <div className='claim-button c-green' style={{ width: "150px", height: "50px" }} onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
                     </div>
                 </div>
                 <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
@@ -113,7 +114,8 @@ class Nodes extends React.Component {
                         <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
                     </div>
                     <div className='mynode-list-content'>
-                        <CustomScrollbars autoHide autoHideTimeout={500} autoHideDuration={200}>
+                        {/* <CustomScrollbars autoHide autoHideTimeout={500} autoHideDuration={200}> */}
+                        <CustomScrollbars>
                             {List}
                         </CustomScrollbars>
                     </div>

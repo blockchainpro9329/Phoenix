@@ -49,16 +49,17 @@
   </div>
 </body>
 <script>
-  window.addEventListener('resize', function (event) {
-    var base_width = "1500";
-    var low_width = "1080"
-    var cur_width = window.innerWidth;
-    var scale = 1;
-    var element = document.getElementById("body");
-    if (low_width < cur_width) {
-      scale = cur_width / base_width;
-      element.style.zoom = scale;
-    }
-  });
+  // window.addEventListener('resize', function (event) {
+  //   var base_width = "1500";
+  //   var low_width = "1080"
+  //   var cur_width = window.innerWidth;
+  //   var scale = 1;
+  //   var element = document.getElementById("body");
+  //   console.log("size changed!");
+  //   if (low_width < cur_width) {
+  //     scale = cur_width / base_width;
+  //     element.style.zoom = scale;
+  //   }
+  // });
 </script>
 </html>
