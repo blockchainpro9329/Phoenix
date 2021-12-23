@@ -801,3 +801,13 @@ footer {
     color: white;
     text-decoration: none;
 }
+
+#launch_sm_connect_btn {
+    display: none;
+}
+
+.claim-all {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+}

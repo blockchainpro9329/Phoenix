@@ -1,12 +1,41 @@
 import React from "react";
+import { connect } from "react-redux";
 
 
 class RingMsg extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.handleConnect = this.handleConnect.bind(this);
+    }
+
+    async handleConnect() {
+        await window.ethereum.enable();
+        this.props.dispatch({
+            type: "CONNECT_WALLET"
+        });
+    }
 
     render() {
         return (
             <>
+                <div id="launch_sm_connect_btn" className="flex">
+                    <div>
+                        {
+                            !this.props.account ?
+                                <div className="action-btn outline flex align-center justify-center fs-15" style={{width:"90px", height:"40px"}} onClick={this.handleConnect}>
+                                    <span><i className="fas fa-wallet"></i>
+                                    
+                                    </span>
+                                </div>
+                                :
+                                <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+                                    <div className="c-green connected-account-text">{this.props.account.slice(0, 8) + "..." + this.props.account.slice(34)}</div>
+                                    <div className="connected-text">WALLET CONNECTED</div>
+                                </div>
+                        }
+                    </div>
+                </div>
                 <div className="custom-container mx-auto informations-container">
                     <div className="info-container-1">
                         <img alt="" className="info-data-icon" src="/img/myNode.svg" />
@@ -59,4 +88,11 @@ class RingMsg extends React.Component {
     }
 };
 
-export default RingMsg;
+const mapDispatchToProps = dispatch => {
+    return { dispatch };
+}
+
+const mapStateToProps = state => {
+    return { account: state.account, web3: state.web3 };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);

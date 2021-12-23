@@ -117,7 +117,7 @@ class Nodes extends React.Component {
 
                     </div>
                     <div>
-                        <div className='claim-button c-green' style={{ width: "150px", height: "50px" }} onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
+                        <div className='claim-button c-green claim-all' style={{ width: "150px", height: "50px" }} onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
                     </div>
                 </div>
                 <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
