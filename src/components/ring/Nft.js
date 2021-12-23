@@ -49,7 +49,7 @@ class Nft extends React.Component {
                                 <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
                             </div>
                             <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div>
-                            <button className="action-btn outline btn mx-auto" onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow fs-30" onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
                         </div>
                         <div className="card">
                             <div className="card-img" style={{ backgroundImage: "url(/img/covid.png)" }}></div>
@@ -59,7 +59,7 @@ class Nft extends React.Component {
                                 <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
                             </div>
                             <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div>
-                            <button className="action-btn outline btn mx-auto" onClick={this.buyNft.bind(this, "grand")}>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow fs-30" onClick={this.buyNft.bind(this, "grand")}>Buy Now</button>
                         </div>
 
                     </div>

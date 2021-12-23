@@ -81,7 +81,9 @@ export default function MenuListComponent() {
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
                 >
-                  <MenuItem onClick={handleClose}> <a href='/app' className='menu-item-style'>Launch App</a></MenuItem>
+                  {window.location.pathname.includes('/app') ? 
+                    <MenuItem onClick={handleClose}> <a href='/' className='menu-item-style'>Home</a></MenuItem> : <MenuItem onClick={handleClose}> <a href='/app' className='menu-item-style'>Launch App</a></MenuItem>}
+
                   <MenuItem onClick={handleClose}> Story</MenuItem>
                   <MenuItem onClick={handleClose}> <a href='/disclaimer' className='menu-item-style'>Disclaimer</a></MenuItem>
                 </MenuList>

@@ -61,6 +61,14 @@ class Nodes extends React.Component {
         });
     }
 
+    payNodeFee(id) {
+        this.props.dispatch({
+            type:"PAY_NODE_FEE", 
+            payload: {
+                node_id: id
+            }
+        })
+    }
 
 
     render() {
@@ -77,7 +85,7 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
                     <div className='text-center' style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button c-green">
+                        <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, item.id)}>
                             {/* <a className='text-green cursor-pointer'> */}
                             Pay Fee
                             {/* </a> */}

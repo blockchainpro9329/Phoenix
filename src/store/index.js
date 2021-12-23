@@ -64,6 +64,8 @@ const reducer = (state = init(_initialState), action) => {
         console.log("Claim node id", action.payload.node_id);
     } else if (action.type === "BUY_NFT_ART") {
         console.log("Buy NFT art", action.payload.type);
+    } else if (action.type === "PAY_NODE_FEE") {
+        console.log("Pay node fee: ", action.payload.node_id);
     }
 
     return state;

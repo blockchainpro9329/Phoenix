@@ -2,6 +2,9 @@ import React from "react";
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { StyledEngineProvider } from '@mui/material/styles';
+import Menu from "../common/MenuList";
+
 
 class RingHeader extends React.Component {
 
@@ -66,8 +69,10 @@ class RingHeader extends React.Component {
                                     </div>
                             }
                         </div>
-                        <a id='launch_sm_btn' href='/app'>
-                            <img src='/img/top_bar.svg' />
+                        <a id='launch_sm_btn'>
+                            <StyledEngineProvider injectFirst>
+                                <Menu />
+                            </StyledEngineProvider>,
                         </a>
                     </div>
                 </div>

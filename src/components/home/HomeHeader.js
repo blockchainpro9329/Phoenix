@@ -45,11 +45,9 @@ class HomeHeader extends React.Component {
                         </a>
                         {/* <a id='launch_sm_btn' href='/app'> */}
                         <a id='launch_sm_btn'>
-                            {/* <img src='/img/top_bar.svg' /> */}
                             <StyledEngineProvider injectFirst>
                                 <Menu />
                             </StyledEngineProvider>,
-
                         </a>
 
                         {/* </button> */}
