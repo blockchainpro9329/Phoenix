@@ -38,7 +38,7 @@ const reducer = (state = init(_initialState), action) => {
         });
     } else if (action.type === 'GET_NODE_LIST') {
         var list = [];
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 20; i++) {
             list.push({ id: i, content: i, rewards: i });
         }
         return Object.assign({}, state, {
