@@ -6,7 +6,7 @@ const Footer = () => {
 
                 <div className="footer-main">
                     <div className="flex align-center">
-                        <img className="img-spin logo-img" src="../img/logo.png" alt="" />
+                        <img className="img-spin logo-img" src="/img/logo.png" alt="" />
                         <span id="brand-name" className="logo-title" data-nsfw-filter-status="swf">PHOENIX</span>
                     </div>
                    <div className="link-div">

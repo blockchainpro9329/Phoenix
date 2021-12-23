@@ -34,7 +34,7 @@
     }
 
     .header_border {
-        background-image: url(./img/header_gradient.png);
+        background-image: url(/img/header_gradient.png);
         background-repeat: repeat-x;
         height: 4px;
         width: 100%;

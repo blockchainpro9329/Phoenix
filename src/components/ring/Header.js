@@ -29,7 +29,7 @@ class RingHeader extends React.Component {
                 <div className='header'>
                     <div className="content mx-auto">
                         <div className='flex align-center'>
-                            <img alt='' src='./img/logo.png' className="logo-img" />
+                            <img alt='' src='/img/logo.png' className="logo-img" />
                             <span className='logo-title'>
                                 PHOENIX
                             </span>
@@ -67,7 +67,7 @@ class RingHeader extends React.Component {
                             }
                         </div>
                         <a id='launch_sm_btn' href='/app'>
-                            <img src='./img/top_bar.svg' />
+                            <img src='/img/top_bar.svg' />
                         </a>
                     </div>
                 </div>
@@ -78,7 +78,6 @@ class RingHeader extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("props  lll ", state);
     return { account: state.account, web3: state.web3 };
 }
 

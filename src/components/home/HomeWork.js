@@ -1,7 +1,7 @@
 const HomeWork = () => {
     return (
         <section id="section-work" className="pos-rel">
-            {/* <img className="pos-abs ok-img" style={{ top: "-350px", left: "0px" }} src="./img/ok.svg" /> */}
+            {/* <img className="pos-abs ok-img" style={{ top: "-350px", left: "0px" }} src="/img/ok.svg" /> */}
             <div className="work-content mx-auto">
                 <div className="work-text">
                     <div>
@@ -70,14 +70,14 @@ const HomeWork = () => {
         //             <div id="audit" className="f-row f1-between f2-center">
         //                 <span className="text-green" data-nsfw-filter-status="swf">AUDIT COMING SOON </span>
         //                 <div>
-        //                     <img src="../img/certik.svg" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} alt="" />
-        //                     <img src="../img/certik2.svg" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} alt="" />
+        //                     <img src="/img/certik.svg" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} alt="" />
+        //                     <img src="/img/certik2.svg" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} alt="" />
         //                 </div>
         //             </div>
         //         </div>
 
         //         <div id="ring-image">
-        //             <img src="../img/ring.png" alt="" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} />
+        //             <img src="/img/ring.png" alt="" data-nsfw-filter-status="sfw" style={{ visibility: "visible" }} />
 
         //             <a id="button-whitepaper" style={{ position: "relative" }} data-nsfw-filter-status="swf">
         //                 READ WHITEPAPER

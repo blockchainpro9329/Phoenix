@@ -13,8 +13,8 @@ class Content extends React.Component {
         super(props);
         this.onSelectFile = this.onSelectFile.bind(this);
         this.state = {
-            master_url:"../img/empty_img1.png",
-            grand_url:"../img/empty_img1.png"
+            master_url:"/img/empty_img1.png",
+            grand_url:"/img/empty_img1.png"
         }
         this.connectWeb3 = this.connectWeb3.bind(this);
         this.setContractStatus = this.setContractStatus.bind(this);

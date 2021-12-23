@@ -18,7 +18,7 @@ class HomeHeader extends React.Component {
                 <div className='header'>
                     <div className="content mx-auto">
                         <div className='flex align-center'>
-                            <img alt='' src='./img/logo.png' className='logo-img' />
+                            <img alt='' src='/img/logo.png' className='logo-img' />
                             <span className='logo-title'>
                                 PHOENIX
                             </span>
@@ -42,7 +42,7 @@ class HomeHeader extends React.Component {
                                 LAUNCH APP
                             </a>
                             <a id='launch_sm_btn' href='/app'>
-                                <img src='./img/top_bar.svg'/>
+                                <img src='/img/top_bar.svg'/>
                             </a>
 
                         {/* </button> */}

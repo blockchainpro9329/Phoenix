@@ -31,8 +31,8 @@ const RingNext = () => {
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12 img-container position-relative">
-                    <img alt="" className="pulse-img" src="./img/ring-round-logo.svg" />
-                    <img alt="" className="animation-spin" src="./img/logo-color.png"
+                    <img alt="" className="pulse-img" src="/img/ring-round-logo.svg" />
+                    <img alt="" className="animation-spin" src="/img/logo-color.png"
                         style={{ position: "absolute", top: "50%", left: "50%", marginTop: "-50px", marginLeft: "-50px", height: "100px", width: "100px" }} />
                 </div>
             </div>

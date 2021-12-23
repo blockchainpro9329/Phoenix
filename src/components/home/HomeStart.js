@@ -2,7 +2,7 @@ const HomeStart = () => {
 
   return (
     <section id="section-started" className="pos-rel">
-        {/* <img src="./img/spiral.svg" className="pos-abs spiral-img" style={{top:"550px", left:"0px", zIndex:-1}}/> */}
+        {/* <img src="/img/spiral.svg" className="pos-abs spiral-img" style={{top:"550px", left:"0px", zIndex:-1}}/> */}
 
       <div id="started-content" className="container mx-auto">
         <div className="fs-60 l-h-1-1 c-w card-title">
@@ -13,21 +13,21 @@ const HomeStart = () => {
         </div>
         <div className="cards">
           <div className="card">
-            <div className="card-img" style={{ backgroundImage: "url(./img/meat.png)" }}></div>
+            <div className="card-img" style={{ backgroundImage: "url(/img/meat.png)" }}></div>
             <div className="card-item-title">
-              <img alt="" src="./img/left-bar.png" style={{ height: "2px" }} />
+              <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
               <span className="c-w">Card One</span>
-              <img alt="" src="./img/right-bar.png" style={{ height: "2px" }} />
+              <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
             </div>
             <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div>
             <div className="card-item-collection">Collection 1</div>
           </div>
           <div className="card">
-            <div className="card-img" style={{ backgroundImage: "url(./img/covid.png)" }}></div>
+            <div className="card-img" style={{ backgroundImage: "url(/img/covid.png)" }}></div>
             <div className="card-item-title">
-              <img alt="" src="./img/left-bar.png" style={{ height: "2px" }} />
+              <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
               <span className="c-w">Card Two</span>
-              <img alt="" src="./img/right-bar.png" style={{ height: "2px" }} />
+              <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
             </div>
             <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div>
             <div className="card-item-collection">Collection 1</div>

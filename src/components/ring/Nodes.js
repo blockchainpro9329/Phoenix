@@ -57,8 +57,8 @@ class Nodes extends React.Component {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
-                        <img src='./img/meat1.png' style={{ width: "20px" }} />
-                        <img src='./img/covid1.png' style={{ width: "20px" }} />
+                        <img src='/img/meat1.png' style={{ width: "20px" }} />
+                        <img src='/img/covid1.png' style={{ width: "20px" }} />
                         Node:
                         {item.id}
                     </div>
@@ -66,11 +66,11 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
                     <div className='text-center' style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        {/* <div className="claim-button text-green">  */}
-                        <a className='text-green cursor-pointer'>
+                        <div className="claim-button c-green"> 
+                        {/* <a className='text-green cursor-pointer'> */}
                             Pay Fee
-                        </a>
-                        {/* </div> */}
+                        {/* </a> */}
+                        </div>
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button text-green"> CLAIM </div>
@@ -81,12 +81,13 @@ class Nodes extends React.Component {
 
         return (
             <>
-                <div className="mx-auto m-t-20 mynode-header">
-                    <div className='c-yellow fs-30' style={{ display: "flex" }}>
-                        <img alt="" src="./img/myNode.svg" style={{ marginRight: "10px" }} />
+                <div className="mx-auto m-t-20 mynode-header flex align-center justify-between">
+                    <div className='c-yellow fs-30 flex align-center'>
+                        <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width:"30px"}} />
                         My Nodes
                     </div>
                     <div>
+                        <div className='claim-button c-green' style={{width:"150px", height:"50px"}}> CLAIM ALL</div>
                         {/* <span className='c-green' style={{ marginRight: "0.5rem" }}>
                             Current rewards cycle estimation is
                         </span>

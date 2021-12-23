@@ -41,19 +41,19 @@ const HomeVision = () => {
                     <div id="chips-header">Benefits for Phoenix Network Members</div>
                     <div className="chips">
                         <div className="fs-22 chip">
-                            <img alt="" className="m-r-20" src="./img/icon_check.svg" />
+                            <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Lowered Risk
                         </div>
                         <div className="fs-22 chip">
-                            <img alt="" className="m-r-20" src="./img/icon_check.svg" />
+                            <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Fees
                         </div>
                         <div className="fs-22 chip">
-                            <img alt="" className="m-r-20" src="./img/icon_check.svg" />
+                            <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Hassle
                         </div>
                         <div className="fs-22 chip">
-                            <img alt="" className="m-r-20" src="./img/icon_check.svg" />
+                            <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Research
                         </div>
                     </div>

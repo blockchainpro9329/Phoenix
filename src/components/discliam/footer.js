@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container mx-auto">
                 <div>
                     <div id="footer-brand" className="f-row f2-center gap-2" style={{ fontSize: "larger" }}>
-                        <img className="img-spin" width="48" height="48" src="../img/logo-color.png" alt="" /><span id="brand-name" data-nsfw-filter-status="swf">FIRE</span>
+                        <img className="img-spin" width="48" height="48" src="/img/logo-color.png" alt="" /><span id="brand-name" data-nsfw-filter-status="swf">FIRE</span>
                     </div>
                     <span id="copyright" data-nsfw-filter-status="swf">© 2021 Copyright FIRE.financial</span>
                 </div>

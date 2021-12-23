@@ -101,21 +101,21 @@ class Create extends React.Component {
                             <div className="row justify-content-evenly mt-3">
                                 <div className={this.state.selected_item === 1 ? "col-3 text-center node-type active_item1" : "col-3 text-center node-type"}
                                     onClick={() => { this.selectItem(1) }}>
-                                    <img alt="" src="./img/bronze-node-x2.png" width="150" />
+                                    <img alt="" src="/img/bronze-node-x2.png" width="150" />
                                     <div>Bronze</div>
                                     <div>1 $RING</div>
                                     <div>2000%</div>
                                     <div>Earn 7.89$ /day*</div>
                                 </div>
                                 <div className={this.state.selected_item === 2 ? "col-3 text-center node-type active_item2" : "col-3 text-center node-type"} onClick={() => { this.selectItem(2) }}>
-                                    <img alt="" src="./img/silver-node-x2.png" width="150" />
+                                    <img alt="" src="/img/silver-node-x2.png" width="150" />
                                     <div>Silver</div>
                                     <div>5 $RING</div>
                                     <div>2300%</div>
                                     <div>Earn 46.19$ /day*</div>
                                 </div>
                                 <div className={this.state.selected_item === 3 ? "col-3 text-center node-type active_item3" : "col-3 text-center node-type"} onClick={() => { this.selectItem(3) }}>
-                                    <img alt="" src="./img/gold-node-x2.png" width="150" />
+                                    <img alt="" src="/img/gold-node-x2.png" width="150" />
                                     <div>Gold</div>
                                     <div>10 $RING</div>
                                     <div>2600%</div>
