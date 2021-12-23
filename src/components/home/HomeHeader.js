@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { StyledEngineProvider } from '@mui/material/styles';
+import Menu from "../common/MenuList";
 
 class HomeHeader extends React.Component {
 
@@ -38,12 +40,17 @@ class HomeHeader extends React.Component {
                             </span>
                         </div>
                         {/* <button className='btn action-btn outline'> */}
-                            <a id='launch_btn' className='btn action-btn outline ' href='/app'>
-                                LAUNCH APP
-                            </a>
-                            <a id='launch_sm_btn' href='/app'>
-                                <img src='/img/top_bar.svg'/>
-                            </a>
+                        <a id='launch_btn' className='btn action-btn outline ' href='/app'>
+                            LAUNCH APP
+                        </a>
+                        {/* <a id='launch_sm_btn' href='/app'> */}
+                        <a id='launch_sm_btn'>
+                            {/* <img src='/img/top_bar.svg' /> */}
+                            <StyledEngineProvider injectFirst>
+                                <Menu />
+                            </StyledEngineProvider>,
+
+                        </a>
 
                         {/* </button> */}
                     </div>

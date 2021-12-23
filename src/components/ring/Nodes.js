@@ -53,10 +53,9 @@ class Nodes extends React.Component {
     }
 
     claimNode(id) {
-        console.log(id);
         this.props.dispatch({
-            type:"CLAIM_NODE",
-            payload:{
+            type: "CLAIM_NODE",
+            payload: {
                 node_id: id
             }
         });
@@ -94,9 +93,20 @@ class Nodes extends React.Component {
         return (
             <>
                 <div className="mx-auto m-t-20 mynode-header flex align-center justify-between">
-                    <div className='c-yellow fs-30 flex align-center'>
-                        <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
-                        My Nodes
+                    <div className='flex'>
+                        <div className='c-yellow fs-30 flex align-center'>
+                            <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
+                            11
+                        </div>
+                        <div className='c-yellow fs-30 flex align-center'>
+                            <img alt="" src="/img/meat.png" style={{ marginRight: "10px", width: "30px" }} />
+                            :10
+                        </div>
+                        <div className='c-yellow fs-30 flex align-center'>
+                            <img alt="" src="/img/covid.png" style={{ marginRight: "10px", width: "30px" }} />
+                            :1
+                        </div>
+
                     </div>
                     <div>
                         <div className='claim-button c-green' style={{ width: "150px", height: "50px" }} onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>

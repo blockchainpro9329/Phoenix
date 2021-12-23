@@ -6,6 +6,7 @@ import RingMsg from "../components/ring/Msg";
 import MyNodes from "../components/ring/Nodes";
 import Create from "../components/ring/Create";
 import React from "react";
+import Nft from "../components/ring/Nft";
 
 
 class Ring extends React.Component {
@@ -19,6 +20,7 @@ class Ring extends React.Component {
                 <RingMsg></RingMsg>
                 <MyNodes></MyNodes>
                 <Create></Create>
+                <Nft></Nft>
                 {/* <RingNext></RingNext> */}
                 <Faq></Faq>
                 <Footer></Footer>

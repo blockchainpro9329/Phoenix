@@ -54,18 +54,16 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === 'SET_CONTRACT_STATUS') {
         console.log("state in redux", state);
 
-
-
-
     } else if (action.type === "SET_NFT_URL" ) {
         if (action.payload.type === "master") {
 
         } else if (action.payload.type === "grand") {
 
         }
-    } else if (action.type === "CLAIM_NODE") {
-        
+    } else if (action.type === "CLAIM_NODE") {        
         console.log("Claim node id", action.payload.node_id);
+    } else if (action.type === "BUY_NFT_ART") {
+        console.log("Buy NFT art", action.payload.type);
     }
 
     return state;

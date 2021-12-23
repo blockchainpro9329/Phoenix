@@ -1,8 +1,8 @@
 const HomeHero = () => {
   return (
     <section id="section-hero" className="pos-rel">
-      <img src="/img/ellipse_left.png" className="pos-abs" style={{ top: "0px", left: "0px", opacity: "0.4" }} />
-      <img src="/img/ellipse_right.png" className="pos-abs" style={{ top: "90px", right: "0px", opacity: "0.4" }} />
+      <img src="/img/ellipse_left.png" className="pos-abs" style={{ top: "0px", left: "0px", opacity: "0.4", zIndex: -1 }} />
+      <img src="/img/ellipse_right.png" className="pos-abs" style={{ top: "90px", right: "0px", opacity: "0.4", zIndex: -1 }} />
       {/* <img src="/img/flower.png" className="pos-abs flower-pos" style={{ top: "90px", right: "20px" }} /> */}
 
       <div className="content mx-auto">
@@ -15,11 +15,12 @@ const HomeHero = () => {
         </div>
         <div className="statistics" >
           <div className="sub_statistics">
-            <button className="btn action-btn first_action_btn">
-              CALL TO ACTION
+            <button onClick={() => { window.open("https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2") }}
+              className="btn action-btn first_action_btn">
+              BUY $FIRE
             </button>
-            <button className="btn action-btn outline">
-              CALL TO ACTION
+            <button onClick={()=>{window.location.href = "/app"}} className="btn action-btn outline">
+              CREATE NODE
             </button>
           </div>
 

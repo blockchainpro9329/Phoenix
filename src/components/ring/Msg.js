@@ -46,7 +46,10 @@ class RingMsg extends React.Component {
                             have been allocated, and claim them here. Then if you want, you can use them to create more
                             FIRE-nodes, up to a maximum of 100 per wallet.</p>
                         <div id="welcome-buttons" className="mt-2">
-                            <button className="action-btn btn welcome-action-btn">BUY $FIRE</button>
+                            <button className="action-btn btn welcome-action-btn"
+                                onClick={() => { window.open("https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2") }}>
+                                BUY $FIRE
+                            </button>
                             <button className="action-btn btn outline welcome-action-btn">DISCORD</button>
                         </div>
                     </div>
