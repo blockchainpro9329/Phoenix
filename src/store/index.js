@@ -10,7 +10,6 @@ const _initialState = {
     price_usd: 0,
     price_bnb: 0,
     account: "",
-    node_list: [],
     all_nodes: 0,
     my_nodes: [],
     my_nfts: []
@@ -50,14 +49,6 @@ const reducer = (state = init(_initialState), action) => {
         return Object.assign({}, state, {
             chainId: action.payload.chainId
         });
-    } else if (action.type === 'GET_NODE_LIST') {
-        var list = [];
-        for (var i = 0; i < 20; i++) {
-            list.push({ id: i, content: i, rewards: i });
-        }
-        return Object.assign({}, state, {
-            node_list: list
-        });
     } else if (action.type === 'CONNECT_WALLET') {
         web3.eth.getAccounts((err, accounts) => {
             store.dispatch({
@@ -75,35 +66,60 @@ const reducer = (state = init(_initialState), action) => {
 
         }
     } else if (action.type === "CLAIM_NODE") {
-        console.log("Claim node id", action.payload.node_id);
+
+        rewardConatract.methods.getClaimFee().call()
+            .then((claimFee) => {
+
+                if (action.payload.node_id != -1) {
+
+                    rewardConatract.methods.claimByNode(action.payload.node_id)
+                        .send({ from: state.account, value: claimFee, gas: 210000 })
+                        .then(() => {
+                            store.dispatch({ type: "GET_USER_INFO" });
+                        })
+                } else if (action.payload.node_id == -1) {
+                    rewardConatract.methods.claimAll()
+                        .send({ from: state.account, value: claimFee, gas: 210000 })
+                        .then(() => {
+                            store.dispatch({ type: "GET_USER_INFO" });
+                        })
+                }
+            })
+            .catch(() => console.log)
+
 
     } else if (action.type === "BUY_NFT_ART") {
-
-        console.log("Buy NFT art", action.payload.type);
+        if (action.payload.type == "master") {
+            rewardConatract.methods.getMasterNFTPrice().call()
+                .then((price) => {
+                    rewardConatract.methods.buyNFT(0, 1)
+                        .send({ from: state.account, value: price, gas: 400000 })
+                        .then(() => {
+                            store.dispatch({ type: "GET_USER_INFO" });
+                        })
+                })
+        } else if (action.payload.type == "grand") {
+            rewardConatract.methods.getGrandNFTPrice().call()
+                .then((price) => {
+                    rewardConatract.methods.buyNFT(1, 1)
+                        .send({ from: state.account, value: price, gas: 400000 })
+                        .then(() => {
+                            store.dispatch({ type: "GET_USER_INFO" });
+                        })
+                })
+        }
 
     } else if (action.type === "PAY_NODE_FEE") {
 
-
-        // let threeFee = await this.state.rewardManagement.methods.getNodeMaintenanceFee().call();
-        // await this.state.fireToken.methods.approve(CONTRACT_REWARDMANAGEMENT_ADDRESS, threeFee).send({ from: this.state.walletAddress, gas: 210000 });
-        // await this.state.rewardManagement.methods.payNodeFee(0, 0).send({ from: this.state.walletAddress, gas: 2100000 });
-
-
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                console.log("three month fee1", threeFee);
-                tokenContract.methods.approve(config.Reward, threeFee)
-                    .send({ from: state.account, gas: 210000 })
+                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), 0)
+                    .send({ from: state.account, value: threeFee, gas: 2100000 })
                     .then(() => {
-                        console.log("three month fee", threeFee);
-                        rewardConatract.methods.payNodeFee(action.payload.node_id, 0)
-                            .send({ from: state.account, value: threeFee, gas: 21000000 })
-                            .then(() => {
-                                store.dispatch({ type: "GET_USER_INFO" });
-                            })
-                    }).catch((err)=>{
-                        console.log(err);
-                    })
+                        store.dispatch({ type: "GET_USER_INFO" });
+                    }).catch(() =>
+                        console.log
+                    )
             })
     } else if (action.type === "CREATE_NODE") {
         const promise = [];
@@ -124,9 +140,28 @@ const reducer = (state = init(_initialState), action) => {
         let promise = [];
         promise.push(rewardConatract.methods.getNFTList(account).call());
         promise.push(rewardConatract.methods.getNodeList(account).call());
-        // promise.push(rewardConatract.methods.getAll)
+        promise.push(rewardConatract.methods.getRewardAmount(account).call());
         Promise.all(promise).then((result) => {
-            store.dispatch({ type: "RETURN_DATA", payload: { my_nfts: result[0], my_nodes: result[1], account: account } });
+            const nodes = [];
+            for (var index in result[1]) {
+                nodes.push({
+                    createTime: result[1][index].createTime,
+                    lastTime: result[1][index].lastTime,
+                    grandNFT: result[2].curGrandNFTEnable[index],
+                    masterNFT: result[2].curMasterNFTEnable[index],
+                    reward: Number(web3.utils.fromWei(result[2].nodeRewards[index]))
+                });
+            }
+
+            store.dispatch({
+                type: "RETURN_DATA", payload:
+                {
+                    my_nfts: result[0],
+                    my_nodes: nodes,
+                    account: account,
+                    reward: result[2]
+                }
+            });
         });
 
     } else if (action.type === "RETURN_DATA") {

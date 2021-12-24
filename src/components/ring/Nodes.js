@@ -46,14 +46,14 @@ class Nodes extends React.Component {
         if (this.state.my_nodes == null) {
             return;
         }
-        // var list = [];
-
-        // for (var item in this.state.my_nodes) {
-        //     const temp = this.state.my_nodes[item];
-        //     temp['reward'] = Number(temp['reward']) + 0.0001;
-        //     list.push(temp);
-        // }
-        // this.setState({ my_nodes: list });
+        var list = [];
+        for (var item in this.state.my_nodes) {
+            const temp = this.state.my_nodes[item];
+            temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
+            temp['reward'] = temp['reward'].toFixed(9);
+            list.push(temp);
+        }
+        this.setState({ my_nodes: list });
     }
 
     claimNode(id) {
@@ -94,7 +94,7 @@ class Nodes extends React.Component {
                         </div>
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button text-green" onClick={this.claimNode.bind(this, item.id)}> CLAIM </div>
+                        <div className="claim-button text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
                     </div>
                 </div>
             )
