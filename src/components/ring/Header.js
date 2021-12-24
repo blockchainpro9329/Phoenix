@@ -11,6 +11,10 @@ class RingHeader extends React.Component {
     constructor(props) {
         super(props);
         this.handleConnect = this.handleConnect.bind(this);
+        this.state = {
+            my_nodes: []
+        }
+        this.setState({my_nodes: props.my_nodes});
     }
 
     async handleConnect() {
@@ -23,6 +27,8 @@ class RingHeader extends React.Component {
     componentDidMount() {
         document.title = "My FIRE-Nodes";
     }
+
+
 
     render() {
         return (
@@ -41,7 +47,7 @@ class RingHeader extends React.Component {
                             <span className='menu flex flex-col align-center'>
                                 <a>MY NODES</a>
                                 {/* <br/> */}
-                                <a>123</a>
+                                <a>{this.props.my_nodes.length}</a>
                             </span>
                             <span className='menu flex flex-col align-center'>
                                 <a>ALL NODES</a>
@@ -83,7 +89,8 @@ class RingHeader extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { account: state.account, web3: state.web3 };
+    console.log("header props: ", state);
+    return { account: state.account, my_nodes: state.my_nodes };
 }
 
 const mapDispatchToProps = dispatch => {

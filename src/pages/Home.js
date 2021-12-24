@@ -6,8 +6,9 @@ import Footer from "../components/common/Footer"
 import Faq from "../components/common/Faq";
 import HomeStart from "../components/home/HomeStart";
 import { Component } from "react";
+
+
 import Web3 from "web3";
-import abi from "../contract/abis/ringAbi";
 import panAbi from "../contract/abis/panAbi";
 import uniswapAbi from "../contract/abis/uniswapAbi";
 

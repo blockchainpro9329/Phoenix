@@ -11,6 +11,9 @@ const Footer = () => {
                     </div>
                    <div className="link-div">
                     <div className="link-container">
+                        <span className="footer-link"><a href="/" className="c-w">Home</a></span>
+                        <span className="footer-link"><a href="/app" className="c-w">Dapp</a></span>
+                        <span className="footer-link"><a href="/disclaimer" className="c-w">Disclaimer</a></span>
                         <span className="footer-link"><a href="" className="c-w">Twitter</a></span>
                         <span className="footer-link"><a href="" className="c-w">Instagram</a></span>
                         <span className="footer-link"><a href="" className="c-w">Contact</a></span>

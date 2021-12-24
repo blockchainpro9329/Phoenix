@@ -1,6 +1,7 @@
 import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
@@ -23,7 +24,7 @@ class Nodes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            node_list: []
+            my_nodes: []
         }
         this.props.dispatch({
             type: "GET_NODE_LIST"
@@ -38,18 +39,21 @@ class Nodes extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
-        return { node_list: nextProps.node_list };
+        return { my_nodes: nextProps.my_nodes };
     }
 
     updateRewards() {
-        if (this.state.node_list.length == 0) {
+        if (this.state.my_nodes == null) {
             return;
         }
-        var list = this.state.node_list;
-        for (var item in list) {
-            list[item].rewards += 0.001;
-        }
-        this.setState({ node_list: list });
+        // var list = [];
+
+        // for (var item in this.state.my_nodes) {
+        //     const temp = this.state.my_nodes[item];
+        //     temp['reward'] = Number(temp['reward']) + 0.0001;
+        //     list.push(temp);
+        // }
+        // this.setState({ my_nodes: list });
     }
 
     claimNode(id) {
@@ -72,23 +76,21 @@ class Nodes extends React.Component {
 
 
     render() {
-        const List = this.state.node_list.map((item, index) => {
+        const List = this.state.my_nodes.map((item, index) => {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
                         <img src='/img/meat1.png' style={{ width: "20px" }} />
                         <img src='/img/covid1.png' style={{ width: "20px" }} />
                         Node:
-                        {item.id}
+                        {index}
                     </div>
-                    <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
-                    <div className='text-center' style={{ flex: "1" }}>{item.content}</div>
-                    <div className='text-center' style={{ flex: "1" }}>{item.rewards.toFixed(3)}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, item.id)}>
-                            {/* <a className='text-green cursor-pointer'> */}
+                        <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
                             Pay Fee
-                            {/* </a> */}
                         </div>
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
@@ -98,7 +100,7 @@ class Nodes extends React.Component {
             )
         });
 
-        if (this.state.node_list.length == 0) {
+        if (this.state.my_nodes.length == 0) {
             return <></>;
         } else {
             return (
@@ -144,13 +146,12 @@ class Nodes extends React.Component {
                 </>
             );
         }
-
-
     }
 }
 
 const mapStateToProps = state => {
-    return { node_list: state.node_list };
+    console.log("node list", state);
+    return { my_nodes: state.my_nodes };
 }
 
 const mapDispatchToProps = dispatch => {

@@ -7,6 +7,7 @@ class RingMsg extends React.Component {
     constructor(props) {
         super(props);
         this.handleConnect = this.handleConnect.bind(this);
+        this.createNode = this.createNode.bind(this);
     }
 
     async handleConnect() {
@@ -15,6 +16,14 @@ class RingMsg extends React.Component {
             type: "CONNECT_WALLET"
         });
     }
+
+    createNode () {
+        this.props.dispatch({
+            type:"CREATE_NODE"
+        });
+    }
+
+
 
     render() {
         return (
@@ -40,12 +49,12 @@ class RingMsg extends React.Component {
                     <div className="info-container-1">
                         <img alt="" className="info-data-icon" src="/img/myNode.svg" />
                         <div className="info-datas">
-                            <div className="info-data-value">0<span style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>/
+                            <div className="info-data-value">{this.props.my_nodes.length}<span style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>/
                                 100</span></div>
                             <div className="c-yellow" style={{ marginTop: "4px" }}>My Nodes</div>
                         </div>
                         <div className="flex1"></div>
-                        <div className="btn action-btn outline m-r-20 create_node_btn" >CREATE NODE</div>
+                        <div className="btn action-btn outline m-r-20 create_node_btn" onClick={this.createNode}>CREATE NODE</div>
                     </div>
                     <div className="info-container-1">
                         <img alt="" className="info-data-icon" src="/img/allNode.svg" />
@@ -93,6 +102,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    return { account: state.account, web3: state.web3 };
+    return { account: state.account, my_nodes: state.my_nodes };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);
