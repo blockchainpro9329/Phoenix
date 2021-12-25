@@ -47,13 +47,18 @@ class Nodes extends React.Component {
             return;
         }
         var list = [];
+        var sum = 0;
         for (var item in this.state.my_nodes) {
             const temp = this.state.my_nodes[item];
             temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
             temp['reward'] = temp['reward'].toFixed(9);
+            sum += temp['reward'];
             list.push(temp);
         }
         this.setState({ my_nodes: list });
+        this.props.dispatch({type:"UPDATE_ALL_REWARD", payload:{
+            cur_all_reward: sum
+        }})
     }
 
     claimNode(id) {
@@ -80,10 +85,14 @@ class Nodes extends React.Component {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
-                        <img src='/img/meat1.png' style={{ width: "20px" }} />
-                        <img src='/img/covid1.png' style={{ width: "20px" }} />
+                       {
+                           item.masterNFT? <img src='/img/meat1.png' style={{ width: "20px" }} />: <></>
+                       }
+                       {
+                           item.granNFT?  <img src='/img/covid1.png' style={{ width: "20px" }} /> : <></>
+                       }                        
                         Node:
-                        {index}
+                        {index + 1}
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
                     <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
@@ -109,7 +118,7 @@ class Nodes extends React.Component {
                         <div className='flex'>
                             <div className='c-yellow fs-30 flex align-center'>
                                 <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
-                                11
+                                {this.props.my_nodes.length}
                             </div>
                             <div className='c-yellow fs-30 flex align-center'>
                                 <img alt="" src="/img/meat.png" style={{ marginRight: "10px", width: "30px" }} />

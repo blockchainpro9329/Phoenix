@@ -66,7 +66,7 @@ class RingMsg extends React.Component {
                     <div className="info-container-1"><img alt="" className="info-data-icon"
                         src="/img/rewards.svg" />
                         <div className="info-datas">
-                            <div className="info-data-value" title="0">0.0000<span className="ml-1"
+                            <div className="info-data-value" title="0">{Number(this.props.cur_all_reward).toFixed(9)}<span className="ml-1"
                                 style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>Phoenix</span></div>
                             <div className="c-4cce13" style={{ marginTop: "4px" }}>My Rewards</div>
                         </div>
@@ -102,6 +102,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    return { account: state.account, my_nodes: state.my_nodes };
+    return { account: state.account, my_nodes: state.my_nodes, cur_all_reward: state.cur_all_reward };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);

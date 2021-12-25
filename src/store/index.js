@@ -2,6 +2,7 @@ import { act } from 'react-dom/cjs/react-dom-test-utils.development';
 import { createStore } from 'redux'
 import Web3 from 'web3';
 import config from '../contract/config';
+import { toast } from 'react-toastify';
 
 
 
@@ -50,6 +51,17 @@ const reducer = (state = init(_initialState), action) => {
             chainId: action.payload.chainId
         });
     } else if (action.type === 'CONNECT_WALLET') {
+        if (state.chainId == undefined || state.chainId != 3) {
+            toast.info("Change network to Ropsten Testnet!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
         web3.eth.getAccounts((err, accounts) => {
             store.dispatch({
                 type: "GET_USER_INFO",
@@ -61,9 +73,9 @@ const reducer = (state = init(_initialState), action) => {
 
     } else if (action.type === "SET_NFT_URL") {
         if (action.payload.type === "master") {
-
+            nftContract.methods.setMasterNFTURI(action.payload.url).send({ from: state.account }).then(() => console.log).catch(() => console.log);
         } else if (action.payload.type === "grand") {
-
+            nftContract.methods.setGrandNFTURI(action.payload.url).send({ from: state.account }).then(() => console.log).catch(() => console.log);
         }
     } else if (action.type === "CLAIM_NODE") {
 
@@ -164,32 +176,51 @@ const reducer = (state = init(_initialState), action) => {
             });
         });
 
+    } else if (action.type === "UPDATE_ALL_REWARD") {
+        return Object.assign({}, state, {
+            cur_all_reward: action.payload.cur_all_reward
+        });
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     }
     return state;
 }
 
+// const checkNetwork = (chainId) => {
+//     if (chainId == undefined || chainId != 3) {
+//         toast.info("Change network to Ropsten Testnet!", {
+//             position: "top-center",
+//             autoClose: 3000,
+//             hideProgressBar: true,
+//             closeOnClick: true,
+//             pauseOnHover: true,
+//             draggable: true,
+//             progress: undefined,
+//         });
+//     }
+// }
 
 const store = createStore(reducer);
-
-
 if (window.ethereum) {
     window.ethereum.on('accountsChanged', function (accounts) {
-
         store.dispatch({
             type: "GET_USER_INFO",
             payload: { account: accounts[0] }
         });
     })
-
     window.ethereum.on('chainChanged', function (networkId) {
-
+        console.log("chain id", networkId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: networkId }
         });
     });
+    web3.eth.net.getId().then((chainId) => {
+        store.dispatch({
+            type: "UPDATE_CHAIN_ID",
+            payload: { chainId: chainId }
+        });
+    })
 }
 
 
