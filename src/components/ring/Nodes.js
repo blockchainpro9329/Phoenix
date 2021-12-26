@@ -51,8 +51,8 @@ class Nodes extends React.Component {
         for (var item in this.state.my_nodes) {
             const temp = this.state.my_nodes[item];
             temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
-            temp['reward'] = temp['reward'].toFixed(9);
             sum += temp['reward'];
+            temp['reward'] = temp['reward'].toFixed(9);
             list.push(temp);
         }
         this.setState({ my_nodes: list });
@@ -159,7 +159,6 @@ class Nodes extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("node list", state);
     return { my_nodes: state.my_nodes };
 }
 

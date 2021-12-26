@@ -40,15 +40,6 @@ class Create extends React.Component {
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.selectItem = this.selectItem.bind(this);
-        // toast.info("wow so easy!", {
-        //     position: "top-center",
-        //     autoClose: 3000,
-        //     hideProgressBar: true,
-        //     closeOnClick: true,
-        //     pauseOnHover: true,
-        //     draggable: true,
-        //     progress: undefined,
-        // });
     }
 
     openModal() {
@@ -62,8 +53,6 @@ class Create extends React.Component {
     selectItem(index) {
         this.setState({ selected_item: index });
     }
-
-
 
     render() {
         return (

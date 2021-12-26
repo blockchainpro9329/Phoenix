@@ -13,7 +13,9 @@ const _initialState = {
     account: "",
     all_nodes: 0,
     my_nodes: [],
-    my_nfts: []
+    my_nfts: [],
+    grand_nft_url: "",
+    master_nft_url: ""
 }
 
 
@@ -69,16 +71,35 @@ const reducer = (state = init(_initialState), action) => {
             });
         })
     } else if (action.type === 'SET_CONTRACT_STATUS') {
-        console.log("state in redux", state);
-
+        if (!state.account) {
+            connectAlert();
+        }
+        rewardConatract.methods.setContractStatus(action.payload.param)
+            .send({ from: state.account })
+            .then(() => console.log)
+            .catch(() => console.log);
     } else if (action.type === "SET_NFT_URL") {
+
+        if (!state.account) {
+            connectAlert();
+        }
+
         if (action.payload.type === "master") {
-            nftContract.methods.setMasterNFTURI(action.payload.url).send({ from: state.account }).then(() => console.log).catch(() => console.log);
+            nftContract.methods.setMasterNFTURI(action.payload.url)
+                .send({ from: state.account })
+                .then(() => console.log)
+                .catch(() => console.log);
         } else if (action.payload.type === "grand") {
-            nftContract.methods.setGrandNFTURI(action.payload.url).send({ from: state.account }).then(() => console.log).catch(() => console.log);
+            nftContract.methods.setGrandNFTURI(action.payload.url)
+                .send({ from: state.account })
+                .then(() => console.log)
+                .catch(() => console.log);
         }
     } else if (action.type === "CLAIM_NODE") {
 
+        if (!state.account) {
+            connectAlert();
+        }
         rewardConatract.methods.getClaimFee().call()
             .then((claimFee) => {
 
@@ -101,6 +122,9 @@ const reducer = (state = init(_initialState), action) => {
 
 
     } else if (action.type === "BUY_NFT_ART") {
+        if (!state.account) {
+            connectAlert();
+        }
         if (action.payload.type == "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
                 .then((price) => {
@@ -134,6 +158,9 @@ const reducer = (state = init(_initialState), action) => {
                     )
             })
     } else if (action.type === "CREATE_NODE") {
+        if (!state.account) {
+            connectAlert();
+        }
         const promise = [];
         promise.push(rewardConatract.methods.getNodePrice().call());
         promise.push(rewardConatract.methods.getNodeMaintenanceFee().call());
@@ -153,6 +180,8 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(rewardConatract.methods.getNFTList(account).call());
         promise.push(rewardConatract.methods.getNodeList(account).call());
         promise.push(rewardConatract.methods.getRewardAmount(account).call());
+        promise.push(nftContract.methods.getMasterNFTURI().call());
+        promise.push(nftContract.methods.getGrandNFTURI().call());
         Promise.all(promise).then((result) => {
             const nodes = [];
             for (var index in result[1]) {
@@ -164,18 +193,18 @@ const reducer = (state = init(_initialState), action) => {
                     reward: Number(web3.utils.fromWei(result[2].nodeRewards[index]))
                 });
             }
-
             store.dispatch({
                 type: "RETURN_DATA", payload:
                 {
                     my_nfts: result[0],
                     my_nodes: nodes,
                     account: account,
-                    reward: result[2]
+                    reward: result[2],
+                    master_nft_url: result[3],
+                    grand_nft_url: result[4]
                 }
             });
         });
-
     } else if (action.type === "UPDATE_ALL_REWARD") {
         return Object.assign({}, state, {
             cur_all_reward: action.payload.cur_all_reward
@@ -186,19 +215,17 @@ const reducer = (state = init(_initialState), action) => {
     return state;
 }
 
-// const checkNetwork = (chainId) => {
-//     if (chainId == undefined || chainId != 3) {
-//         toast.info("Change network to Ropsten Testnet!", {
-//             position: "top-center",
-//             autoClose: 3000,
-//             hideProgressBar: true,
-//             closeOnClick: true,
-//             pauseOnHover: true,
-//             draggable: true,
-//             progress: undefined,
-//         });
-//     }
-// }
+const connectAlert = () => {
+    toast.info("Please connect your wallet!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+}
 
 const store = createStore(reducer);
 if (window.ethereum) {

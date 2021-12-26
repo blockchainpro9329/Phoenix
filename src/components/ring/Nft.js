@@ -42,7 +42,7 @@ class Nft extends React.Component {
                 <div style={{ width: "100%" }}>
                     <div className="cards">
                         <div className="card">
-                            <div className="card-img" style={{ backgroundImage: "url(/img/meat.png)" }}></div>
+                            <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url+ ")" }}></div>
                             <div className="card-item-title">
                                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
                                 <span className="c-w">Card One</span>
@@ -52,7 +52,7 @@ class Nft extends React.Component {
                             <button className="action-btn outline btn mx-auto c-yellow fs-30" onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
                         </div>
                         <div className="card">
-                            <div className="card-img" style={{ backgroundImage: "url(/img/covid.png)" }}></div>
+                            <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
                             <div className="card-item-title">
                                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
                                 <span className="c-w">Card Two</span>
@@ -69,6 +69,12 @@ class Nft extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        grand_nft_url: state.grand_nft_url,
+        master_nft_url: state.master_nft_url
+    };
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -77,4 +83,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapDispatchToProps)(Nft);
+export default connect(mapStateToProps, mapDispatchToProps)(Nft);

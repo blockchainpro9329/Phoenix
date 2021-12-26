@@ -53,10 +53,8 @@ export default function MenuListComponent() {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-
       >
         <img src='/img/top_bar.svg' />
-
       </Button>
       <Popper
         open={open}
@@ -83,7 +81,6 @@ export default function MenuListComponent() {
                 >
                   {window.location.pathname.includes('/app') ? 
                     <MenuItem onClick={handleClose}> <a href='/' className='menu-item-style'>Home</a></MenuItem> : <MenuItem onClick={handleClose}> <a href='/app' className='menu-item-style'>Launch App</a></MenuItem>}
-
                   <MenuItem onClick={handleClose}> Story</MenuItem>
                   <MenuItem onClick={handleClose}> <a href='/disclaimer' className='menu-item-style'>Disclaimer</a></MenuItem>
                 </MenuList>

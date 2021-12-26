@@ -58,25 +58,6 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "Received",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
         "internalType": "uint256",
         "name": "tokensSwapped",
         "type": "uint256"
@@ -96,10 +77,6 @@
     ],
     "name": "SwapAndLiquify",
     "type": "event"
-  },
-  {
-    "stateMutability": "payable",
-    "type": "fallback"
   },
   {
     "inputs": [],
@@ -214,25 +191,6 @@
       }
     ],
     "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "getAvailableNodes",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -432,7 +390,7 @@
         "components": [
           {
             "internalType": "uint256",
-            "name": "currentTime",
+            "name": "rewardBalance",
             "type": "uint256"
           },
           {
@@ -459,19 +417,6 @@
         "internalType": "struct RewardManagement.RewardInfo",
         "name": "",
         "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getTotalNodeCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -568,19 +513,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "totalNodeCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -592,9 +524,5 @@
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-  },
-  {
-    "stateMutability": "payable",
-    "type": "receive"
   }
 ]
