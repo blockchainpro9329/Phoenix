@@ -6,12 +6,15 @@ const HomeHero = () => {
       {/* <img src="/img/flower.png" className="pos-abs flower-pos" style={{ top: "90px", right: "20px" }} /> */}
 
       <div className="content mx-auto">
-        <div className="fs-24 c-3080be flex align-center earn-title" style={{ height: "280px" }}>
-          EARN YOUR CRYPTO ASSETS
+        <div className="fs-24 c-3080be flex align-center earn-title">
+          WELCOME TO PHOENIX COMMUNITY FINANCE
         </div>
         <div className="c-w earn-subtitle" >
 
-          Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.
+          Welcome to an investment community that works for you. Whether you are a seasoned cryptocurrency investor, or this is your first time investing, PHOENIX FINANCE is here to help take your investments to the next level.
+          PHOENIX FINANCE works for its investors by taking the guesswork out of cryptocurrency investments. What is the next big coin? How can you grow your wealth? Let PHOENIX FINANCE research and invest for you. Together we will take advantage of large-scale, high yield return investments that everyone can benefit from. Returns are paid to our investors in the form of $FIRE TOKENS. All investment profits are used to buy back $FIRE on the open market, thus increasing the market price of $FIRE, which will exchange supplementary profit to the user.
+          Rise from the ashes of traditional finance with PHOENIX FINANCE and take flight with a DeFi you can trust.
+
         </div>
         <div className="statistics" >
           <div className="sub_statistics">
@@ -19,12 +22,12 @@ const HomeHero = () => {
               className="btn action-btn first_action_btn">
               BUY $FIRE
             </button>
-            <button onClick={()=>{window.location.href = "/app"}} className="btn action-btn outline">
+            <button onClick={() => { window.location.href = "/app" }} className="btn action-btn outline">
               CREATE NODE
             </button>
           </div>
 
-          <div className="brief_board">
+          {/* <div className="brief_board">
             <div className="flex align-center pos-rel bg-344d61" style={{ width: "277px", height: "123px" }}>
               <div style={{ marginLeft: "20px" }}>
                 <div className="fs-22 c-w">My Briefcase</div>
@@ -32,9 +35,9 @@ const HomeHero = () => {
               </div>
               <img className="pos-abs" src="/img/7day.png" style={{ top: "45px", right: "25px" }} />
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="cookie">
+        {/* <div className="cookie">
           <div className="pos-rel cookie_container">
             <button className="btn c-w cookie_btn justify-center"><span className="m-r-30 m-l-30"> Allow Cookie? </span> <div className="flex align-center justify-center m-l-30 cookie_ok" style={{ backgroundColor: "white", color: "black" }}>OK</div></button>
             <div className="week_statistics" >
@@ -53,7 +56,7 @@ const HomeHero = () => {
             </div>
           </div>
 
-        </div>
+        </div> */}
       </div>
     </section>
 

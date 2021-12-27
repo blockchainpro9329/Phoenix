@@ -2,7 +2,6 @@
 
 import React from "react";
 import Modal from "react-modal";
-import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
 

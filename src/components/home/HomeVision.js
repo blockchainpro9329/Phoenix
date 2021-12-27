@@ -4,7 +4,7 @@ const HomeVision = () => {
             <section id="section-vision">
                 <div id="vision-content" className="container mx-auto c-w">
                     <div className="title">
-                        The Phoenix network vision
+                        The Phoenix Finance Vision
                     </div>
                     <div className="subtitle" data-nsfw-filter-status="swf">
                         An innovative step forward for passive income generation
@@ -16,7 +16,7 @@ const HomeVision = () => {
                                     01.
                                 </span>
                                 <p className="vision-item-info">
-                                    FIRE will research and independently verify each protocol that will be invested in through an experienced team that eat, sleep, and dream about DeFi.
+                                    $FIRE will research and independently verify each protocol that will be invested in through an experienced team that eat, sleep, and dream about DeFi.
                                 </p>
                             </div>
                         </div>
@@ -26,7 +26,7 @@ const HomeVision = () => {
                                     02.
                                 </span>
                                 <p className="vision-item-info">
-                                    The RING Network will move as one, and therefore its participants will be exposed to 30+ DeFi protocols without the network fees, the manual swapping, bridging, staking, bonding, etc.
+                                    Phoenix Finance will move as one, and therefore its participants will be exposed to 30+ DeFi protocols without the network fees, manual swapping, bridging, staking, bonding, etc.
                                 </p>
                             </div>
                         </div>
