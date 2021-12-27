@@ -227,7 +227,7 @@ const connectAlert = () => {
 
 const chechNetwork = (chainId) => {
     if (chainId === undefined || chainId !== 3) {
-        toast.info("Change network to Ropsten Testnet!", {
+        toast.info("Change network to Avalanche C Chain!", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: true,

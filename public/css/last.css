@@ -365,7 +365,7 @@ a {
 
 .active,
 .accordion:hover, .accordion:focus {
-    color: #66cf8e;
+    color: #f58357;
     border-bottom: solid 1px black;
     background-color: #0a273b;
 }
