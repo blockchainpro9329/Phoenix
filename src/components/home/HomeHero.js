@@ -9,12 +9,22 @@ const HomeHero = () => {
         <div className="fs-24 c-3080be flex align-center earn-title">
           WELCOME TO PHOENIX COMMUNITY FINANCE
         </div>
-        <div className="c-w earn-subtitle" >
-
-          Welcome to an investment community that works for you. Whether you are a seasoned cryptocurrency investor, or this is your first time investing, PHOENIX FINANCE is here to help take your investments to the next level.
-          PHOENIX FINANCE works for its investors by taking the guesswork out of cryptocurrency investments. What is the next big coin? How can you grow your wealth? Let PHOENIX FINANCE research and invest for you. Together we will take advantage of large-scale, high yield return investments that everyone can benefit from. Returns are paid to our investors in the form of $FIRE TOKENS. All investment profits are used to buy back $FIRE on the open market, thus increasing the market price of $FIRE, which will exchange supplementary profit to the user.
-          Rise from the ashes of traditional finance with PHOENIX FINANCE and take flight with a DeFi you can trust.
-
+        <div className="c-w earn-subtitle">
+          <div>
+            <p>
+              Welcome to an investment community that works for you. Whether you are a seasoned cryptocurrency investor, or this is your first time investing, PHOENIX FINANCE is here to help take your investments to the next level.
+            </p>
+          </div>
+          <div>
+            <p>
+              PHOENIX FINANCE works for its investors by taking the guesswork out of cryptocurrency investments. What is the next big coin? How can you grow your wealth? Let PHOENIX FINANCE research and invest for you. Together we will take advantage of large-scale, high yield return investments that everyone can benefit from. Returns are paid to our investors in the form of $FIRE TOKENS. All investment profits are used to buy back $FIRE on the open market, thus increasing the market price of $FIRE, which will exchange supplementary profit to the user.
+            </p>
+          </div>
+          <div>
+            <p>
+              Rise from the ashes of traditional finance with PHOENIX FINANCE and take flight with a DeFi you can trust.
+            </p>
+          </div>
         </div>
         <div className="statistics" >
           <div className="sub_statistics">
