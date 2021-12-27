@@ -101,7 +101,7 @@ a {
 
 
 #section-hero>.content {
-    height: 850px;
+    height: 600px;
     width: 1150px;
 }
 
@@ -538,7 +538,7 @@ footer {
 
 .earn-subtitle {
     /* height: 200px; */
-    width: 500px;
+    /* width: 500px; */
     font-size: 16px;
     /* display: flex; */
     align-items: center;
@@ -711,8 +711,11 @@ footer {
 
 
 .bg-img {
-    background-image: none !important;
+    /* background-image: none !important; */
+    /* background-image: url(/img/trend_up.png); */
     /* background-position: 0px 2264px, 0px 8145px, 131px 1119px; */
+    /* background-repeat: no-repeat; */
+
 }
 
 .create_title {
@@ -814,4 +817,37 @@ footer {
 
 .earn-title {
     height: 150px;
+    font-size: 38px;
+}
+
+.phoenix_img {
+    background-image: url(/img/phoenix.png);
+    top:90px;
+    left:0px;
+    width: 100%;
+    height:1250px;
+    background-position: center;
+    opacity: 0.09;
+    background-repeat: no-repeat;
+}
+
+.trend_up_img {
+    background-image: url(/img/trend_up.png);
+    top:3000px;
+    left:0px;
+    width: 100%;
+    height:1250px;
+    background-position: left;
+    opacity: 0.09;
+    background-repeat: no-repeat;
+    background-size: 60vw;
+}
+
+.earn-subtitle-1 {
+}
+.earn-subtitle-2 {
+    /* margin-left: 100px; */
+}
+.earn-subtitle-3 {
+    /* margin-left: 150px; */
 }
