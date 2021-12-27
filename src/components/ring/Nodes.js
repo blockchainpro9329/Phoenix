@@ -138,7 +138,7 @@ class Nodes extends React.Component {
                         Node:
                         {index + 1}
                     </div>
-                    <div className='text-center' style={{ flex: "2" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "2" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>

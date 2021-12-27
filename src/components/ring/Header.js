@@ -24,7 +24,7 @@ class RingHeader extends React.Component {
         });
     }
     componentDidMount() {
-        document.title = "My FIRE-Nodes";
+
     }
 
     render() {

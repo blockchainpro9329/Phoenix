@@ -45,8 +45,8 @@ const reducer = (state = init(_initialState), action) => {
             chainId: action.payload.chainId
         });
     } else if (action.type === 'CONNECT_WALLET') {
-        if (state.chainId === undefined || state.chainId !== 3) {
-            toast.info("Change network to Ropsten Testnet!", {
+        if (state.chainId === undefined || state.chainId !== config.chainId) {
+            toast.info("Change network to Avalanche C Chain!", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -226,7 +226,7 @@ const connectAlert = () => {
 }
 
 const chechNetwork = (chainId) => {
-    if (chainId === undefined || chainId !== 3) {
+    if (chainId === undefined || chainId !== config.chainId) {
         toast.info("Change network to Avalanche C Chain!", {
             position: "top-center",
             autoClose: 3000,

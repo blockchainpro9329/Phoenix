@@ -51,7 +51,7 @@ class RingMsg extends React.Component {
                         <div className="info-datas">
                             <div className="info-data-value">{this.props.my_nodes.length}<span style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>/
                                 100</span></div>
-                            <div className="c-yellow" style={{ marginTop: "4px" }}>My Nodes</div>
+                            <div className="c-yellow" style={{ marginTop: "4px" }}>My NESTS</div>
                         </div>
                         <div className="flex1"></div>
                         <div className="btn action-btn outline m-r-20 create_node_btn" onClick={this.createNode}>CREATE NEST</div>
