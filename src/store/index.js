@@ -174,7 +174,6 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(nftContract.methods.getMasterNFTURI().call());
         promise.push(nftContract.methods.getGrandNFTURI().call());
         Promise.all(promise).then((result) => {
-            // console.log("result2", result[2]);
             const nodes = [];
             for (var index in result[1]) {
                 nodes.push({
@@ -216,6 +215,20 @@ const connectAlert = () => {
     });
 }
 
+const chechNetwork = (chainId) => {
+    if (chainId === undefined || chainId !== 3) {
+        toast.info("Change network to Ropsten Testnet!", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+}
+
 const store = createStore(reducer);
 if (window.ethereum) {
     window.ethereum.on('accountsChanged', function (accounts) {
@@ -224,14 +237,15 @@ if (window.ethereum) {
             payload: { account: accounts[0] }
         });
     })
-    window.ethereum.on('chainChanged', function (networkId) {
-        console.log("chain id", networkId);
+    window.ethereum.on('chainChanged', function (chainId) {
+        chechNetwork(chainId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
-            payload: { chainId: networkId }
+            payload: { chainId: chainId }
         });
     });
     web3.eth.net.getId().then((chainId) => {
+        chechNetwork(chainId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: chainId }

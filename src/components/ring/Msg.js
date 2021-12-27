@@ -59,8 +59,8 @@ class RingMsg extends React.Component {
                     <div className="info-container-1">
                         <img alt="" className="info-data-icon" src="/img/allNode.svg" />
                         <div className="info-datas">
-                            <div className="info-data-value">30.000</div>
-                            <div className="c-yellow" style={{ marginTop: "4px" }}>All Nodes</div>
+                            <div className="info-data-value">{this.props.all_nodes}</div>
+                            <div className="c-yellow" style={{ marginTop: "4px" }}>All NESTS</div>
                         </div>
                     </div>
                     <div className="info-container-1"><img alt="" className="info-data-icon"
@@ -102,6 +102,11 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    return { account: state.account, my_nodes: state.my_nodes, cur_all_reward: state.cur_all_reward };
+    return {
+        account: state.account,
+        my_nodes: state.my_nodes,
+        cur_all_reward: state.cur_all_reward,
+        all_nodes: state.all_nodes
+    };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);

@@ -13,7 +13,8 @@ var config = {
     FireNFT : "0xDF64D87d93B762b188b4B3B20DfC2F8887A365f8",
     NFTAbi:  nftAbi,
     Reward : "0x6f5F8a28D1DA3F6bc39e11aF88aEd6F8D14e25fE",
-    RewardAbi: rewardAbi 
+    RewardAbi: rewardAbi ,
+    cainId: 3
 }
 
 

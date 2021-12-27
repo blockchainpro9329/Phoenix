@@ -7,7 +7,6 @@ const HomeHero = () => {
       </div>
       <div className="pos-abs flex justify-center trend_up_img">
       </div>
-
       <div className="content mx-auto">
         <div className="c-3080be flex align-center earn-title">
           WELCOME TO PHOENIX COMMUNITY FINANCE
