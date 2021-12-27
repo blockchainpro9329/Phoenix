@@ -28,6 +28,7 @@ class Home extends Component {
         return (
             <>
                 <HomeHeader></HomeHeader>
+                {/* <Header></Header> */}
                 <HomeHero></HomeHero>
                 <HomeStart></HomeStart>
                 <HomeVision></HomeVision>

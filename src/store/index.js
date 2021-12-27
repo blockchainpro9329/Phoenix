@@ -1,4 +1,3 @@
-import { act } from 'react-dom/cjs/react-dom-test-utils.development';
 import { createStore } from 'redux'
 import Web3 from 'web3';
 import config from '../contract/config';
@@ -15,7 +14,8 @@ const _initialState = {
     my_nodes: [],
     my_nfts: [],
     grand_nft_url: "",
-    master_nft_url: ""
+    master_nft_url: "",
+    currentTime:0
 }
 
 
@@ -53,7 +53,7 @@ const reducer = (state = init(_initialState), action) => {
             chainId: action.payload.chainId
         });
     } else if (action.type === 'CONNECT_WALLET') {
-        if (state.chainId == undefined || state.chainId != 3) {
+        if (state.chainId === undefined || state.chainId !== 3) {
             toast.info("Change network to Ropsten Testnet!", {
                 position: "top-center",
                 autoClose: 3000,
@@ -103,14 +103,14 @@ const reducer = (state = init(_initialState), action) => {
         rewardConatract.methods.getClaimFee().call()
             .then((claimFee) => {
 
-                if (action.payload.node_id != -1) {
+                if (action.payload.node_id !== -1) {
 
                     rewardConatract.methods.claimByNode(action.payload.node_id)
                         .send({ from: state.account, value: claimFee, gas: 210000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO" });
                         })
-                } else if (action.payload.node_id == -1) {
+                } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
                         .send({ from: state.account, value: claimFee, gas: 210000 })
                         .then(() => {
@@ -125,7 +125,7 @@ const reducer = (state = init(_initialState), action) => {
         if (!state.account) {
             connectAlert();
         }
-        if (action.payload.type == "master") {
+        if (action.payload.type === "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
                 .then((price) => {
                     rewardConatract.methods.buyNFT(0, 1)
@@ -134,7 +134,7 @@ const reducer = (state = init(_initialState), action) => {
                             store.dispatch({ type: "GET_USER_INFO" });
                         })
                 })
-        } else if (action.payload.type == "grand") {
+        } else if (action.payload.type === "grand") {
             rewardConatract.methods.getGrandNFTPrice().call()
                 .then((price) => {
                     rewardConatract.methods.buyNFT(1, 1)
@@ -183,6 +183,7 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(nftContract.methods.getMasterNFTURI().call());
         promise.push(nftContract.methods.getGrandNFTURI().call());
         Promise.all(promise).then((result) => {
+            // console.log("result2", result[2]);
             const nodes = [];
             for (var index in result[1]) {
                 nodes.push({
@@ -201,13 +202,10 @@ const reducer = (state = init(_initialState), action) => {
                     account: account,
                     reward: result[2],
                     master_nft_url: result[3],
-                    grand_nft_url: result[4]
+                    grand_nft_url: result[4],
+                    currentTime: result[2].currentTime * 1
                 }
             });
-        });
-    } else if (action.type === "UPDATE_ALL_REWARD") {
-        return Object.assign({}, state, {
-            cur_all_reward: action.payload.cur_all_reward
         });
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
@@ -246,6 +244,17 @@ if (window.ethereum) {
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: chainId }
+        });
+    })
+
+
+    let promise = [];
+    promise.push(nftContract.methods.getMasterNFTURI().call());
+    promise.push(nftContract.methods.getGrandNFTURI().call());
+    Promise.all(promise).then((result) => {
+        store.dispatch ({
+            type: "RETURN_DATA",
+            payload: {master_nft_url: result[0], grand_nft_url: result[1]}
         });
     })
 }

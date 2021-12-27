@@ -24,7 +24,8 @@ class Nodes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            my_nodes: []
+            my_nodes: [], 
+            passed: 0
         }
         this.props.dispatch({
             type: "GET_NODE_LIST"
@@ -50,15 +51,29 @@ class Nodes extends React.Component {
         var sum = 0;
         for (var item in this.state.my_nodes) {
             const temp = this.state.my_nodes[item];
-            temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
-            sum += temp['reward'];
-            temp['reward'] = temp['reward'].toFixed(9);
+            var remain = moment(temp.lastTime * 1000).diff(this.props.currentTime * 1000);
+            if (remain > 0) {
+                var duration = moment.duration(remain);
+                temp['remains'] = duration.months() + "M-" + duration.days() + "D " + duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
+    
+                temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
+                sum += temp['reward'];
+                temp['reward'] = temp['reward'].toFixed(9);                
+            } else {
+                temp['remains'] = 'Expired';
+            }
             list.push(temp);
         }
+        var curTime = Number(this.props.currentTime);
+        if (curTime !== 0) {
+            curTime = curTime + 1;
+        }
+
         this.setState({ my_nodes: list });
-        this.props.dispatch({type:"UPDATE_ALL_REWARD", payload:{
-            cur_all_reward: sum
-        }})
+        this.props.dispatch({type:"RETURN_DATA", payload:{
+            cur_all_reward: sum,
+            currentTime : curTime
+        }});
     }
 
     claimNode(id) {
@@ -86,16 +101,16 @@ class Nodes extends React.Component {
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
                        {
-                           item.masterNFT? <img src='/img/meat1.png' style={{ width: "20px" }} />: <></>
+                           item.masterNFT? <img alt='' src={this.props.master_nft_url} style={{ width: "20px" }} />: <></>
                        }
                        {
-                           item.granNFT?  <img src='/img/covid1.png' style={{ width: "20px" }} /> : <></>
+                           item.granNFT?  <img alt='' src={this.props.grand_nft_url} style={{ width: "20px" }} /> : <></>
                        }                        
                         Node:
                         {index + 1}
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
-                    <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "1" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "1" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
@@ -109,7 +124,7 @@ class Nodes extends React.Component {
             )
         });
 
-        if (this.state.my_nodes.length == 0) {
+        if (this.state.my_nodes.length === 0) {
             return <></>;
         } else {
             return (
@@ -159,7 +174,8 @@ class Nodes extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { my_nodes: state.my_nodes };
+    // console.log("current state", state);
+    return { my_nodes: state.my_nodes, currentTime: state.currentTime};
 }
 
 const mapDispatchToProps = dispatch => {
