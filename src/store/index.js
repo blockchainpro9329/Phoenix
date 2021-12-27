@@ -161,10 +161,15 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(rewardConatract.methods.getNodePrice().call());
         promise.push(rewardConatract.methods.getNodeMaintenanceFee().call());
         Promise.all(promise).then((result) => {
-            tokenContract.methods.approve(config.Reward, result[0]).send({ from: state.account, gas: 210000 }).then((ret) => {
+            console.log("result", result);
+            
+            tokenContract.methods.approve(config.Reward, result[0]).send({ from: state.account, gas: 210000 })
+            .then((ret) => {
                 rewardConatract.methods.buyNode(1).send({ from: state.account, value: result[1], gas: 2100000 })
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO" });
+                    }).catch(() => {
+                        console.log("error");
                     });
             }).catch((ret) => { console.log("err", ret) });
         });

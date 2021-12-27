@@ -6,7 +6,6 @@ class Faq extends React.Component {
         super();
         this.state = { selId: -1 };
     }
-
     clickItem(index) {
         if (this.state.selId === index) {
             this.setState({ selId: -1 });
@@ -70,7 +69,7 @@ class Faq extends React.Component {
                     </div>
 
                     <button className={this.state.selId === 5 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(5) }}>
-                        Why is FIRE on the Binance Smart Chain ?
+                        Why is FIRE on the Avalanche Chain?
                     </button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
@@ -81,7 +80,7 @@ class Faq extends React.Component {
                             <br />
                             We want FIRE to be
                             <span className="c-purple" data-nsfw-filter-status="swf"> accessible to everyone</span>, including
-                            smallholders, so we chose to be on the Binance Smart Chain. However,
+                            smallholders, so we chose to be on the Avalanche Chain. However,
                             this does not prevent us from taking advantage of DeFi yield
                             protocols on Ethereum.
                         </p>

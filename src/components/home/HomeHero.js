@@ -3,7 +3,7 @@ const HomeHero = () => {
     <section id="section-hero" className="pos-rel">
       <img src="/img/ellipse_left.png" className="pos-abs" style={{ top: "0px", left: "0px", opacity: "0.4", zIndex: -1 }} />
       <img src="/img/ellipse_right.png" className="pos-abs" style={{ top: "90px", right: "0px", opacity: "0.4", zIndex: -1 }} />
-      <div className="pos-abs flex justify-center phoenix_img">
+      <div className="pos-abs flex justify-center phoenix_img" style={{zIndex:-1}}>
       </div>
       <div className="pos-abs flex justify-center trend_up_img">
       </div>

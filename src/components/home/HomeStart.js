@@ -4,6 +4,14 @@ import React from 'react'
 
 class HomeStart extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.goAppPage = this.goAppPage.bind(this);
+  }
+
+  goAppPage() {
+    window.open("/app");
+  }
   render() {
     return (
       <section id="section-started" className="pos-rel" >
@@ -43,7 +51,7 @@ class HomeStart extends React.Component {
             Start Earning Lifetime Rewards
           </div>
           <div className="m-t-30 try_btn_container">
-            <button className="action-btn btn fs-20">Try it</button>
+            <button className="action-btn btn fs-20" onClick={this.goAppPage}>Try it</button>
           </div>
 
           <div className="flex justify-between m-t-60 card-action-container">
@@ -73,7 +81,10 @@ class HomeStart extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { grand_nft_url: state.grand_nft_url, master_nft_url: state.master_nft_url };
+  return {
+    grand_nft_url: state.grand_nft_url,
+    master_nft_url: state.master_nft_url
+  };
 }
 
 export default connect(mapStateToProps)(HomeStart);
