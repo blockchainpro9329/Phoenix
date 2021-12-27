@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -8,7 +7,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-import PersonIcon from '@mui/icons-material/Person';
 import { blue } from '@mui/material/colors';
 
 const duration = [{ id: 1, name: '3 months' }, { id: 2, name: '6 months' }];
@@ -26,15 +24,14 @@ function PayDlg(props) {
 
     return (
         <Dialog onClose={handleClose} open={open}>
-            <DialogTitle>Set backup account</DialogTitle>
+            <DialogTitle>Select Pay Fee duration</DialogTitle>
             <List sx={{ pt: 0 }}>
                 {duration.map((item) => (
                     <ListItem button onClick={() => handleListItemClick(item)} key={item.id}>
-                        <ListItemAvatar>
+                        {/* <ListItemAvatar>
                             <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                                <PersonIcon />
                             </Avatar>
-                        </ListItemAvatar>
+                        </ListItemAvatar> */}
                         <ListItemText primary={item.name} />
                     </ListItem>
                 ))}
@@ -47,7 +44,7 @@ function PayDlg(props) {
 PayDlg.propTypes = {
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    selectedValue: PropTypes.string.isRequired,
+    // selectedValue: PropTypes.string.isRequired,
 };
 
 

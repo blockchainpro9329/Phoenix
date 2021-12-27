@@ -2,6 +2,7 @@ import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import PayDlg from '../common/PayDlg';
 
 const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
@@ -19,13 +20,15 @@ const CustomScrollbars = props => (
     />
 );
 
+
 class Nodes extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            my_nodes: [], 
-            passed: 0
+            my_nodes: [],
+            open: false,
+            fee_index: -1,
         }
         this.props.dispatch({
             type: "GET_NODE_LIST"
@@ -33,6 +36,8 @@ class Nodes extends React.Component {
         this.timer = setInterval(() => {
             this.updateRewards();
         }, 1000);
+        this.handleModalClose = this.handleModalClose.bind(this);
+
     }
 
     componentWillUnmount() {
@@ -54,11 +59,15 @@ class Nodes extends React.Component {
             var remain = moment(temp.lastTime * 1000).diff(this.props.currentTime * 1000);
             if (remain > 0) {
                 var duration = moment.duration(remain);
-                temp['remains'] = duration.months() + "M-" + duration.days() + "D " + duration.hours() + ":" + duration.minutes() + ":" + duration.seconds();
-    
+                temp['remains'] = duration.months() + "M-" +
+                    duration.days() + "D " +
+                    duration.hours() + ":" +
+                    duration.minutes() + ":" +
+                    duration.seconds();
+
                 temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
                 sum += temp['reward'];
-                temp['reward'] = temp['reward'].toFixed(9);                
+                temp['reward'] = temp['reward'].toFixed(9);
             } else {
                 temp['remains'] = 'Expired';
             }
@@ -70,10 +79,12 @@ class Nodes extends React.Component {
         }
 
         this.setState({ my_nodes: list });
-        this.props.dispatch({type:"RETURN_DATA", payload:{
-            cur_all_reward: sum,
-            currentTime : curTime
-        }});
+        this.props.dispatch({
+            type: "RETURN_DATA", payload: {
+                cur_all_reward: sum,
+                currentTime: curTime
+            }
+        });
     }
 
     claimNode(id) {
@@ -85,13 +96,23 @@ class Nodes extends React.Component {
         });
     }
 
+    handleModalClose(value) {
+        this.setState({ open: false });
+        if (value) {
+            this.props.dispatch({
+                type: "PAY_NODE_FEE",
+                payload: {
+                    node_id: this.state.fee_index,
+                    duration: value.id
+                }
+            })
+        }
+    };
+
     payNodeFee(id) {
-        this.props.dispatch({
-            type: "PAY_NODE_FEE",
-            payload: {
-                node_id: id
-            }
-        })
+
+        this.setState({ open: true, fee_index: id });
+
     }
 
 
@@ -100,12 +121,12 @@ class Nodes extends React.Component {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "3" }}>
-                       {
-                           item.masterNFT? <img alt='' src={this.props.master_nft_url} style={{ width: "20px" }} />: <></>
-                       }
-                       {
-                           item.granNFT?  <img alt='' src={this.props.grand_nft_url} style={{ width: "20px" }} /> : <></>
-                       }                        
+                        {
+                            item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px" }} /> : <></>
+                        }
+                        {
+                            item.granNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px" }} /> : <></>
+                        }
                         Node:
                         {index + 1}
                     </div>
@@ -129,19 +150,24 @@ class Nodes extends React.Component {
         } else {
             return (
                 <>
+                    <PayDlg
+                        selectedValue={this.state.selectedValue}
+                        open={this.state.open}
+                        onClose={this.handleModalClose}
+                    />
                     <div className="mx-auto m-t-20 mynode-header flex align-center justify-between">
                         <div className='flex'>
                             <div className='c-yellow fs-30 flex align-center'>
                                 <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
                                 {this.props.my_nodes.length}
                             </div>
-                            <div className='c-yellow fs-30 flex align-center'>
-                                <img alt="" src="/img/meat.png" style={{ marginRight: "10px", width: "30px" }} />
-                                :10
+                            <div className='c-yellow fs-30 flex align-center m-l-20' style={{ width: "100px" }}>
+                                <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "30px" }} />
+                                : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
                             </div>
-                            <div className='c-yellow fs-30 flex align-center'>
-                                <img alt="" src="/img/covid.png" style={{ marginRight: "10px", width: "30px" }} />
-                                :1
+                            <div className='c-yellow fs-30 flex align-center m-l-20' style={{ width: "100px" }}>
+                                <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "30px" }} />
+                                : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
                             </div>
 
                         </div>
@@ -174,8 +200,14 @@ class Nodes extends React.Component {
 }
 
 const mapStateToProps = state => {
-    // console.log("current state", state);
-    return { my_nodes: state.my_nodes, currentTime: state.currentTime};
+    console.log("current state", state);
+    return {
+        my_nodes: state.my_nodes,
+        currentTime: state.currentTime,
+        my_nfts: state.my_nfts,
+        master_nft_url: state.master_nft_url,
+        grand_nft_url: state.grand_nft_url
+    };
 }
 
 const mapDispatchToProps = dispatch => {

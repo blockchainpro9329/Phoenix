@@ -150,7 +150,7 @@ const reducer = (state = init(_initialState), action) => {
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
                 rewardConatract.methods.payNodeFee(Number(action.payload.node_id), 0)
-                    .send({ from: state.account, value: threeFee, gas: 2100000 })
+                    .send({ from: state.account, value: action.payload.duration * threeFee, gas: 2100000 })
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO" });
                     }).catch(() =>
