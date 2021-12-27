@@ -51,11 +51,11 @@ class RingHeader extends React.Component {
                                 {/* <br/> */}
                                 <a>123</a>
                             </span>
-                            <span className='menu flex flex-col align-center'>
+                            {/* <span className='menu flex flex-col align-center'>
                                 <a>MINING</a>
-                                {/* <br/> */}
+                                <br/>
                                 <a>123</a>
-                            </span>
+                            </span> */}
                         </div>
                         <div className="launch_wallet f-row f1-end">
                             {

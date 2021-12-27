@@ -14,7 +14,7 @@ class Faq extends React.Component {
             this.setState({ selId: index });
         }
     }
-    
+
     render() {
         return (
             <section id="section-faq">
@@ -26,56 +26,46 @@ class Faq extends React.Component {
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
                             FIRE is a token that is designed to generate high-yield rewards for
-                            you, by combining more than 30 different DeFi yield protocols.
-                            <br />
-                            <br />
-                            This means that you will be able to take advantage of a large
-                            variety of yield-generating protocols, without having to find the
-                            best ones yourself and conduct due-diligence, and without having to
-                            pay for the fees of each platform.
+                            you, by combining investment capital into DeFi yield protocols, decentralized reserve currency,
+                            and other high yield large scale investments that are generally unsuitable for individual
+                            investors.<br /><br />
                         </p>
                     </div>
 
-                    <button className={this.state.selId === 2 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(2) }}>How to get FIRE lifetime rewards ?</button>
+                    <button className={this.state.selId === 2 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(2) }}>How do I get rewarded ?</button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
-                            FIRE uses a simple yet innovative mechanism to redistribute the
-                            yield while supporting the growth of the token: the FIRE-nodes.
-                            <br />
-                            <br />
-                            You can create a FIRE-node with 10 FIRE tokens. Once your node is
-                            created, it can’t be undone and it generates
-                            <span className="c-purple" data-nsfw-filter-status="swf"> lifetime returns</span> in FIRE tokens for
-                            you.
+                            FIRE uses a simple mechanism to redistribute the yield while
+                            supporting the growth of the project. The reward rate has been balanced for maximum
+                            sustainability.<br /><br />You can create a Phoenix Nest with 10 FIRE tokens. Once your Nest is
+                            created, it will generate rewards on an ongoing basis.
                         </p>
                     </div>
 
                     <button className={this.state.selId === 3 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(3) }}>
-                        What happens to the 10 FIRE used to create a node ?
+                        What happens to the 10 FIRE used to create a Phoenix Nest ?
                     </button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
-                            When a FIRE-node is created, 7 FIRE are transferred to the rewards
-                            pool, 1 FIRE is added to the liquidity pool as 50% FIRE and 50% BNB,
-                            and 2 FIRE are transferred to the marketing/team wallet to ensure
-                            the stabilization of the whole protocol, and the token growth.
+                            When a Phoenix Nest is created, 7 FIRE are transferred to the
+                            rewards pool, 1 FIRE is added to the liquidity pool as 50% FIRE and 50% AVAX, and 2 FIRE are
+                            transferred to the treasury wallet to be used for investments.
                         </p>
                     </div>
 
                     <button className={this.state.selId === 4 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(4) }}>
-                        Which DeFi yield protocols are currently used by FIRE ?
+                        How are investments chosen ?
                     </button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
-                            FIRE has just been launched (this means that you are still very
-                            early) so our current focus is to ensure the
-                            <span className="c-purple" data-nsfw-filter-status="swf"> stability and growth of FIRE</span>,
-                            leveraging its powerful tokenomics designed for steady growth.
-                            <br />
-                            <br />
-                            The next step of our roadmap is to begin navigating between
-                            different DeFi yield protocols. That being said, you can receive
-                            very high lifetime returns by creating FIRE-nodes.
+                            Phoenix Finance represent the idea of DeFi as a Service (DaaS), and
+                            as such, investments are decided by the Phoenix Finance investment advisors. The community will
+                            kept aware of the investments, and we welcome investment suggestions on our Discord server,
+                            however, investments will be decided ultimately by the Phoenix Finance team for the betterment
+                            of the project and sustainability of the investments.<br /><br />We will display an investment
+                            ledger for the community to see what is invested, when it was invested, and the return on
+                            investment status.
+
                         </p>
                     </div>
 
@@ -98,23 +88,28 @@ class Faq extends React.Component {
                     </div>
 
                     <button className={this.state.selId === 6 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(6) }}>
-                        Where can I buy FIRE and where can I create my FIRE-nodes ?
+                        What is a Phoenix Nest ?
                     </button>
                     <div className="panel" >
                         <p data-nsfw-filter-status="swf">
-                            You can easily buy FIRE on PancakeSwap by
-                            <a href="https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2" className="c-purple" style={{ textDecoration: "none" }} data-nsfw-filter-status="swf"> clicking on this link</a>.
-                            <br />
-                            <br />
-                            The contract address of the FIRE token is : <br />
-                            <b>0x521ef54063148e5f15f18b9631426175cee23de2</b>
-                            <br />
-                            <br />
-                            You can create your FIRE-nodes and collect your FIRE rewards on our
-                            web app: app.ring.financial.
-                            <a href="/app" className="c-purple" style={{ textDecoration: "none" }} data-nsfw-filter-status="swf"> Click here </a>
-                            to go to the web app.
+                            A Nest is a term used to describe an initial deposit holding. When
+                            you create a Nest, you are depositing funds to the treasury to be used for the project's
+                            investments.<br /><br />
                         </p>
+                    </div>
+
+                    <button className={this.state.selId === 7 ? "accordion active" : "accordion"} onClick={() => { this.clickItem(7) }}>
+                        Where can I buy $FIRE and where can I create my NEST ?
+                    </button>
+                    <div className="panel" >
+                        <p data-nsfw-filter-status="swf">You can easily buy FIRE on PancakeSwap by<a
+                            href="https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2"
+                            className="c-purple" data-nsfw-filter-status="swf" style={{ textDecoration: "none" }}> clicking on
+                            this link</a>.<br /><br />The contract address of the FIRE token is :
+                            <br /><b>0x521ef54063148e5f15f18b9631426175cee23de2</b><br /><br />You can create your FIRE-nodes and
+                            collect your FIRE rewards on our web app: app.ring.financial.<a
+                                href="https://thephoenix.finance/app" className="c-purple" data-nsfw-filter-status="swf"
+                                style={{ textDecoration: "none" }}> Click here </a>to go to the web app.</p>
                     </div>
                 </div >
             </section >

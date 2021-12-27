@@ -33,16 +33,14 @@ class Nft extends React.Component {
             <div className="custom-container mx-auto text-justify info-container"
                 style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "40px", marginBottom: "150px", marginLeft: "30px", marginRight: "30px", height: "fit-content", padding: "40px" }}>
                 <div className="create_title">
-                    Buy NFT Card
+                    Phoenix NFT Boosts
                 </div>
-                <p id="create-ring">Buy a Nft Art <span
-                    className="sc-gsTEea cdmEaM">$FIRE</span> tokens to earn lifetime high-yield <span
-                        className="sc-gsTEea cdmEaM">$FIRE</span> token rewards.<br />Currently estimated rewards:
-                    <strong>0.556</strong> <span className="sc-gsTEea cdmEaM">$FIRE</span>/day.</p>
+                <p id="create-ring">Buy a Phoenix NFT to boost <span
+                    className="sc-gsTEea cdmEaM">$FIRE</span> token rewards.</p>
                 <div style={{ width: "100%" }}>
                     <div className="cards">
                         <div className="card">
-                            <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url+ ")" }}></div>
+                            <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
                             <div className="card-item-title">
                                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
                                 <span className="c-w">Card One</span>

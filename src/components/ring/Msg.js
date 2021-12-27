@@ -17,9 +17,9 @@ class RingMsg extends React.Component {
         });
     }
 
-    createNode () {
+    createNode() {
         this.props.dispatch({
-            type:"CREATE_NODE"
+            type: "CREATE_NODE"
         });
     }
 
@@ -32,9 +32,9 @@ class RingMsg extends React.Component {
                     <div>
                         {
                             !this.props.account ?
-                                <div className="action-btn outline flex align-center justify-center fs-15" style={{width:"90px", height:"40px"}} onClick={this.handleConnect}>
+                                <div className="action-btn outline flex align-center justify-center fs-15" style={{ width: "90px", height: "40px" }} onClick={this.handleConnect}>
                                     <span><i className="fas fa-wallet"></i>
-                                    
+
                                     </span>
                                 </div>
                                 :
@@ -77,12 +77,12 @@ class RingMsg extends React.Component {
                 <div id="welcome-message" className="flex custom-container mx-auto m-t-100">
                     <div className="c-w">
                         <div className="msg-title">
-                            Welcome to FIRE
+                            Welcome to Phoenix Community Finance
                         </div>
                         <p className="msg-content">
-                            From this console, you can view, manage, and launch FIRE-nodes. You can also see how many rewards
-                            have been allocated, and claim them here. Then if you want, you can use them to create more
-                            FIRE-nodes, up to a maximum of 100 per wallet.</p>
+                            From this console, you can view, manage, and launch Phoenix Nests. You can also
+                            see how many rewards have been allocated and claim them here. You can use the rewards to create more
+                            Phoenix Nests and grow your holding to a maximum of 100 Nests per wallet.</p>
                         <div id="welcome-buttons" className="mt-2">
                             <button className="action-btn btn welcome-action-btn"
                                 onClick={() => { window.open("https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2") }}>
