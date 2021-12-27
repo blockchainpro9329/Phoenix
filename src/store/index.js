@@ -15,7 +15,7 @@ const _initialState = {
     my_nfts: [],
     grand_nft_url: "",
     master_nft_url: "",
-    currentTime:0
+    currentTime: 0,
 }
 
 
@@ -27,18 +27,9 @@ const init = (init) => {
 const provider = Web3.providers.HttpProvider(config.testNetUrl);
 const web3 = new Web3(Web3.givenProvider || provider);
 
-
-
-
 const tokenContract = new web3.eth.Contract(config.FireAbi, config.FireToken);
 const nftContract = new web3.eth.Contract(config.NFTAbi, config.FireNFT);
 const rewardConatract = new web3.eth.Contract(config.RewardAbi, config.Reward);
-
-console.log("reward Contract", rewardConatract);
-console.log("nft Contract", nftContract);
-console.log("token Contract", tokenContract);
-
-
 
 
 const reducer = (state = init(_initialState), action) => {
@@ -251,10 +242,15 @@ if (window.ethereum) {
     let promise = [];
     promise.push(nftContract.methods.getMasterNFTURI().call());
     promise.push(nftContract.methods.getGrandNFTURI().call());
+    promise.push(rewardConatract.methods.getTotalNodeCount().call());
     Promise.all(promise).then((result) => {
-        store.dispatch ({
+        store.dispatch({
             type: "RETURN_DATA",
-            payload: {master_nft_url: result[0], grand_nft_url: result[1]}
+            payload: {
+                master_nft_url: result[0],
+                grand_nft_url: result[1],
+                all_nodes: result[2]
+            }
         });
     })
 }

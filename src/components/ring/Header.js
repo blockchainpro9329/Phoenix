@@ -42,14 +42,14 @@ class RingHeader extends React.Component {
                         </div>
                         <div className='menu-container flex1 flex justify-center'>
                             <span className='menu flex flex-col align-center'>
-                                <a>MY NODES</a>
+                                <a>MY NESTS</a>
                                 {/* <br/> */}
                                 <a>{this.props.my_nodes.length}</a>
                             </span>
                             <span className='menu flex flex-col align-center'>
-                                <a>ALL NODES</a>
+                                <a>ALL NESTS</a>
                                 {/* <br/> */}
-                                <a>123</a>
+                                <a>{this.props.all_nodes}</a>
                             </span>
                             {/* <span className='menu flex flex-col align-center'>
                                 <a>MINING</a>
@@ -89,6 +89,7 @@ const mapStateToProps = state => {
     return {
         account: state.account,
         my_nodes: state.my_nodes,
+        all_nodes: state.all_nodes
     };
 }
 

@@ -130,9 +130,9 @@ class Nodes extends React.Component {
                         Node:
                         {index + 1}
                     </div>
-                    <div className='text-center' style={{ flex: "1" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
-                    <div className='text-center' style={{ flex: "1" }}>{item.remains}</div>
-                    <div className='text-center' style={{ flex: "1" }}>{item.reward}</div>
+                    <div className='text-center' style={{ flex: "2" }}>{moment(item.createTime * 1000).format("YYYY.MM.DD HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
+                    <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
                             Pay Fee
@@ -180,9 +180,9 @@ class Nodes extends React.Component {
 
                         <div className='h-40 flex align-center fs-20' style={{ width: "100%" }}>
                             <div className='c-4cce13 padder-10' style={{ flex: "3" }}>NAME</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "1" }}>CREATED</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "1" }}>REMAINS</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "1" }}>REWARDS</div>
+                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>CREATED</div>
+                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
+                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>REWARDS</div>
                             <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
                             <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
                         </div>
