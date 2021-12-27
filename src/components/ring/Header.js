@@ -11,9 +11,9 @@ class RingHeader extends React.Component {
     constructor(props) {
         super(props);
         this.handleConnect = this.handleConnect.bind(this);
-        this.state = {
-            my_nodes: []
-        }
+        // this.state = {
+        //     my_nodes: []
+        // }
         this.setState({ my_nodes: props.my_nodes });
     }
 

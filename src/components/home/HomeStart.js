@@ -25,7 +25,7 @@ class HomeStart extends React.Component {
           </div>
           <div className="cards">
             <div className="card">
-              <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
+              <div className="card-img" style={{  backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
               <div className="card-item-title">
                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
                 <span className="c-w"> MASTER NFT</span>

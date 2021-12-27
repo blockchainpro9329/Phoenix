@@ -132,7 +132,7 @@ class Create extends React.Component {
                                 <p>Your <span className="sc-gsTEea cdmEaM">$RING</span> tokens will be distributed as follows: </p>
                                 <ul style={{ listStyle: "inside" }}>
                                     <li>20% future use</li>
-                                    <li>10% to RING-BNB Pool for rewards</li>
+                                    <li>10% to RING-AVAX Pool for rewards</li>
                                     <li>70% into node rewards pool</li>
                                     <li>Distribution subject to optimization over time.</li>
                                 </ul>

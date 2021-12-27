@@ -101,12 +101,12 @@ class Faq extends React.Component {
                         Where can I buy $FIRE and where can I create my NEST ?
                     </button>
                     <div className="panel" >
-                        <p data-nsfw-filter-status="swf">You can easily buy FIRE on PancakeSwap by<a
-                            href="https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2"
+                        <p data-nsfw-filter-status="swf">You can easily buy FIRE on Trader Joe by<a
+                            href="https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5"
                             className="c-purple" data-nsfw-filter-status="swf" style={{ textDecoration: "none" }}> clicking on
                             this link</a>.<br /><br />The contract address of the FIRE token is :
-                            <br /><b>0x521ef54063148e5f15f18b9631426175cee23de2</b><br /><br />You can create your FIRE-nodes and
-                            collect your FIRE rewards on our web app: app.ring.financial.<a
+                            <br /><b>0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5</b><br /><br />You can create your FIRE-nodes and
+                            collect your FIRE rewards on our web app: thephoenix.finance/app .<a
                                 href="https://thephoenix.finance/app" className="c-purple" data-nsfw-filter-status="swf"
                                 style={{ textDecoration: "none" }}> Click here </a>to go to the web app.</p>
                     </div>

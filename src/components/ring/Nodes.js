@@ -59,13 +59,20 @@ class Nodes extends React.Component {
             var remain = moment(temp.lastTime * 1000).diff(this.props.currentTime * 1000);
             if (remain > 0) {
                 var duration = moment.duration(remain);
-                temp['remains'] = duration.months() + "M-" +
-                    duration.days() + "D " +
+                temp['remains'] = duration.months() + "m - " +
+                    duration.days() + "d " +
                     duration.hours() + ":" +
                     duration.minutes() + ":" +
                     duration.seconds();
 
-                temp['reward'] = Number(temp['reward']) + 0.225 / (3600 * 24);
+                var bonus = 0.225;
+                if (temp['masterNFT']) {
+                    bonus += 0.025;
+                }
+                if (temp['grandNFT']) {
+                    bonus += 0.05;
+                }
+                temp['reward'] = Number(temp['reward']) + bonus / (3600 * 24);
                 sum += temp['reward'];
                 temp['reward'] = temp['reward'].toFixed(9);
             } else {

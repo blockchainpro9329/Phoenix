@@ -30,12 +30,12 @@ const HomeHero = () => {
         </div>
         <div className="statistics" >
           <div className="sub_statistics">
-            <button onClick={() => { window.open("https://pancakeswap.finance/swap?outputCurrency=0x521ef54063148E5F15F18B9631426175ceE23DE2") }}
+            <button onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}
               className="btn action-btn first_action_btn">
               BUY $FIRE
             </button>
             <button onClick={() => { window.location.href = "/app" }} className="btn action-btn outline">
-              CREATE NODE
+              CREATE NEST
             </button>
           </div>
 

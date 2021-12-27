@@ -145,6 +145,7 @@ a {
     border-radius: 18px;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -860,8 +861,13 @@ footer {
 
 
 * {
-    color: var(--primary-text);
+    /* color: var(--primary-text); */
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: normal;
+}
+
+.Toastify__toast-theme--light {
+    background: var(--toastify-color-light);
+    color: black !important;
 }
