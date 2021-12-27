@@ -70,6 +70,7 @@ class Nodes extends React.Component {
                 temp['reward'] = temp['reward'].toFixed(9);
             } else {
                 temp['remains'] = 'Expired';
+                temp['reward'] = 0;
             }
             list.push(temp);
         }
