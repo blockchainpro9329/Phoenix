@@ -70,9 +70,9 @@ class Create extends React.Component {
                     Create a Nest with 10 FIRE Tokens
                 </div>
                 <p id="create-ring">Create a Phoenix Nest with <strong>10</strong>
-                    <span class="sc-gsTEea cdmEaM">$FIRE</span> tokens to earn <span class="sc-gsTEea cdmEaM">$FIRE</span>
+                    <span className="sc-gsTEea cdmEaM">$FIRE</span> tokens to earn <span className="sc-gsTEea cdmEaM">$FIRE</span>
                     token rewards.<br />Current estimated rewards:<strong> 0.225</strong> <span
-                        class="sc-gsTEea cdmEaM">$FIRE</span>/day.
+                        className="sc-gsTEea cdmEaM">$FIRE</span>/day.
                 </p>
                 <div className="container flex justify-center mt-4"><button className="action-btn btn" onClick={this.createNode}>CREATE A NODE</button>
                 </div>

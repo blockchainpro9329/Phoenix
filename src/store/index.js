@@ -16,6 +16,7 @@ const _initialState = {
     grand_nft_url: "",
     master_nft_url: "",
     currentTime: 0,
+    contract_status: 0,
 }
 
 
@@ -65,10 +66,12 @@ const reducer = (state = init(_initialState), action) => {
         if (!state.account) {
             connectAlert();
         }
+
         rewardConatract.methods.setContractStatus(action.payload.param)
             .send({ from: state.account })
-            .then(() => console.log)
+            .then(() => { updateGlobalInfo() })
             .catch(() => console.log);
+
     } else if (action.type === "SET_NFT_URL") {
 
         if (!state.account) {
@@ -113,8 +116,10 @@ const reducer = (state = init(_initialState), action) => {
 
 
     } else if (action.type === "BUY_NFT_ART") {
+        console.log("account ", state.account);
         if (!state.account) {
             connectAlert();
+            return;
         }
         if (action.payload.type === "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
@@ -229,6 +234,27 @@ const chechNetwork = (chainId) => {
     }
 }
 
+
+const updateGlobalInfo = () => {
+    let promise = [];
+    promise.push(nftContract.methods.getMasterNFTURI().call());
+    promise.push(nftContract.methods.getGrandNFTURI().call());
+    promise.push(rewardConatract.methods.getTotalNodeCount().call());
+    promise.push(rewardConatract.methods.getContractStatus().call());
+    Promise.all(promise).then((result) => {
+        store.dispatch({
+            type: "RETURN_DATA",
+            payload: {
+                master_nft_url: result[0],
+                grand_nft_url: result[1],
+                all_nodes: result[2],
+                contract_status: result[3]
+            }
+        });
+    })
+}
+
+
 const store = createStore(reducer);
 if (window.ethereum) {
     window.ethereum.on('accountsChanged', function (accounts) {
@@ -251,22 +277,7 @@ if (window.ethereum) {
             payload: { chainId: chainId }
         });
     })
-
-
-    let promise = [];
-    promise.push(nftContract.methods.getMasterNFTURI().call());
-    promise.push(nftContract.methods.getGrandNFTURI().call());
-    promise.push(rewardConatract.methods.getTotalNodeCount().call());
-    Promise.all(promise).then((result) => {
-        store.dispatch({
-            type: "RETURN_DATA",
-            payload: {
-                master_nft_url: result[0],
-                grand_nft_url: result[1],
-                all_nodes: result[2]
-            }
-        });
-    })
+    updateGlobalInfo();
 }
 
 

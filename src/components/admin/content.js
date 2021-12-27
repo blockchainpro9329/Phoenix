@@ -13,11 +13,16 @@ class Content extends React.Component {
         super(props);
         this.onSelectFile = this.onSelectFile.bind(this);
         this.state = {
-            master_url: props.master_nft_url,
-            grand_url: props.grand_nft_url
+            master_nft_url: props.master_nft_url,
+            grand_nft_url: props.grand_nft_url
         }
         this.setContractStatus = this.setContractStatus.bind(this);
     }
+
+    static getDerivedStateFromProps(nextProps, prevProps) {
+        return { master_nft_url: nextProps.master_nft_url, grand_nft_url: nextProps.grand_nft_url };
+    }
+
 
     async onSelectFile(event, type) {
         const file = event.target.files[0]
@@ -85,8 +90,11 @@ class Content extends React.Component {
                     </div>
                 </section>
                 <section id="section-start-stop-service" style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="btn action-btn outline m-r-20" onClick={this.setContractStatus.bind(this, 1)}>Start Service</button>
-                    <button className="btn action-btn" onClick={this.setContractStatus.bind(this, 0)}>Stop Service</button>
+                    {
+                        this.props.contract_status == 0 ?
+                            <button className="btn action-btn" onClick={this.setContractStatus.bind(this, 1)}>Stop Service</button> :
+                            <button className="btn action-btn outline" onClick={this.setContractStatus.bind(this, 0)}>Start Service</button>
+                    }
                 </section>
             </>
 
@@ -96,6 +104,7 @@ class Content extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log(state);
     return state;
 }
 

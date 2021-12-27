@@ -200,7 +200,6 @@ class Nodes extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("current state", state);
     return {
         my_nodes: state.my_nodes,
         currentTime: state.currentTime,
