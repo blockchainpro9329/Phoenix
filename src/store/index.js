@@ -17,6 +17,7 @@ const _initialState = {
     master_nft_url: "",
     currentTime: 0,
     contract_status: 0,
+    chainId: 0
 }
 
 
@@ -282,8 +283,8 @@ if (window.ethereum) {
             payload: { chainId: chainId }
         });
     });
-    web3.eth.net.getId().then((chainId) => {
-        //  checkNetwork(chainId);
+    web3.eth.getChainId().then((chainId) => {
+        checkNetwork(chainId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: chainId }
