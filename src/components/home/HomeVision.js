@@ -34,25 +34,24 @@ const HomeVision = () => {
                     </div>
 
                 </div>
-                {/* <!-- chips --> */}
             </section>
             <section id="chip-vision">
                 <div className="chips-container">
                     <div id="chips-header">Benefits for Phoenix Network Members</div>
                     <div className="chips">
-                        <div className="chip">
+                        <div className=" chip">
                             <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Lowered Risk
                         </div>
-                        <div className="chip">
+                        <div className=" chip">
                             <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Fees
                         </div>
-                        <div className="chip">
+                        <div className=" chip">
                             <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Hassle
                         </div>
-                        <div className="chip">
+                        <div className=" chip">
                             <img alt="" className="m-r-20" src="/img/icon_check.svg" />
                             Less Research
                         </div>

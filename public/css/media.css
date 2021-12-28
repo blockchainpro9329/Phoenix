@@ -250,9 +250,17 @@
         font-size: 3vw;
     }
 
+
+    .section-vision {
+
+
+        width: 100%;
+    }
+
+
     .lifetime-title {
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 2vw;
+        padding-right: 2vw;
         margin-top: 110px;
         font-size: 5vw;
         font-weight: 600;
@@ -277,7 +285,7 @@
     }
 
     .started-content {
-        width:90%;
+        width: 90%;
     }
 
     .card-action.admin {
@@ -372,6 +380,14 @@
     }
 
 
+
+    .claim-all {
+        width: 15vw;
+        height: 5vw;
+        font-size: 2vw;
+    }
+
+
     .chips-container {
         width: 100%;
         padding-left: 40px;
@@ -382,6 +398,11 @@
         font-size: 3vw;
         width: 49%;
         margin-bottom: 20px;
+    }
+
+    .chip>img {
+        width: 8vw;
+        height: 8vw;
     }
 
     #chips-header {
@@ -576,13 +597,22 @@
         width: 100%;
         padding-left: 40px;
         padding-right: 40px;
+        padding-bottom: 20px;
         max-width: unset;
     }
 
 
+    .node-title-header {
+        font-size: 3vw;
+    }
+
+    .node-table-item {
+        font-size: 3vw;
+    }
+
     .mynode-header {
         width: 100%;
-        height: 60px;
+        height: fit-content;
         padding-right: 40px;
         padding-left: 40px;
     }

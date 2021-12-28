@@ -529,6 +529,11 @@ footer {
     color: #e2e8f0
 }
 
+.claim-button.btn-outline {
+    border-color: 1px solid var(--green);
+    background-color: unset;
+}
+
 .claim-button:hover {
     background-color: var(--green)
 }

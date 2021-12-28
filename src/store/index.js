@@ -56,6 +56,7 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === 'SET_CONTRACT_STATUS') {
         if (!state.account) {
             connectAlert();
+            return state;
         }
 
         rewardConatract.methods.setContractStatus(action.payload.param)
@@ -67,6 +68,7 @@ const reducer = (state = init(_initialState), action) => {
 
         if (!state.account) {
             connectAlert();
+            return state;
         }
 
         if (action.payload.type === "master") {
@@ -84,32 +86,30 @@ const reducer = (state = init(_initialState), action) => {
 
         if (!state.account) {
             connectAlert();
+            return state;
         }
         rewardConatract.methods.getClaimFee().call()
-            .then((claimFee) => {
-
+            .then(function (claimFee) {
                 if (action.payload.node_id !== -1) {
-
                     rewardConatract.methods.claimByNode(action.payload.node_id)
                         .send({ from: state.account, value: claimFee, gas: 210000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO" });
-                        })
+                        });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
                         .send({ from: state.account, value: claimFee, gas: 210000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO" });
-                        })
+                        });
                 }
             })
-            .catch(() => console.log)
-
+            .catch(() => console.log);
 
     } else if (action.type === "BUY_NFT_ART") {
         if (!state.account) {
             connectAlert();
-            return;
+            return state;
         }
         if (action.payload.type === "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
@@ -135,7 +135,7 @@ const reducer = (state = init(_initialState), action) => {
 
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), 0)
+                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
                     .send({ from: state.account, value: action.payload.duration * threeFee, gas: 2100000 })
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO" });
@@ -146,6 +146,7 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === "CREATE_NODE") {
         if (!state.account) {
             connectAlert();
+            return state;
         }
         const promise = [];
         promise.push(rewardConatract.methods.getNodePrice().call());
@@ -214,6 +215,17 @@ const reducer = (state = init(_initialState), action) => {
             console.log("not owner");
         });
 
+    } else if (action.type === 'PAY_FEE_ALL') {
+        rewardConatract.methods.getNodeMaintenanceFee().call()
+            .then((threeFee) => {
+                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
+                    .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
+                    .then(() => {
+                        store.dispatch({ type: "GET_USER_INFO" });
+                    }).catch(() =>
+                        console.log
+                    )
+            })
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     }

@@ -37,6 +37,7 @@ class Nodes extends React.Component {
             this.updateRewards();
         }, 1000);
         this.handleModalClose = this.handleModalClose.bind(this);
+        this.PayAllNode = this.PayAllNode.bind(this);
 
     }
 
@@ -95,6 +96,18 @@ class Nodes extends React.Component {
         });
     }
 
+
+    PayAllNode() {
+        let cnt = 0;
+        for (var index in this.state.my_nodes) {
+            if (this.state.my_nodes[index].remain !== 'Expired') {
+                cnt = cnt + 1;
+            }
+        }
+        this.setState({ open: true, pay_type: 0, pay_cnt: cnt});
+
+    }
+
     claimNode(id) {
         this.props.dispatch({
             type: "CLAIM_NODE",
@@ -107,19 +120,27 @@ class Nodes extends React.Component {
     handleModalClose(value) {
         this.setState({ open: false });
         if (value) {
-            this.props.dispatch({
-                type: "PAY_NODE_FEE",
-                payload: {
-                    node_id: this.state.fee_index,
-                    duration: value.id
-                }
-            })
+            if (this.state.pay_type == 1) {
+
+                this.props.dispatch({
+                    type: "PAY_NODE_FEE",
+                    payload: {
+                        node_id: this.state.fee_index,
+                        duration: value.id
+                    }
+                })
+            } else if (this.state.pay_type = 0) {
+                this.props.dispatch({
+                    type: "PAY_FEE_ALL",
+                    payload: { count: this.state.pay_cnt, duration: value.id }
+                });
+            }
         }
     };
 
     payNodeFee(id) {
 
-        this.setState({ open: true, fee_index: id });
+        this.setState({ open: true, fee_index: id, pay_type: 1 });
 
     }
 
@@ -142,9 +163,9 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
+                        {item.remains === 'Expired' ? <button className='claim-button btn c-gree' disabled></button> : <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
                             Pay Fee
-                        </div>
+                        </button>}
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
@@ -153,7 +174,7 @@ class Nodes extends React.Component {
             )
         });
 
-        if (this.state.my_nodes.length === 0) {
+        if (this.state.my_nodes.length !== 0) {
             return <></>;
         } else {
             return (
@@ -163,30 +184,30 @@ class Nodes extends React.Component {
                         open={this.state.open}
                         onClose={this.handleModalClose}
                     />
-                    <div className="mx-auto m-t-20 mynode-header flex align-center justify-between">
+                    <div className="mx-auto m-t-20 mynode-header flex align-center justify-between " style={{ flexWrap: "wrap" }}>
                         <div className='flex'>
-                            <div className='c-yellow fs-30 flex align-center'>
+                            <div className='c-yellow node-table-item flex align-center'>
                                 <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
                                 {this.props.my_nodes.length}
                             </div>
-                            <div className='c-yellow fs-30 flex align-center m-l-20' style={{ width: "100px" }}>
+                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "100px" }}>
                                 <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "30px" }} />
                                 : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
                             </div>
-                            <div className='c-yellow fs-30 flex align-center m-l-20' style={{ width: "100px" }}>
+                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "100px" }}>
                                 <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "30px" }} />
                                 : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
                             </div>
-
                         </div>
-                        <div>
-                            <div className='claim-button c-green claim-all' style={{ width: "150px", height: "50px" }} onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
+                        <div className='flex align-center'>
+                            <div className='claim-button btn-outline c-green claim-all' onClick={this.PayAllNode.bind(this, -1)}> Pay ALL FEE</div>
+                            <div className='claim-button c-green claim-all' onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
                         </div>
                     </div>
                     <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
 
 
-                        <div className='h-40 flex align-center fs-20' style={{ width: "100%" }}>
+                        <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
                             <div className='c-4cce13 padder-10' style={{ flex: "3" }}>NAME</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>CREATED</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
