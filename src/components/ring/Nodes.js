@@ -135,7 +135,7 @@ class Nodes extends React.Component {
                         {
                             item.granNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px" }} /> : <></>
                         }
-                        Node:
+                        NEST:
                         {index + 1}
                     </div>
                     <div className='text-center' style={{ flex: "2" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
