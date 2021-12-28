@@ -207,6 +207,24 @@ const reducer = (state = init(_initialState), action) => {
                 }
             });
         });
+    } else if (action.type === "CHANGE_REWARD_OWNER") {
+        rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({from:state.account}).then(()=>{
+            toast.info("Ownership changed!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }).catch(()=>{
+            console.log("not owner");
+        });
+
+
+
+
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     }

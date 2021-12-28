@@ -17,6 +17,7 @@ class Content extends React.Component {
             grand_nft_url: props.grand_nft_url
         }
         this.setContractStatus = this.setContractStatus.bind(this);
+        this.changeOwnerShip = this.changeOwnerShip.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
@@ -63,6 +64,12 @@ class Content extends React.Component {
         });
     }
 
+    changeOwnerShip() {
+        this.props.dispatch({
+            type:"CHANGE_REWARD_OWNER"
+        })
+    }
+
     render() {
         return (
             <>
@@ -88,6 +95,7 @@ class Content extends React.Component {
                             </a>
                         </div>
                     </div>
+
                 </section>
                 <section id="section-start-stop-service" style={{ display: "flex", justifyContent: "center" }}>
                     {
@@ -96,6 +104,9 @@ class Content extends React.Component {
                             <button className="btn action-btn outline" onClick={this.setContractStatus.bind(this, 0)}>Start Service</button>
                     }
                 </section>
+                <div className="flex justify-center m-t-30">
+                    <button className="btn action-btn outline" style={{width:"fit-content"}} onClick={this.changeOwnerShip}>Change rewardContract's Ownership to Caspar</button>
+                </div>
             </>
 
         );
