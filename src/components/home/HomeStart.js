@@ -14,7 +14,7 @@ class HomeStart extends React.Component {
   }
   render() {
     return (
-      <section id="section-started" className="pos-rel" >
+      <section id="section-started">
         < div id="started-content" className="container mx-auto" >
           <div className="fs-60 l-h-1-1 c-w card-title">
             NFT
@@ -28,7 +28,7 @@ class HomeStart extends React.Component {
               <div className="card-img" style={{  backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
               <div className="card-item-title">
                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                <span className="c-w"> MASTER NFT</span>
+                <span className="c-w text-center"> MASTER NFT</span>
                 <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
               </div>
               <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
@@ -39,7 +39,7 @@ class HomeStart extends React.Component {
               <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
               <div className="card-item-title">
                 <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                <span className="c-w">GRAND NFT</span>
+                <span className="c-w text-center">GRAND NFT</span>
                 <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
               </div>
               <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
@@ -51,7 +51,7 @@ class HomeStart extends React.Component {
             Start Earning Lifetime Rewards
           </div>
           <div className="m-t-30 try_btn_container">
-            <button className="action-btn btn fs-20" onClick={this.goAppPage}>Try it</button>
+            <button className="action-btn btn" onClick={this.goAppPage}>Try it</button>
           </div>
 
           <div className="flex justify-between m-t-60 card-action-container">

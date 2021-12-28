@@ -549,9 +549,9 @@ footer {
 
 .statistics {
     height: 120px;
-    width: 900px;
+    /* width: 900px; */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 

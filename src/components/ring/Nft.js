@@ -44,14 +44,14 @@ class Nft extends React.Component {
                                 <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
                                 <div className="card-item-title">
                                     <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                                    <span className="c-w">MASTER NFT</span>
+                                    <span className="c-w text-center">MASTER NFT</span>
                                     <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
                                 </div>
                                 <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
                                 </div>
                                 {/* <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div> */}
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow fs-30 m-t-20" onClick={this.buyNft.bind(this, "master")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "master")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
 
                         </div>
                         <div className="nft-margin-top">
@@ -60,14 +60,14 @@ class Nft extends React.Component {
                                 <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
                                 <div className="card-item-title">
                                     <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                                    <span className="c-w">GRAND NFT</span>
+                                    <span className="c-w text-center">GRAND NFT</span>
                                     <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
                                 </div>
                                 {/* <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div> */}
                                 <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
                                 </div>
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow fs-30 m-t-20" onClick={this.buyNft.bind(this, "grand")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "grand")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
                         </div>
 
                     </div>

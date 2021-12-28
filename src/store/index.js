@@ -172,6 +172,7 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(rewardConatract.methods.getRewardAmount(account).call());
         promise.push(nftContract.methods.getMasterNFTURI().call());
         promise.push(nftContract.methods.getGrandNFTURI().call());
+        promise.push(rewardConatract.methods.getTotalNodeCount().call());
         Promise.all(promise).then((result) => {
             const nodes = [];
             for (var index in result[1]) {
@@ -180,7 +181,8 @@ const reducer = (state = init(_initialState), action) => {
                     lastTime: result[1][index].lastTime,
                     grandNFT: result[2].curGrandNFTEnable[index],
                     masterNFT: result[2].curMasterNFTEnable[index],
-                    reward: Number(web3.utils.fromWei(result[2].nodeRewards[index]))
+                    reward: Number(web3.utils.fromWei(result[2].nodeRewards[index])),
+
                 });
             }
             store.dispatch({
@@ -192,7 +194,8 @@ const reducer = (state = init(_initialState), action) => {
                     reward: result[2],
                     master_nft_url: result[3],
                     grand_nft_url: result[4],
-                    currentTime: result[2].currentTime * 1
+                    currentTime: result[2].currentTime * 1,
+                    all_nodes: result[5]
                 }
             });
         });
@@ -210,9 +213,6 @@ const reducer = (state = init(_initialState), action) => {
         }).catch(() => {
             console.log("not owner");
         });
-
-
-
 
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
