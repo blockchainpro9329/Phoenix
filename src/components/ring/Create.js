@@ -74,7 +74,7 @@ class Create extends React.Component {
                     token rewards.<br />Current estimated rewards:<strong> 0.225</strong> <span
                         className="sc-gsTEea cdmEaM">$FIRE</span>/day.
                 </p>
-                <div className="container flex justify-center mt-4"><button className="action-btn btn" onClick={this.createNode}>CREATE A NODE</button>
+                <div className="container flex justify-center mt-4"><button className="action-btn btn" onClick={this.createNode}>CREATE A NEST</button>
                 </div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
@@ -87,14 +87,14 @@ class Create extends React.Component {
                         <div className="modal-header">
                             <div className="modal-title h4 c-w">
                                 <div className="h2 col-12 text-center" style={{ marginTop: "10px" }}>Create your <span
-                                    className="sc-gsTEea cdmEaM">Node</span></div>
+                                    className="sc-gsTEea cdmEaM">NEST</span></div>
                             </div><button type="button" className="btn-close btn-close-white" aria-label="Close" onClick={this.closeModal}></button>
                         </div>
                         <div className="modal-body c-w">
                             <div className="row justify-content-center">
                                 <div className="col-8 text-center" style={{ lineHeight: "1.75" }}>Start earning lifetime high-yield <span
                                     className="sc-gsTEea cdmEaM">$RING</span> token rewards. Rewards calculations are based on many factors,
-                                    including the number of nodes, node revenue, token price, and protocol revenue, and they are variable.</div>
+                                    including the number of nests, nest revenue, token price, and protocol revenue, and they are variable.</div>
                             </div>
                             <div className="row justify-content-evenly mt-3">
                                 <div className={this.state.selected_item === 1 ? "col-3 text-center node-type active_item1" : "col-3 text-center node-type"}
@@ -128,12 +128,12 @@ class Create extends React.Component {
                             </div> */}
                             <div style={{ marginTop: "40px" }}>
                                 <p>A contribution of $RING tokens to the <span className="sc-gsTEea cdmEaM">RING</span> community is required to
-                                    create a node and participate in rewards. </p>
+                                    create a nest and participate in rewards. </p>
                                 <p>Your <span className="sc-gsTEea cdmEaM">$RING</span> tokens will be distributed as follows: </p>
                                 <ul style={{ listStyle: "inside" }}>
                                     <li>20% future use</li>
                                     <li>10% to RING-AVAX Pool for rewards</li>
-                                    <li>70% into node rewards pool</li>
+                                    <li>70% into nest rewards pool</li>
                                     <li>Distribution subject to optimization over time.</li>
                                 </ul>
                             </div>
@@ -142,7 +142,7 @@ class Create extends React.Component {
                                     <div className="form-check"><input type="checkbox" className="form-check-input" value="false" /><label title=""
                                         className="form-check-label"><span>I have read the <a
                                             href="/disclaimer">disclaimer</a> and I want to create my
-                                            RING-node.</span></label></div>
+                                            RING-nest.</span></label></div>
                                 </form>
                             </div>
                         </div>

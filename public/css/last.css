@@ -273,6 +273,7 @@ a {
 }
 
 .chip {
+    font-size: 22px;
     width: 260px;
     height: 60px;
     border-radius: 30px;
@@ -403,7 +404,7 @@ a {
 }
 
 .footer-link {
-    width: 200px;
+    width: 10vw;
     text-align: center;
 }
 

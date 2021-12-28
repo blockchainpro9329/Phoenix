@@ -45,17 +45,7 @@ const reducer = (state = init(_initialState), action) => {
             chainId: action.payload.chainId
         });
     } else if (action.type === 'CONNECT_WALLET') {
-        if (state.chainId === undefined || state.chainId !== config.chainId) {
-            toast.info("Change network to Avalanche C Chain!", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }
+        checkNetwork(state.chainId);
         web3.eth.getAccounts((err, accounts) => {
             store.dispatch({
                 type: "GET_USER_INFO",
@@ -116,7 +106,6 @@ const reducer = (state = init(_initialState), action) => {
 
 
     } else if (action.type === "BUY_NFT_ART") {
-        console.log("account ", state.account);
         if (!state.account) {
             connectAlert();
             return;
@@ -161,17 +150,16 @@ const reducer = (state = init(_initialState), action) => {
         promise.push(rewardConatract.methods.getNodePrice().call());
         promise.push(rewardConatract.methods.getNodeMaintenanceFee().call());
         Promise.all(promise).then((result) => {
-            console.log("result", result);
-            
+
             tokenContract.methods.approve(config.Reward, result[0]).send({ from: state.account, gas: 210000 })
-            .then((ret) => {
-                rewardConatract.methods.buyNode(1).send({ from: state.account, value: result[1], gas: 2100000 })
-                    .then(() => {
-                        store.dispatch({ type: "GET_USER_INFO" });
-                    }).catch(() => {
-                        console.log("error");
-                    });
-            }).catch((ret) => { console.log("err", ret) });
+                .then((ret) => {
+                    rewardConatract.methods.buyNode(1).send({ from: state.account, value: result[1], gas: 2100000 })
+                        .then(() => {
+                            store.dispatch({ type: "GET_USER_INFO" });
+                        }).catch(() => {
+                            console.log("error");
+                        });
+                }).catch((ret) => { console.log("err", ret) });
         });
 
     } else if (action.type === "GET_USER_INFO") {
@@ -208,7 +196,7 @@ const reducer = (state = init(_initialState), action) => {
             });
         });
     } else if (action.type === "CHANGE_REWARD_OWNER") {
-        rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({from:state.account}).then(()=>{
+        rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({ from: state.account }).then(() => {
             toast.info("Ownership changed!", {
                 position: "top-center",
                 autoClose: 3000,
@@ -218,7 +206,7 @@ const reducer = (state = init(_initialState), action) => {
                 draggable: true,
                 progress: undefined,
             });
-        }).catch(()=>{
+        }).catch(() => {
             console.log("not owner");
         });
 
@@ -243,8 +231,9 @@ const connectAlert = () => {
     });
 }
 
-const chechNetwork = (chainId) => {
-    if (chainId === undefined || chainId !== config.chainId) {
+const checkNetwork = (chainId) => {
+
+    if (web3.utils.toHex(chainId) !== web3.utils.toHex(config.chainId)) {
         toast.info("Change network to Avalanche C Chain!", {
             position: "top-center",
             autoClose: 3000,
@@ -287,14 +276,14 @@ if (window.ethereum) {
         });
     })
     window.ethereum.on('chainChanged', function (chainId) {
-        chechNetwork(chainId);
+        checkNetwork(chainId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: chainId }
         });
     });
     web3.eth.net.getId().then((chainId) => {
-        chechNetwork(chainId);
+        //  checkNetwork(chainId);
         store.dispatch({
             type: "UPDATE_CHAIN_ID",
             payload: { chainId: chainId }

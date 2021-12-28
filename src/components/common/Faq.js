@@ -105,7 +105,7 @@ class Faq extends React.Component {
                             href="https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5"
                             className="c-purple" data-nsfw-filter-status="swf" style={{ textDecoration: "none" }}> clicking on
                             this link</a>.<br /><br />The contract address of the FIRE token is :
-                            <br /><b>0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5</b><br /><br />You can create your FIRE-nodes and
+                            <br /><b>0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5</b><br /><br />You can create your FIRE-NESTs and
                             collect your FIRE rewards on our web app: thephoenix.finance/app .<a
                                 href="https://thephoenix.finance/app" className="c-purple" data-nsfw-filter-status="swf"
                                 style={{ textDecoration: "none" }}> Click here </a>to go to the web app.</p>

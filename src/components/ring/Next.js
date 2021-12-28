@@ -11,8 +11,8 @@ const RingNext = () => {
                             different ways you can be involved with the FIRE community below!</div>
                     </div>
                     <div>
-                        <div className="text-blue small-title">SHARE YOUR NODE STATS ON TWITTER</div>
-                        <div>Share your FIRE-node stats on Twitter and let the community know you’re part of the
+                        <div className="text-blue small-title">SHARE YOUR NEST STATS ON TWITTER</div>
+                        <div>Share your FIRE-nest stats on Twitter and let the community know you’re part of the
                             FIRE Network! By doing so, you will automatically be entered into a draw to receive 5
                             FIRE tokens. <br /><span className="text-blue link-underline">Share on Twitter.</span></div>
                     </div>

@@ -26,7 +26,7 @@ const Footer = () => {
 
                 </div>
                 <div className="footer-bottom">
-                    <span>2021, All Rights Reserved</span>
+                    <span className="copy-right">2021, All Rights Reserved</span>
                     <span className="footer-bottom-privacy">
                         <a href="" className="c-w m-r-20">Privacy</a>
                         <a href="" className="c-w">Cookie</a>
