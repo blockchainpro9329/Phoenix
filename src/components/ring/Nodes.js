@@ -76,6 +76,12 @@ class Nodes extends React.Component {
                 temp['reward'] = Number(temp['reward']) + bonus / (3600 * 24);
                 sum += temp['reward'];
                 temp['reward'] = temp['reward'].toFixed(9);
+
+                if (remain > 3600 * 24 * 30) {
+                    temp['payable'] = false;
+                } else {
+                    temp['payable'] = true;
+                }
             } else {
                 temp['remains'] = 'Expired';
                 temp['reward'] = 0;
@@ -100,20 +106,27 @@ class Nodes extends React.Component {
     PayAllNode() {
         let cnt = 0;
         for (var index in this.state.my_nodes) {
-            if (this.state.my_nodes[index].remain !== 'Expired') {
+            if (this.state.my_nodes[index].payable == true) {
                 cnt = cnt + 1;
             }
         }
-        this.setState({ open: true, pay_type: 0, pay_cnt: cnt});
-
+        this.setState({ open: true, pay_type: 0, pay_cnt: cnt });
     }
 
     claimNode(id) {
+        var payload = { node_id: id, cnt: 1 };
+        if (id == -1) {
+            let cnt = 0;
+            for (var index in this.state.my_nodes) {
+                if (this.state.my_nodes[index].remain !== 'Expired') {
+                    cnt = cnt + 1;
+                }
+            }
+            payload.cnt = cnt;
+        }
         this.props.dispatch({
             type: "CLAIM_NODE",
-            payload: {
-                node_id: id
-            }
+            payload: payload
         });
     }
 
@@ -139,11 +152,8 @@ class Nodes extends React.Component {
     };
 
     payNodeFee(id) {
-
         this.setState({ open: true, fee_index: id, pay_type: 1 });
-
     }
-
 
     render() {
         const List = this.state.my_nodes.map((item, index) => {
@@ -163,9 +173,9 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        {item.remains === 'Expired' ? <button className='claim-button btn c-gree' disabled></button> : <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>
-                            Pay Fee
-                        </button>}
+                        {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
+                            <button className='claim-button btn c-green' disabled></button>
+                        }
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
