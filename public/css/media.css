@@ -213,7 +213,7 @@
     .card {
         width: 100%;
         height: fit-content;
-        padding: 8vw;
+        padding: 5vw;
     }
 
     .card+.card {

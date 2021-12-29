@@ -906,3 +906,6 @@ footer {
     border-color: #e9520f;
 }
 
+.btn:disabled {
+    cursor: not-allowed;
+}

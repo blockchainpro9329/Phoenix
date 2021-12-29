@@ -1,9 +1,8 @@
 
 
 import React from "react";
-import Modal from "react-modal";
 import { connect } from 'react-redux';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -18,7 +17,6 @@ class Nft extends React.Component {
     }
 
     buyNft(type) {
-
         if (!this.props.can_perform) {
             toast.warning("Please wait. Another transaction is running.", {
                 position: "top-center",
@@ -40,6 +38,27 @@ class Nft extends React.Component {
         });
     }
 
+
+    static getDerivedStateFromProps(props, state) {
+        var count = 0;
+        for (var index in props.my_nodes) {
+            if (!props.my_nodes[index].masterNFT) {
+                count++;
+            }
+        }
+        var ret = {
+            enableMaster: false,
+            enableGrand: false
+        }   
+        if (count > 10) {
+            ret.enableMaster = true;
+        }
+
+        if (count == 0 && props.my_nodes.length == 100) {
+            ret.enableGrand = true;
+        }
+        return ret;
+    }
 
 
     render() {
@@ -63,10 +82,9 @@ class Nft extends React.Component {
                                 </div>
                                 <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
                                 </div>
-                                {/* <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div> */}
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
-
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20"
+                                disabled={!this.state.enableMaster} onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
                         </div>
                         <div className="nft-margin-top">
 
@@ -77,13 +95,12 @@ class Nft extends React.Component {
                                     <span className="c-w text-center">GRAND NFT</span>
                                     <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
                                 </div>
-                                {/* <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div> */}
                                 <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
                                 </div>
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "grand")}>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20"
+                                disabled={!this.state.enableGrand} onClick={this.buyNft.bind(this, "grand")}>Buy Now</button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -95,7 +112,8 @@ const mapStateToProps = state => {
     return {
         grand_nft_url: state.grand_nft_url,
         master_nft_url: state.master_nft_url,
-        can_perform: state.can_perform
+        can_perform: state.can_perform,
+        my_nodes: state.my_nodes
     };
 }
 
