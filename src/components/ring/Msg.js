@@ -20,7 +20,7 @@ class RingMsg extends React.Component {
 
     createNode() {
         if (!this.props.can_perform) {
-            toast.warning("Please wait. another transaction is running.", {
+            toast.warning("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,

@@ -3,14 +3,6 @@ import Web3 from 'web3';
 import config from '../contract/config';
 import { toast } from 'react-toastify';
 
-var data1 = require("../contract/backup/0-1000.json");
-var data2 = require("../contract/backup/1000-2000.json");
-var data3 = require("../contract/backup/2000-3000.json");
-
-// var data = data1.concat(data2, data3);
-
-// console.log("All data", data);
-
 
 const _initialState = {
     price_usd: 0,
@@ -26,7 +18,6 @@ const _initialState = {
     chainId: 0,
     can_perform: true
 }
-
 
 const init = (init) => {
 
