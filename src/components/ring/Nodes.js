@@ -206,7 +206,7 @@ class Nodes extends React.Component {
                             item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
                         {
-                            item.granNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
+                            item.grandNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
                         NEST:
                         {index + 1}

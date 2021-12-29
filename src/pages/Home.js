@@ -5,7 +5,6 @@ import HomeWork from "../components/home/HomeWork";
 import Footer from "../components/common/Footer"
 import Faq from "../components/common/Faq";
 import HomeStart from "../components/home/HomeStart";
-import Header from '../components/ring/Header';
 import { Component } from "react";
 import { connect } from 'react-redux';
 
