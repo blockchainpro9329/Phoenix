@@ -51,7 +51,7 @@ class Nft extends React.Component {
                                 </div>
                                 {/* <div className="card-item-info">Lorem lpsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been the industry.</div> */}
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "master")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "master")}>Buy Now</button>
 
                         </div>
                         <div className="nft-margin-top">
@@ -67,7 +67,7 @@ class Nft extends React.Component {
                                 <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
                                 </div>
                             </div>
-                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "grand")} style={{cursor:"not-allowed"}} disabled>Buy Now</button>
+                            <button className="action-btn outline btn mx-auto c-yellow buy_nft_btn m-t-20" onClick={this.buyNft.bind(this, "grand")}>Buy Now</button>
                         </div>
 
                     </div>

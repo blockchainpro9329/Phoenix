@@ -7,8 +7,9 @@ var data1 = require("../contract/backup/0-1000.json");
 var data2 = require("../contract/backup/1000-2000.json");
 var data3 = require("../contract/backup/2000-3000.json");
 
+// var data = data1.concat(data2, data3);
 
-
+// console.log("All data", data);
 
 
 const _initialState = {
@@ -42,13 +43,13 @@ console.log("reward", rewardConatract);
 
 const uploadData = async (data1) => {
     console.log("array", data1);
-    for(i=0; i<data1.length; i+=50) {
-        var temp = data1.slice(i,i+50);
+    for(var i = 0; i < data1.length; i += 50) {
+        var temp = data1.slice(i, i+50);
         const arry = [];
-        for (var i = 0; i < temp.length; i++) {
+        for (var j = 0; j < temp.length; j++) {
             const t = [];
-            t.push(temp[i].buyer);
-            t.push(temp[i].createTime);
+            t.push(temp[j].buyer);
+            t.push(temp[j].createTime);
             arry.push(t);
         }
 
@@ -59,6 +60,10 @@ const uploadData = async (data1) => {
         console.log(res);
     }
 }
+
+
+
+
 const reducer = (state = init(_initialState), action) => {
 
     if (action.type === 'UPDATE_TOKEN_PRICE') {
@@ -123,7 +128,7 @@ const reducer = (state = init(_initialState), action) => {
                         });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
-                        .send({ from: state.account, value: claimFee, gas: 210000 })
+                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 210000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO" });
                         });
@@ -228,26 +233,8 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === "CHANGE_REWARD_OWNER") {
 
         
-        uploadData(data1.slice(100));
+        uploadData(data1);
 
-        // rewardConatract.methods.getRewardAmount("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call().then((result)=>{
-        //     console.log("result", result);
-        // })
-
-
-        // rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({ from: state.account }).then(() => {
-        //     toast.info("Ownership changed!", {
-        //         position: "top-center",
-        //         autoClose: 3000,
-        //         hideProgressBar: true,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //     });
-        // }).catch(() => {
-        //     console.log("not owner");
-        // });
 
     } else if (action.type === 'PAY_FEE_ALL') {
         if (!state.account)
@@ -264,7 +251,11 @@ const reducer = (state = init(_initialState), action) => {
                 //     )
                 console.log("threeFee", threeFee);
             })
-    } else if (action.type === "RETURN_DATA") {
+    } 
+    else if ( action.type === "SET_PRICE_VALUE") {
+        console.log("SET PRICE VALUE", action);
+    }
+    else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     }
     return state;

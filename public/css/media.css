@@ -687,5 +687,19 @@
     }
 
 
+    .admin-input-item {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .admin-setting-btn {
+        width: 20vw;
+    }
+    .admin-input-content {
+        width: 60vw;
+        height: 9vw;
+        font-size: 3vw;
+        padding-left: 10px;
+    }
+
 
 }

@@ -877,3 +877,31 @@ footer {
     background: var(--toastify-color-light);
     color: black !important;
 }
+
+
+.admin-setting-btn {
+    width:100px;
+    height: 40px;
+}
+
+.admin-input-content {
+    height: 40px;
+}
+
+.admin-input-label {
+    color: chocolate;
+    width: 200px;
+
+}
+
+.admin-input-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.admin-input-content:active, .admin-input-content:hover {
+    border-color: #e9520f;
+}
+

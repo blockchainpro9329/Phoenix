@@ -14,10 +14,21 @@ class Content extends React.Component {
         this.onSelectFile = this.onSelectFile.bind(this);
         this.state = {
             master_nft_url: props.master_nft_url,
-            grand_nft_url: props.grand_nft_url
+            grand_nft_url: props.grand_nft_url,
+            claim_fee: 0,
+            maintenance_fee: 0,
+            fire_price: 0,
+            nest_price: 0
         }
+
         this.setContractStatus = this.setContractStatus.bind(this);
         this.changeOwnerShip = this.changeOwnerShip.bind(this);
+
+        this.setFirePrice = this.setFirePrice.bind(this);
+        this.setMaintenanceFee = this.setMaintenanceFee.bind(this);
+        this.setClaimFee = this.setClaimFee.bind(this);
+
+        this.onChangeValue = this.onChangeValue.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
@@ -66,9 +77,50 @@ class Content extends React.Component {
 
     changeOwnerShip() {
         this.props.dispatch({
-            type:"CHANGE_REWARD_OWNER"
+            type: "CHANGE_REWARD_OWNER"
         })
     }
+
+    setClaimFee() {
+        console.log("claim fee", this.state.claim_fee);
+    }
+    setMaintenanceFee() {
+
+    }
+    setFirePrice() {
+
+    }
+    setNestPrice
+
+
+    onChangeValue(event, type) {
+
+        var value = Number(event.target.value);
+        if (type === "claim_fee") {
+            this.setState({ claim_fee: value });
+        } else if (type == "maintenance_fee") {
+            this.setState({ maintenance_fee: value });
+        } else if (type == "nest_price") {
+            this.setState({ nest_price: value });
+        } else if (type === "fire_price") {
+            this.setState({ fire_price: value });
+        }
+    }
+
+    setValue(type) {
+
+        if (type === "claim_fee") {
+            this.props.dispatch({ type: "SET_PRICE_VALUE", payload: { type: type, value: this.state.claim_fee } });
+        } else if (type == "maintenance_fee") {
+            this.props.dispatch({ type: "SET_PRICE_VALUE", payload: { type: type, value: this.state.maintenance_fee } });
+        } else if (type == "nest_price") {
+            this.props.dispatch({ type: "SET_PRICE_VALUE", payload: { type: type, value: this.state.nest_price } });
+        } else if (type === "fire_price") {
+            this.props.dispatch({ type: "SET_PRICE_VALUE", payload: { type: type, value: this.state.fire_price } });
+        }
+    }
+
+
 
     render() {
         return (
@@ -104,9 +156,46 @@ class Content extends React.Component {
                             <button className="btn action-btn outline" onClick={this.setContractStatus.bind(this, 0)}>Start Service</button>
                     }
                 </section>
-                <div className="flex justify-center m-t-30">
-                    <button className="btn action-btn outline" style={{width:"fit-content"}} onClick={this.changeOwnerShip}>Change rewardContract's Ownership to Caspar</button>
+                {/* <div className="flex justify-center m-t-30">
+                    <button className="btn action-btn outline" style={{width:"fit-content"}} onClick={this.changeOwnerShip}>Import Data</button>
+                </div> */}
+                <div className="m-t-40">
+                    <div className="admin-input-item">
+                        <label className="admin-input-label">Claim Fee (AVAX): </label>
+                        <div className="flex align-center">
+                            <input type="number" className="form-contral admin-input-content" value={this.state.claim_fee}
+                                onChange={(event) => { this.onChangeValue(event, "claim_fee") }} />
+                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("claim_fee") }}>SET</button>
+                        </div>
+                    </div>
+                    <div className="admin-input-item">
+                        <label className="admin-input-label">Maintenance Fee (AVAX): </label>
+                        <div className="flex align-center">
+                            <input type="number" className="form-contral admin-input-content" value={this.state.maintenance_fee}
+                                onChange={(event) => { this.onChangeValue(event, "maintenance_fee") }} />
+                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("maintenance_fee") }}>SET</button>
+                        </div>
+                    </div>
+                    <div className="admin-input-item">
+                        <label className="admin-input-label">FIRE Price (AVAX): </label>
+                        <div className="flex align-center">
+                            <input type="number" className="form-contral admin-input-content" value={this.state.fire_price}
+                                onChange={(event) => { this.onChangeValue(event, "fire_price") }}
+                            />
+                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("fire_price") }}>SET</button>
+                        </div>
+                    </div>
+                    <div className="admin-input-item">
+                        <label className="admin-input-label">FIRE PER NESTS: </label>
+                        <div className="flex align-center">
+                            <input type="number" className="form-contral admin-input-content" value={this.state.nest_price}
+                                onChange={(event) => { this.onChangeValue(event, "nest_price") }}
+                            />
+                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("nest_price") }}>SET</button>
+                        </div>
+                    </div>
                 </div>
+
             </>
 
         );
