@@ -3,6 +3,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import PayDlg from '../common/PayDlg';
+import {toast} from 'react-toastify';
 
 const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
@@ -104,6 +105,19 @@ class Nodes extends React.Component {
 
 
     PayAllNode() {
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
         let cnt = 0;
         for (var index in this.state.my_nodes) {
             if (this.state.my_nodes[index].payable == true) {
@@ -114,6 +128,20 @@ class Nodes extends React.Component {
     }
 
     claimNode(id) {
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
+
         var payload = { node_id: id, cnt: 1 };
         if (id == -1) {
             let cnt = 0;
@@ -133,6 +161,7 @@ class Nodes extends React.Component {
     handleModalClose(value) {
         this.setState({ open: false });
         if (value) {
+            this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
             if (this.state.pay_type == 1) {
 
                 this.props.dispatch({
@@ -152,6 +181,19 @@ class Nodes extends React.Component {
     };
 
     payNodeFee(id) {
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
         this.setState({ open: true, fee_index: id, pay_type: 1 });
     }
 
@@ -159,22 +201,22 @@ class Nodes extends React.Component {
         const List = this.state.my_nodes.map((item, index) => {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
-                    <div className='padder-10' style={{ flex: "3" }}>
+                    <div className='padder-10' style={{ flex: "2" }}>
                         {
-                            item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px" }} /> : <></>
+                            item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
                         {
-                            item.granNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px" }} /> : <></>
+                            item.granNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
                         NEST:
                         {index + 1}
                     </div>
-                    <div className='text-center' style={{ flex: "2" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
+                    <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
                         {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
-                            <button className='claim-button btn c-green' disabled></button>
+                            <button className='claim-button btn c-green' disabled>Pay Fee</button>
                         }
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
@@ -196,15 +238,15 @@ class Nodes extends React.Component {
                     />
                     <div className="mx-auto m-t-20 mynode-header flex align-center justify-between " style={{ flexWrap: "wrap" }}>
                         <div className='flex'>
-                            <div className='c-yellow node-table-item flex align-center'>
+                            <div className='c-yellow node-table-item flex align-center' style={{ width: "80px" }}>
                                 <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
                                 {this.props.my_nodes.length}
                             </div>
-                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "100px" }}>
+                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
                                 <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "30px" }} />
                                 : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
                             </div>
-                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "100px" }}>
+                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
                                 <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "30px" }} />
                                 : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
                             </div>
@@ -215,11 +257,9 @@ class Nodes extends React.Component {
                         </div>
                     </div>
                     <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
-
-
                         <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
-                            <div className='c-4cce13 padder-10' style={{ flex: "3" }}>NAME</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>CREATED</div>
+                            <div className='c-4cce13 padder-10' style={{ flex: "2" }}>NAME</div>
+                            <div className='c-4cce13 text-center' style={{ flex: "3" }}>REWARD START TIME</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>REWARDS</div>
                             <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
@@ -244,7 +284,8 @@ const mapStateToProps = state => {
         currentTime: state.currentTime,
         my_nfts: state.my_nfts,
         master_nft_url: state.master_nft_url,
-        grand_nft_url: state.grand_nft_url
+        grand_nft_url: state.grand_nft_url,
+        can_perform: state.can_perform,
     };
 }
 

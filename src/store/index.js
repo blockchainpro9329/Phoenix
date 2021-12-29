@@ -23,7 +23,8 @@ const _initialState = {
     master_nft_url: "",
     currentTime: 0,
     contract_status: 0,
-    chainId: 0
+    chainId: 0,
+    can_perform: true
 }
 
 
@@ -39,27 +40,25 @@ const tokenContract = new web3.eth.Contract(config.FireAbi, config.FireToken);
 const nftContract = new web3.eth.Contract(config.NFTAbi, config.FireNFT);
 const rewardConatract = new web3.eth.Contract(config.RewardAbi, config.Reward);
 
-console.log("reward", rewardConatract);
+// const uploadData = async (data1) => {
+//     console.log("array", data1);
+//     for (var i = 0; i < data1.length; i += 50) {
+//         var temp = data1.slice(i, i + 50);
+//         const arry = [];
+//         for (var j = 0; j < temp.length; j++) {
+//             const t = [];
+//             t.push(temp[j].buyer);
+//             t.push(temp[j].createTime);
+//             arry.push(t);
+//         }
 
-const uploadData = async (data1) => {
-    console.log("array", data1);
-    for(var i = 0; i < data1.length; i += 50) {
-        var temp = data1.slice(i, i+50);
-        const arry = [];
-        for (var j = 0; j < temp.length; j++) {
-            const t = [];
-            t.push(temp[j].buyer);
-            t.push(temp[j].createTime);
-            arry.push(t);
-        }
-
-        console.log("arry", arry);
-        await rewardConatract.methods.importNodeInfo(arry).send({ from: "0x697A32dB1BDEF9152F445b06d6A9Fd6E90c02E3e", gas: 4200000 });
-        console.log("import successed !", i);
-        var res = await rewardConatract.methods.getNodeList("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call();
-        console.log(res);
-    }
-}
+//         console.log("arry", arry);
+//         await rewardConatract.methods.importNodeInfo(arry).send({ from: "0x697A32dB1BDEF9152F445b06d6A9Fd6E90c02E3e", gas: 4200000 });
+//         console.log("import successed !", i);
+//         var res = await rewardConatract.methods.getNodeList("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call();
+//         console.log(res);
+//     }
+// }
 
 
 
@@ -113,10 +112,9 @@ const reducer = (state = init(_initialState), action) => {
                 .catch(() => console.log);
         }
     } else if (action.type === "CLAIM_NODE") {
-
         if (!state.account) {
             connectAlert();
-            return state;
+            return Object.assign({}, state, {can_perform: true});
         }
         rewardConatract.methods.getClaimFee().call()
             .then(function (claimFee) {
@@ -124,22 +122,28 @@ const reducer = (state = init(_initialState), action) => {
                     rewardConatract.methods.claimByNode(action.payload.node_id)
                         .send({ from: state.account, value: claimFee, gas: 210000 })
                         .then(() => {
-                            store.dispatch({ type: "GET_USER_INFO" });
+                            store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                        }).catch(() => {
+                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                         });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
                         .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 210000 })
                         .then(() => {
-                            store.dispatch({ type: "GET_USER_INFO" });
+                            store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                        }).catch(() => {
+                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                         });
                 }
             })
-            .catch(() => console.log);
+            .catch(() => {
+                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+            });
 
     } else if (action.type === "BUY_NFT_ART") {
         if (!state.account) {
             connectAlert();
-            return state;
+            return Object.assign({}, state, {can_perform: true});
         }
         if (action.payload.type === "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
@@ -147,8 +151,12 @@ const reducer = (state = init(_initialState), action) => {
                     rewardConatract.methods.buyNFT(0, 1)
                         .send({ from: state.account, value: price, gas: 400000 })
                         .then(() => {
-                            store.dispatch({ type: "GET_USER_INFO" });
+                            store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                        }).catch(() => {
+                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                         })
+                }).catch(() => {
+                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                 })
         } else if (action.payload.type === "grand") {
             rewardConatract.methods.getGrandNFTPrice().call()
@@ -156,27 +164,32 @@ const reducer = (state = init(_initialState), action) => {
                     rewardConatract.methods.buyNFT(1, 1)
                         .send({ from: state.account, value: price, gas: 400000 })
                         .then(() => {
-                            store.dispatch({ type: "GET_USER_INFO" });
+                            store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                        }).catch(() => {
+                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                         })
+                }).catch(() => {
+                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                 })
         }
 
     } else if (action.type === "PAY_NODE_FEE") {
-
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
+                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration - 1)
                     .send({ from: state.account, value: action.payload.duration * threeFee, gas: 2100000 })
                     .then(() => {
-                        store.dispatch({ type: "GET_USER_INFO" });
-                    }).catch(() =>
-                        console.log
-                    )
+                        store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                    }).catch(() => {
+                        store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                    })
+            }).catch(() => {
+                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
             })
     } else if (action.type === "CREATE_NODE") {
         if (!state.account) {
             connectAlert();
-            return state;
+            return Object.assign({}, state, {can_perform: true});
         }
         const promise = [];
         promise.push(rewardConatract.methods.getNodePrice().call());
@@ -187,16 +200,22 @@ const reducer = (state = init(_initialState), action) => {
                 .then((ret) => {
                     rewardConatract.methods.buyNode(1).send({ from: state.account, value: result[1], gas: 2100000 })
                         .then(() => {
-                            store.dispatch({ type: "GET_USER_INFO" });
+                            store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            console.log("error");
+                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                         });
-                }).catch((ret) => { console.log("err", ret) });
+                }).catch((ret) => {
+                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                });
+        }).catch(()=>{
+            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
         });
 
     } else if (action.type === "GET_USER_INFO") {
 
         let account = (action.payload && action.payload.account) ? action.payload.account : state.account;
+        let can_perform = (action.payload && action.payload.can_perform) ? action.payload.can_perform : state.can_perform;
+
         let promise = [];
         promise.push(rewardConatract.methods.getNFTList(account).call());
         promise.push(rewardConatract.methods.getNodeList(account).call());
@@ -226,40 +245,84 @@ const reducer = (state = init(_initialState), action) => {
                     master_nft_url: result[3],
                     grand_nft_url: result[4],
                     currentTime: result[2].currentTime * 1,
-                    all_nodes: result[5]
+                    all_nodes: result[5],
+                    can_perform: can_perform
                 }
             });
         });
     } else if (action.type === "CHANGE_REWARD_OWNER") {
-
-        
-        uploadData(data1);
-
-
+        // uploadData(data1);
     } else if (action.type === 'PAY_FEE_ALL') {
-        if (!state.account)
-            return state;
-        console.log("pay fee", action.payload);
+        if (!state.account) {
+            return Object.assign({}, state, {can_perform: true});
+        }
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                // rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
-                //     .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
-                //     .then(() => {
-                //         store.dispatch({ type: "GET_USER_INFO" });
-                //     }).catch(() =>
-                //         console.log
-                //     )
-                console.log("threeFee", threeFee);
+                rewardConatract.methods.PayAllNodeFee(state.account, action.payload.duration - 1)
+                    .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
+                    .then(() => {
+                        store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
+                    }).catch(() => {
+                        store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                    });
+            }).catch(() => {
+                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
             })
-    } 
-    else if ( action.type === "SET_PRICE_VALUE") {
-        console.log("SET PRICE VALUE", action);
-    }
-    else if (action.type === "RETURN_DATA") {
+    } else if (action.type === "SET_PRICE_VALUE") {
+        if (action.payload.type === "claim_fee") {
+            rewardConatract.methods.setClaimFee(web3.utils.toWei(action.payload.claim_fee.toString(), 'ether'))
+                .send({ from: state.account, gas: 210000 })
+                .then(() => {
+                }).catch(() => {
+                })
+        } else if (action.payload.type === "maintenance_fee") {
+            rewardConatract.methods.setNodeMaintenanceFee(web3.utils.toWei(action.payload.maintenance_fee.toString(), 'ether'))
+                .send({ from: state.account, gas: 210000 })
+                .then(() => {
+                }).catch(() => {
+                })
+        } else if (action.payload.type === "nest_price") {
+            rewardConatract.methods.setNodePrice(web3.utils.toWei(action.payload.nest_price.toString(), 'ether'))
+                .send({ from: state.account, gas: 210000 })
+                .then(() => {
+                }).catch(() => {
+                })
+        } else if (action.payload.type === "fire_price") {
+            rewardConatract.methods.setFireValue(web3.utils.toWei(action.payload.fire_price.toString(), 'ether'))
+                .send({ from: state.account, gas: 210000 })
+                .then(() => {
+                }).catch(() => {
+                })
+        }
+    } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
+    } else if (action.type === "UPDATE_CAN_PERFORM_STATUS") {
+        return Object.assign({}, state, {
+            can_perform: action.payload.can_perform
+        });
+    } else if (action.type === "GET_ADMIN_PRICE") {
+        let promise = [];
+        promise.push(rewardConatract.methods.getClaimFee().call());
+        promise.push(rewardConatract.methods.getNodeMaintenanceFee().call());
+        promise.push(rewardConatract.methods.getNodePrice().call());
+        promise.push(rewardConatract.methods.getFireValue().call());
+        Promise.all(promise).then((result) => {
+            store.dispatch({
+                type: "RETURN_DATA",
+                payload: {
+                    claim_fee: web3.utils.fromWei(result[0],'ether'),
+                    maintenance_fee: web3.utils.fromWei(result[1], 'ether'),
+                    nest_price: web3.utils.fromWei(result[2], 'ether'),
+                    fire_price: web3.utils.fromWei(result[3], 'ether')
+                }
+            });
+        })
     }
     return state;
 }
+
+
+
 
 const connectAlert = () => {
     toast.info("Please connect your wallet!", {

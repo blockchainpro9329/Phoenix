@@ -11,7 +11,6 @@ class Content extends React.Component {
 
     constructor(props) {
         super(props);
-        this.onSelectFile = this.onSelectFile.bind(this);
         this.state = {
             master_nft_url: props.master_nft_url,
             grand_nft_url: props.grand_nft_url,
@@ -20,19 +19,24 @@ class Content extends React.Component {
             fire_price: 0,
             nest_price: 0
         }
-
+        
+        this.onSelectFile = this.onSelectFile.bind(this);
         this.setContractStatus = this.setContractStatus.bind(this);
         this.changeOwnerShip = this.changeOwnerShip.bind(this);
-
-        this.setFirePrice = this.setFirePrice.bind(this);
-        this.setMaintenanceFee = this.setMaintenanceFee.bind(this);
-        this.setClaimFee = this.setClaimFee.bind(this);
-
         this.onChangeValue = this.onChangeValue.bind(this);
+
+        this.props.dispatch({type:"GET_ADMIN_PRICE"});
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
-        return { master_nft_url: nextProps.master_nft_url, grand_nft_url: nextProps.grand_nft_url };
+        console.log("nextProps", nextProps);
+        return { master_nft_url: nextProps.master_nft_url, 
+            grand_nft_url: nextProps.grand_nft_url, 
+            fire_price: nextProps.fire_price,
+            maintenance_fee: nextProps.maintenance_fee,
+            claim_fee: nextProps.claim_fee,
+            nest_price: nextProps.nest_price
+        };
     }
 
 
@@ -81,21 +85,11 @@ class Content extends React.Component {
         })
     }
 
-    setClaimFee() {
-        console.log("claim fee", this.state.claim_fee);
-    }
-    setMaintenanceFee() {
-
-    }
-    setFirePrice() {
-
-    }
-    setNestPrice
-
 
     onChangeValue(event, type) {
 
-        var value = Number(event.target.value);
+        var value = event.target.value;
+        console.log("value", value);
         if (type === "claim_fee") {
             this.setState({ claim_fee: value });
         } else if (type == "maintenance_fee") {
@@ -119,8 +113,6 @@ class Content extends React.Component {
             this.props.dispatch({ type: "SET_PRICE_VALUE", payload: { type: type, value: this.state.fire_price } });
         }
     }
-
-
 
     render() {
         return (
@@ -163,7 +155,7 @@ class Content extends React.Component {
                     <div className="admin-input-item">
                         <label className="admin-input-label">Claim Fee (AVAX): </label>
                         <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" value={this.state.claim_fee}
+                            <input type="text" className="form-contral admin-input-content" value={this.state.claim_fee}
                                 onChange={(event) => { this.onChangeValue(event, "claim_fee") }} />
                             <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("claim_fee") }}>SET</button>
                         </div>
@@ -171,7 +163,7 @@ class Content extends React.Component {
                     <div className="admin-input-item">
                         <label className="admin-input-label">Maintenance Fee (AVAX): </label>
                         <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" value={this.state.maintenance_fee}
+                            <input type="text" className="form-contral admin-input-content" value={this.state.maintenance_fee}
                                 onChange={(event) => { this.onChangeValue(event, "maintenance_fee") }} />
                             <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("maintenance_fee") }}>SET</button>
                         </div>
@@ -179,7 +171,7 @@ class Content extends React.Component {
                     <div className="admin-input-item">
                         <label className="admin-input-label">FIRE Price (AVAX): </label>
                         <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" value={this.state.fire_price}
+                            <input type="text" className="form-contral admin-input-content" value={this.state.fire_price}
                                 onChange={(event) => { this.onChangeValue(event, "fire_price") }}
                             />
                             <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("fire_price") }}>SET</button>
@@ -188,7 +180,7 @@ class Content extends React.Component {
                     <div className="admin-input-item">
                         <label className="admin-input-label">FIRE PER NESTS: </label>
                         <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" value={this.state.nest_price}
+                            <input type="text" className="form-contral admin-input-content" value={this.state.nest_price}
                                 onChange={(event) => { this.onChangeValue(event, "nest_price") }}
                             />
                             <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("nest_price") }}>SET</button>
@@ -204,14 +196,19 @@ class Content extends React.Component {
 
 
 const mapStateToProps = state => {
-    console.log(state);
+    // return { master_nft_url: state.master_nft_url, 
+    //     grand_nft_url: state.grand_nft_url, 
+    //     fire_price: state.fire_price,
+    //     maintenance_fee: state.maintenance_fee,
+    //     claim_fee: state.claim_fee,
+    //     nest_price: state.nest_price
+    // };
     return state;
 }
 
 const mapDispatchToProps = dispatch => {
     return { dispatch }
 }
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

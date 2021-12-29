@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { toast } from 'react-toastify';
 
 
 class RingMsg extends React.Component {
@@ -18,6 +19,19 @@ class RingMsg extends React.Component {
     }
 
     createNode() {
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
         this.props.dispatch({
             type: "CREATE_NODE"
         });
@@ -102,11 +116,13 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
+    // console.log("state", state);
     return {
         account: state.account,
         my_nodes: state.my_nodes,
         cur_all_reward: state.cur_all_reward,
-        all_nodes: state.all_nodes
+        all_nodes: state.all_nodes,
+        can_perform: state.can_perform
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);

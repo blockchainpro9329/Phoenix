@@ -3,6 +3,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 Modal.setAppElement("#root");
@@ -44,6 +45,20 @@ class Create extends React.Component {
     }
 
     createNode() {
+
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
         this.props.dispatch({
             type: "CREATE_NODE"
         });
@@ -157,6 +172,9 @@ class Create extends React.Component {
 const mapDispatchToProps = dispatch => {
     return { dispatch };
 }
+const mapStateToProps = state => {
+    return { can_perform: state.can_perform };
+}
 
 
-export default connect(mapDispatchToProps)(Create);
+export default connect(mapStateToProps, mapDispatchToProps)(Create);

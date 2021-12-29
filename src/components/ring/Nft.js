@@ -3,6 +3,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { connect } from 'react-redux';
+import {toast} from 'react-toastify';
 
 
 
@@ -17,7 +18,20 @@ class Nft extends React.Component {
     }
 
     buyNft(type) {
-        console.log("buy nft art");
+
+        if (!this.props.can_perform) {
+            toast.warning("Please wait. another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perfrom: false } });
         this.props.dispatch({
             type: "BUY_NFT_ART",
             payload: {
@@ -80,7 +94,8 @@ class Nft extends React.Component {
 const mapStateToProps = state => {
     return {
         grand_nft_url: state.grand_nft_url,
-        master_nft_url: state.master_nft_url
+        master_nft_url: state.master_nft_url,
+        can_perform: state.can_perform
     };
 }
 
