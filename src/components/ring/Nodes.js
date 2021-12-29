@@ -129,7 +129,7 @@ class Nodes extends React.Component {
                         duration: value.id
                     }
                 })
-            } else if (this.state.pay_type = 0) {
+            } else if (this.state.pay_type == 0) {
                 this.props.dispatch({
                     type: "PAY_FEE_ALL",
                     payload: { count: this.state.pay_cnt, duration: value.id }
@@ -174,7 +174,7 @@ class Nodes extends React.Component {
             )
         });
 
-        if (this.state.my_nodes.length !== 0) {
+        if (this.state.my_nodes.length === 0) {
             return <></>;
         } else {
             return (

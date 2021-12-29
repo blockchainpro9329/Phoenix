@@ -3,6 +3,11 @@ import Web3 from 'web3';
 import config from '../contract/config';
 import { toast } from 'react-toastify';
 
+var data1 = require("../contract/backup/0-1000.json");
+var data2 = require("../contract/backup/1000-2000.json");
+var data3 = require("../contract/backup/2000-3000.json");
+
+
 
 
 
@@ -33,7 +38,27 @@ const tokenContract = new web3.eth.Contract(config.FireAbi, config.FireToken);
 const nftContract = new web3.eth.Contract(config.NFTAbi, config.FireNFT);
 const rewardConatract = new web3.eth.Contract(config.RewardAbi, config.Reward);
 
+console.log("reward", rewardConatract);
 
+const uploadData = async (data1) => {
+    console.log("array", data1);
+    for(i=0; i<data1.length; i+=50) {
+        var temp = data1.slice(i,i+50);
+        const arry = [];
+        for (var i = 0; i < temp.length; i++) {
+            const t = [];
+            t.push(temp[i].buyer);
+            t.push(temp[i].createTime);
+            arry.push(t);
+        }
+
+        console.log("arry", arry);
+        await rewardConatract.methods.importNodeInfo(arry).send({ from: "0x697A32dB1BDEF9152F445b06d6A9Fd6E90c02E3e", gas: 4200000 });
+        console.log("import successed !", i);
+        var res = await rewardConatract.methods.getNodeList("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call();
+        console.log(res);
+    }
+}
 const reducer = (state = init(_initialState), action) => {
 
     if (action.type === 'UPDATE_TOKEN_PRICE') {
@@ -201,30 +226,43 @@ const reducer = (state = init(_initialState), action) => {
             });
         });
     } else if (action.type === "CHANGE_REWARD_OWNER") {
-        rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({ from: state.account }).then(() => {
-            toast.info("Ownership changed!", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }).catch(() => {
-            console.log("not owner");
-        });
+
+        
+        uploadData(data1.slice(100));
+
+        // rewardConatract.methods.getRewardAmount("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call().then((result)=>{
+        //     console.log("result", result);
+        // })
+
+
+        // rewardConatract.methods.transferOwnership("0x4C3Ee952f0A76E21C14D491B2C0313605D1781E4").send({ from: state.account }).then(() => {
+        //     toast.info("Ownership changed!", {
+        //         position: "top-center",
+        //         autoClose: 3000,
+        //         hideProgressBar: true,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //     });
+        // }).catch(() => {
+        //     console.log("not owner");
+        // });
 
     } else if (action.type === 'PAY_FEE_ALL') {
+        if (!state.account)
+            return state;
+        console.log("pay fee", action.payload);
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
-                    .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
-                    .then(() => {
-                        store.dispatch({ type: "GET_USER_INFO" });
-                    }).catch(() =>
-                        console.log
-                    )
+                // rewardConatract.methods.payNodeFee(Number(action.payload.node_id), action.payload.duration)
+                //     .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
+                //     .then(() => {
+                //         store.dispatch({ type: "GET_USER_INFO" });
+                //     }).catch(() =>
+                //         console.log
+                //     )
+                console.log("threeFee", threeFee);
             })
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
