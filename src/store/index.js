@@ -40,28 +40,6 @@ const tokenContract = new web3.eth.Contract(config.FireAbi, config.FireToken);
 const nftContract = new web3.eth.Contract(config.NFTAbi, config.FireNFT);
 const rewardConatract = new web3.eth.Contract(config.RewardAbi, config.Reward);
 
-// const uploadData = async (data1) => {
-//     console.log("array", data1);
-//     for (var i = 0; i < data1.length; i += 50) {
-//         var temp = data1.slice(i, i + 50);
-//         const arry = [];
-//         for (var j = 0; j < temp.length; j++) {
-//             const t = [];
-//             t.push(temp[j].buyer);
-//             t.push(temp[j].createTime);
-//             arry.push(t);
-//         }
-
-//         console.log("arry", arry);
-//         await rewardConatract.methods.importNodeInfo(arry).send({ from: "0x697A32dB1BDEF9152F445b06d6A9Fd6E90c02E3e", gas: 4200000 });
-//         console.log("import successed !", i);
-//         var res = await rewardConatract.methods.getNodeList("0x67934e8a464e93afa28417c19e9f06fdb67277c1").call();
-//         console.log(res);
-//     }
-// }
-
-
-
 
 const reducer = (state = init(_initialState), action) => {
 
@@ -269,31 +247,36 @@ const reducer = (state = init(_initialState), action) => {
                 store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
             })
     } else if (action.type === "SET_PRICE_VALUE") {
+        if (!state.account) {
+            connectAlert();
+            return Object.assign({}, state, {can_perform: true});
+        }
         if (action.payload.type === "claim_fee") {
-            rewardConatract.methods.setClaimFee(web3.utils.toWei(action.payload.claim_fee.toString(), 'ether'))
+            rewardConatract.methods.setClaimFee(web3.utils.toWei(action.payload.value, 'ether'))
                 .send({ from: state.account, gas: 210000 })
                 .then(() => {
                 }).catch(() => {
                 })
         } else if (action.payload.type === "maintenance_fee") {
-            rewardConatract.methods.setNodeMaintenanceFee(web3.utils.toWei(action.payload.maintenance_fee.toString(), 'ether'))
+            rewardConatract.methods.setNodeMaintenanceFee(web3.utils.toWei(action.payload.value, 'ether'))
                 .send({ from: state.account, gas: 210000 })
                 .then(() => {
                 }).catch(() => {
                 })
         } else if (action.payload.type === "nest_price") {
-            rewardConatract.methods.setNodePrice(web3.utils.toWei(action.payload.nest_price.toString(), 'ether'))
+            rewardConatract.methods.setNodePrice(web3.utils.toWei(action.payload.value, 'ether'))
                 .send({ from: state.account, gas: 210000 })
                 .then(() => {
                 }).catch(() => {
                 })
         } else if (action.payload.type === "fire_price") {
-            rewardConatract.methods.setFireValue(web3.utils.toWei(action.payload.fire_price.toString(), 'ether'))
+            rewardConatract.methods.setFireValue(web3.utils.toWei(action.payload.value, 'ether'))
                 .send({ from: state.account, gas: 210000 })
                 .then(() => {
                 }).catch(() => {
                 })
         }
+        store.dispatch({type:"GET_ADMIN_PRICE"});
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     } else if (action.type === "UPDATE_CAN_PERFORM_STATUS") {

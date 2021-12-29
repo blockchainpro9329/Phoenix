@@ -116,7 +116,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-    // console.log("state", state);
     return {
         account: state.account,
         my_nodes: state.my_nodes,
