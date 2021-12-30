@@ -3,7 +3,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import PayDlg from '../common/PayDlg';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
@@ -118,13 +118,13 @@ class Nodes extends React.Component {
             return;
         }
         this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
-        let cnt = 0;
-        for (var index in this.state.my_nodes) {
-            if (this.state.my_nodes[index].payable == true) {
-                cnt = cnt + 1;
-            }
-        }
-        this.setState({ open: true, pay_type: 0, pay_cnt: cnt });
+        // let cnt = 0;
+        // for (var index in this.state.my_nodes) {
+        //     if (this.state.my_nodes[index].payable == true) {
+        //         cnt = cnt + 1;
+        //     }
+        // }
+        this.setState({ open: true, pay_type: 0, pay_cnt: this.state.my_nodes.length });
     }
 
     claimNode(id) {
@@ -201,23 +201,23 @@ class Nodes extends React.Component {
         const List = this.state.my_nodes.map((item, index) => {
             return (
                 <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
-                    <div className='padder-10' style={{ flex: "2" }}>
+                    <div className='padder-10' style={{ flex: "1" }}>
                         {
                             item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
                         {
                             item.grandNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
                         }
-                        NEST:
-                        {index + 1}
                     </div>
+                    <div className='text-center' style={{ flex: "1" }}>NEST {index + 1}</div>
                     <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
+                        <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button>
+                        {/* {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
                             <button className='claim-button btn c-green' disabled>Pay Fee</button>
-                        }
+                        } */}
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
                         <div className="claim-button text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
@@ -258,7 +258,8 @@ class Nodes extends React.Component {
                     </div>
                     <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
                         <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
-                            <div className='c-4cce13 padder-10' style={{ flex: "2" }}>NAME</div>
+                            <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NFT</div>
+                            <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NAME</div>
                             <div className='c-4cce13 text-center' style={{ flex: "3" }}>REWARD START TIME</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
                             <div className='c-4cce13 text-center' style={{ flex: "2" }}>REWARDS</div>
@@ -266,7 +267,6 @@ class Nodes extends React.Component {
                             <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
                         </div>
                         <div className='mynode-list-content'>
-                            {/* <CustomScrollbars autoHide autoHideTimeout={500} autoHideDuration={200}> */}
                             <CustomScrollbars>
                                 {List}
                             </CustomScrollbars>

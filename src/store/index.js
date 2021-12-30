@@ -89,7 +89,7 @@ const reducer = (state = init(_initialState), action) => {
             .then(function (claimFee) {
                 if (action.payload.node_id !== -1) {
                     rewardConatract.methods.claimByNode(action.payload.node_id)
-                        .send({ from: state.account, value: claimFee, gas: 210000 })
+                        .send({ from: state.account, value: claimFee, gas: 400000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
@@ -97,7 +97,7 @@ const reducer = (state = init(_initialState), action) => {
                         });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
-                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 210000 })
+                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 400000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
@@ -200,7 +200,7 @@ const reducer = (state = init(_initialState), action) => {
                     lastTime: result[1][index].lastTime,
                     grandNFT: result[2].curGrandNFTEnable[index],
                     masterNFT: result[2].curMasterNFTEnable[index],
-                    reward: Number(web3.utils.fromWei(result[2].nodeRewards[index])),
+                    reward: Number(web3.utils.fromWei(result[2].nodeRewards[index])).toFixed(9),
 
                 });
             }
@@ -294,9 +294,6 @@ const reducer = (state = init(_initialState), action) => {
     }
     return state;
 }
-
-
-
 
 const connectAlert = () => {
     toast.info("Please connect your wallet!", {
