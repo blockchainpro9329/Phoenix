@@ -12,15 +12,27 @@ class RingMsg extends React.Component {
     }
 
     async handleConnect() {
-        await window.ethereum.enable();
-        this.props.dispatch({
-            type: "CONNECT_WALLET"
-        });
+        if (window.ethereum) {
+            await window.ethereum.enable();
+            this.props.dispatch({
+                type: "CONNECT_WALLET"
+            });
+        } else {
+            toast.info("Please install metamask on your device.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
     }
 
     createNode() {
         if (!this.props.can_perform) {
-            toast.warning("Please wait. Another transaction is running.", {
+            toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,

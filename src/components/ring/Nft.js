@@ -18,7 +18,7 @@ class Nft extends React.Component {
 
     buyNft(type) {
         if (!this.props.can_perform) {
-            toast.warning("Please wait. Another transaction is running.", {
+            toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -50,13 +50,14 @@ class Nft extends React.Component {
             enableMaster: false,
             enableGrand: false
         }   
-        if (count > 10) {
+        if (count >= 10) {
             ret.enableMaster = true;
         }
 
-        if (count == 0 && props.my_nodes.length == 100) {
+        if (count == 0 && props.my_nodes.length == 100 && !props.my_nodes[0].grandNFT) {
             ret.enableGrand = true;
         }
+        
         return ret;
     }
 

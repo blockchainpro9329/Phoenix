@@ -10,8 +10,10 @@ var config = {
     FireToken : "0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5",
     FireAbi: fireAbi,
     FireNFT : "0x1F066543De7E2c2B68be02c490Df600aeD59f986",
+    // FireNFT : "0x9A83DD291c2a9BDD678b6c8526d89fA13b2B646d",
     NFTAbi:  nftAbi,
-    Reward : "0x7EB0d0D17eD138344F56127cb592E6dEeF863dCe",
+    // Reward : "0x07A78Ec2Dcf6d65dcF5DEcBbcfb4fb3566fFa142",
+    Reward : "0xA6AdaA7A538bb23B2e982Cc51C21505F6562e009",
     RewardAbi: rewardAbi ,
     chainId: 0xa86a
 }

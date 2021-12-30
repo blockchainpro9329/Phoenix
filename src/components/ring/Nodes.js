@@ -106,7 +106,7 @@ class Nodes extends React.Component {
 
     PayAllNode() {
         if (!this.props.can_perform) {
-            toast.warning("Please wait. Another transaction is running.", {
+            toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -118,18 +118,18 @@ class Nodes extends React.Component {
             return;
         }
         this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
-        // let cnt = 0;
-        // for (var index in this.state.my_nodes) {
-        //     if (this.state.my_nodes[index].payable == true) {
-        //         cnt = cnt + 1;
-        //     }
-        // }
-        this.setState({ open: true, pay_type: 0, pay_cnt: this.state.my_nodes.length });
+        let cnt = 0;
+        for (var index in this.state.my_nodes) {
+            if (this.state.my_nodes[index].payable == true) {
+                cnt = cnt + 1;
+            }
+        }
+        this.setState({ open: true, pay_type: 0, pay_cnt: cnt });
     }
 
     claimNode(id) {
         if (!this.props.can_perform) {
-            toast.warning("Please wait. Another transaction is running.", {
+            toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -181,8 +181,20 @@ class Nodes extends React.Component {
     };
 
     payNodeFee(id) {
+        // if (!this.props.my_nodes[id].payable) {
+        //     toast.info("You have already purchased.", {
+        //         position: "top-center",
+        //         autoClose: 3000,
+        //         hideProgressBar: true,
+        //         closeOnClick: true,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: true
+        //     });
+        //     return;
+        // }
         if (!this.props.can_perform) {
-            toast.warning("Please wait. Another transaction is running.", {
+            toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: true,
@@ -199,8 +211,9 @@ class Nodes extends React.Component {
 
     render() {
         const List = this.state.my_nodes.map((item, index) => {
+        // const List = ["123", "222","543"].map((item, index) => {
             return (
-                <div key={index} className='fs-18 flex align-center' style={{ height: "50px" }}>
+                <div key={index} className='item-font flex align-center' style={{ height: "50px" }}>
                     <div className='padder-10' style={{ flex: "1" }}>
                         {
                             item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
@@ -214,13 +227,13 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button>
+                        <div className="claim-button list c-green" style={{ backgroundColor: "transparent !important" }} onClick={this.payNodeFee.bind(this, index)}>FEE</div>
                         {/* {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
                             <button className='claim-button btn c-green' disabled>Pay Fee</button>
                         } */}
                     </div>
                     <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
+                        <div className="claim-button list text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
                     </div>
                 </div>
             )
@@ -251,7 +264,7 @@ class Nodes extends React.Component {
                                 : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
                             </div>
                         </div>
-                        <div className='flex align-center'>
+                        <div className='flex align-center button-set'>
                             <div className='claim-button btn-outline c-green claim-all' onClick={this.PayAllNode.bind(this, -1)}> Pay ALL FEE</div>
                             <div className='claim-button c-green claim-all' onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
                         </div>

@@ -97,7 +97,7 @@ const reducer = (state = init(_initialState), action) => {
                         });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
-                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 400000 })
+                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 1200000})
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
@@ -223,18 +223,19 @@ const reducer = (state = init(_initialState), action) => {
         // uploadData(data1);
     } else if (action.type === 'PAY_FEE_ALL') {
         if (!state.account) {
+            connectAlert();
             return Object.assign({}, state, {can_perform: true});
         }
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
-                rewardConatract.methods.PayAllNodeFee(state.account, action.payload.duration - 1)
-                    .send({ from: state.account, value: action.payload.duration * threeFee * action.payload.count, gas: 2100000 })
+                rewardConatract.methods.payAllNodeFee(action.payload.duration - 1)
+                    .send({ from: state.account, value: action.payload.duration * threeFee * 100, gas: 2100000 })
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                     }).catch(() => {
                         store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
                     });
-            }).catch(() => {
+            }).catch((err) => {
                 store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
             })
     } else if (action.type === "SET_PRICE_VALUE") {
@@ -267,7 +268,23 @@ const reducer = (state = init(_initialState), action) => {
                 }).catch(() => {
                 })
         }
-        store.dispatch({type:"GET_ADMIN_PRICE"});
+        let promise = [];
+        promise.push(rewardConatract.methods.getClaimFee().call());
+        promise.push(rewardConatract.methods.getNodeMaintenanceFee().call());
+        promise.push(rewardConatract.methods.getNodePrice().call());
+        promise.push(rewardConatract.methods.getFireValue().call());
+        Promise.all(promise).then((result) => {
+            store.dispatch({
+                type: "RETURN_DATA",
+                payload: {
+                    claim_fee: web3.utils.fromWei(result[0],'ether'),
+                    maintenance_fee: web3.utils.fromWei(result[1], 'ether'),
+                    nest_price: web3.utils.fromWei(result[2], 'ether'),
+                    fire_price: web3.utils.fromWei(result[3], 'ether')
+                }
+            });
+        })
+        // store.dispatch({type:"GET_ADMIN_PRICE"});
     } else if (action.type === "RETURN_DATA") {
         return Object.assign({}, state, action.payload);
     } else if (action.type === "UPDATE_CAN_PERFORM_STATUS") {
