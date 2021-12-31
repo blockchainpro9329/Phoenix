@@ -624,6 +624,12 @@
         font-size: 2.5vw;
     }
 
+    .accordion::after {
+        background-size: 5vw 5vw;
+        height: 5vw;
+        width: 5vw;
+    }
+
     .footer-privacy {
         font-size: 30px;
     }
@@ -694,9 +700,11 @@
         flex-direction: column;
         justify-content: flex-start;
     }
+
     .admin-setting-btn {
         width: 20vw;
     }
+
     .admin-input-content {
         width: 60vw;
         height: 9vw;
@@ -706,7 +714,7 @@
 
     .button-set {
         margin-top: 30px;
-        width:100%;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
     }

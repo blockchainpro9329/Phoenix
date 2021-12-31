@@ -19,6 +19,7 @@ class RingHeader extends React.Component {
     async handleConnect() {
         if (window.ethereum) {
             await window.ethereum.enable();
+            // await window.ethereum.send('eth_requestAccounts');
             this.props.dispatch({
                 type: "CONNECT_WALLET"
             });
