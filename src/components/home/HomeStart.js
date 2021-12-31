@@ -14,8 +14,11 @@ class HomeStart extends React.Component {
   }
   render() {
     return (
-      <section id="section-started">
-        < div id="started-content" className="container mx-auto" >
+      <>
+        <section id="section-started">
+          < div id="started-content" className="container mx-auto" >
+
+            {/* 
           <div className="fs-60 l-h-1-1 c-w card-title">
             NFT
           </div>
@@ -33,7 +36,6 @@ class HomeStart extends React.Component {
               </div>
               <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
               </div>
-              {/* <div className="card-item-collection">Collection 1</div> */}
             </div>
             <div className="card">
               <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
@@ -44,39 +46,97 @@ class HomeStart extends React.Component {
               </div>
               <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
               </div>
-              {/* <div className="card-item-collection">Collection 1</div> */}
             </div>
-          </div>
-          <div className="lifetime-title">
-            Start Earning Lifetime Rewards
-          </div>
-          <div className="m-t-30 try_btn_container">
-            <button className="action-btn btn" onClick={this.goAppPage}>Try it</button>
           </div>
 
-          <div className="flex justify-between m-t-60 card-action-container">
-            <div className="card-action shadow">
-              <div className="badge-title c-yellow">BUY $FIRE</div>
-              <p data-nsfw-filter-status="swf">
-                $FIRE is available on the
-                <span className="text-blue mx-1" data-nsfw-filter-status="swf">Avalanche Network</span>.  You can swap AVAX for $FIRE on Trader Joe.
-              </p>
+ */}
+
+            <div className="lifetime-title">
+              <div className="c-w fs-40">
+                Start Earning Lifetime Rewards
+              </div>
+              <button className="action-btn btn" onClick={this.goAppPage}>Try it</button>
             </div>
-            <div className="card-action shadow">
-              <div className="badge-title c-yellow"> BUILD A PHOENIX-NEST</div>
-              <p data-nsfw-filter-status="swf">
-                A PHOENIX-NEST costs only <span className="text-blue mx-1" data-nsfw-filter-status="swf">10 $FIRE </span> plus a minimal $20 maintenance fee every 90 days.
-              </p>
-            </div>
-            <div className="card-action shadow">
-              <div className="badge-title c-yellow">ENJOY REWARDS</div>
-              <p data-nsfw-filter-status="swf">
-                You can create up to <span className="text-blue mx-1" data-nsfw-filter-status="swf"> 100 PHOENIX </span>Nests per wallet. Claim accrued rewards at your convenience.
-              </p>
+
+            <div className="flex justify-between card-action-container">
+              <div className="card-action shadow">
+                <div className="badge-title c-w fs-20">
+                  <div className="yellow-circle">1</div>
+                  buy fire
+                </div>
+                <p data-nsfw-filter-status="swf" className="c-purple">
+                  $FIRE is available on the
+                  <span className="c-yellow mx-1" data-nsfw-filter-status="swf">Avalanche Network</span>.  You can swap AVAX for $FIRE on Trader Joe.
+                </p>
+              </div>
+              <div className="card-action shadow">
+                <div className="badge-title c-w fs-20">
+                  <div className="yellow-circle">2</div>
+                  build nest
+                </div>
+                <p data-nsfw-filter-status="swf" className="c-purple">
+                  A PHOENIX-NEST costs only <span className="c-yellow mx-1" data-nsfw-filter-status="swf">10 $FIRE </span> plus a minimal $20 maintenance fee every 90 days.
+                </p>
+              </div>
+              <div className="card-action shadow">
+                <div className="badge-title c-w fs-20">
+                  <div className="yellow-circle">3</div>
+                  enjoy rewards
+                </div>
+                <p data-nsfw-filter-status="swf">
+                  You can create up to <span className="c-yellow mx-1" data-nsfw-filter-status="swf"> 100 PHOENIX </span>Nests per wallet. Claim accrued rewards at your convenience.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section id="section-nest">
+          <div className="content mx-auto">
+            <div className="nest-left">
+              <div className="fs-20">
+                <b>Phoenix Finance</b> works for its investors
+                by taking the guesswork out.
+              </div>
+              <div className="m-t-30 fs-20">
+                <b>What is the next big coin?</b><br/>
+                How can you grow your wealth?
+                Let us research and invest for you.
+              </div>
+              <button className="btn action-btn m-t-30">learn more</button>
+            </div>
+            <div className="nest-right">
+
+            </div>
+          </div>
+        </section>
+
+
+
+
+        <section id="chip-vision">
+          <div className="chips-container">
+            <div id="chips-header">Benefits for Phoenix Network Members</div>
+            <div className="chips">
+              <div className=" chip">
+                <img alt="" className="m-r-20" src="/img/icon_check.svg" />
+                Lowered Risk
+              </div>
+              <div className=" chip">
+                <img alt="" className="m-r-20" src="/img/icon_check.svg" />
+                Less Fees
+              </div>
+              <div className=" chip">
+                <img alt="" className="m-r-20" src="/img/icon_check.svg" />
+                Less Hassle
+              </div>
+              <div className=" chip">
+                <img alt="" className="m-r-20" src="/img/icon_check.svg" />
+                Less Research
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
     );
   }
 }

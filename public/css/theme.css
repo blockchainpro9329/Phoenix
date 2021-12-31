@@ -58,6 +58,14 @@
     color:white;
 }
 
+.c-yellow {
+    color: #c89656;
+}
+
+.c-purple {
+    color: #231846;
+}
+
 
 .c-3080be {
     color: #3080be;
@@ -67,9 +75,13 @@
     color: #a4a3a2;
 }
 
-.c-purple {
-    color: #9f7aea;
+.c-brown {
+    color: #955402;
 }
+
+/* .c-purple {
+    color: #9f7aea;
+} */
 
 .c-8fced5 {
     color: #8fced5;
@@ -98,6 +110,9 @@
     background-color: #344d61bb;
 }
 
+.bg-yellow {
+    background-color: #c89656;
+}
 
 
 
@@ -233,6 +248,13 @@
     font-size: 82px;
 }
 
+.fs-100 {
+    font-size: 100px;
+}
+
+.fs-180 {
+    font-size: 180px;
+}
 
 .text-center {
     text-align: center;

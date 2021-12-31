@@ -11,7 +11,6 @@
 
     .header {
         height: 110px;
-        background-color: #09273b;
         display: flex;
         align-items: center;
     }
