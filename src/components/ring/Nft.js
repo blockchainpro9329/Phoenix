@@ -69,18 +69,18 @@ class Nft extends React.Component {
                 <div className="content mx-auto">
                     <div className="custom-container"
                         style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "fit-content", padding: "40px" }}>
-                        <div className="create_title c-w">
+                        <div className="create_title c-w noto-bold">
                             Phoenix NFT Boosts
                         </div>
                         <p id="create-ring" className="c-w fs-24">Buy a Phoenix NFT to boost <span
-                            className="c-yellow">$FIRE</span> token rewards.</p>
+                            className="c-yellow noto-bold">$FIRE</span> token rewards.</p>
                         <div style={{ width: "100%" }}>
                             <div className="cards">
                                 <div>
                                     <div className="card">
                                         <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
                                         <div className="card-item-title">
-                                            <span className="c-w text-center">MASTER NFT</span>
+                                            <span className="c-w text-center noto-bold">MASTER NFT</span>
                                         </div>
                                         <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
                                         </div>
@@ -93,7 +93,7 @@ class Nft extends React.Component {
                                     <div className="card">
                                         <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
                                         <div className="card-item-title">
-                                            <span className="c-w text-center">GRAND NFT</span>
+                                            <span className="c-w text-center noto-bold">GRAND NFT</span>
                                         </div>
                                         <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
                                         </div>

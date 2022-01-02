@@ -94,6 +94,11 @@ a {
     cursor: pointer;
 }
 
+.action-btn:hover {
+    color: white;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.9);
+}
+
 .action-btn.outline {
     background-color: transparent;
     border: 2px solid #e9520f;
@@ -118,6 +123,11 @@ a {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.deaction-btn:hover {
+    color: white;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.9);
 }
 
 .deaction-btn.outline {
@@ -343,8 +353,11 @@ a {
 }
 
 .start-subtitle {
-    width: 524px;
+    width: 360px;
+    font-size: 28px;
 }
+
+
 
 
 
@@ -405,7 +418,7 @@ a {
     height: 900px;
 }
 
-#section-app-nft > .content {
+#section-app-nft>.content {
     width: 1150px;
     height: 1050px;
 }
@@ -464,6 +477,7 @@ a {
 .card-action.admin {
     background-color: #333 !important;
 }
+
 .badge-action {
     width: 50px;
     height: 50px;
@@ -828,9 +842,9 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #202225;
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: 800;
+    /* font-family: Nunito; */
+    /* font-style: normal; */
+    /* font-weight: 800; */
     font-size: 20px;
     line-height: 20px;
     display: flex;
@@ -861,9 +875,9 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #c89656;
-    font-family: Nunito;
-    font-style: normal;
-    font-weight: 800;
+    /* font-family: Nunito; */
+    /* font-style: normal; */
+    /* font-weight: 800; */
     font-size: 20px;
     line-height: 20px;
     display: flex;
@@ -1226,14 +1240,20 @@ footer {
 }
 
 
-/* * {
-    /* color: var(--primary-text); */
-font-family: "Nunito", sans-serif;
-font-style: normal;
-font-weight: normal;
+
+
+* {
+
+    font-family: "HelveticaLTStd", sans-serif;
+    font-style: normal;
+    font-weight: normal;
 }
 
-*/ .Toastify__toast-theme--light {
+
+
+
+
+.Toastify__toast-theme--light {
     background: var(--toastify-color-light);
     color: black !important;
 }

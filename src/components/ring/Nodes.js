@@ -252,7 +252,7 @@ class Nodes extends React.Component {
                     <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
-                    <div className="pay-button list" style={{ flex: '2'}} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
+                    <div className="pay-button list" style={{ flex: '2' }} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
                     <div className="claim-button list" style={{ flex: '2' }} onClick={this.claimNode.bind(this, index)}> claim </div>
                 </div>
             )
@@ -271,24 +271,28 @@ class Nodes extends React.Component {
                     <div className='content mx-auto'>
                         <div className='nest-header'>
                             <span className='fs-40 c-w'>
-                                Create a Phoenix Nest with 10 FIRE Tokens
+                                Create a Phoenix Nest with <span className='noto-bold'>10</span> FIRE Tokens
                             </span>
                             <button className='btn action-btn' onClick={this.createNode}>Create your nest</button>
                         </div>
                         <div className='tab-header flex'>
-                            <div className={this.state.selected_tab === 0 ? 'fs-40 cursor-pointer tab-item active' : "fs-40 cursor-pointer tab-item"} onClick={() => { this.selectTab(0) }}>My Nests</div>
-                            <div className={this.state.selected_tab === 1 ? 'fs-40 cursor-pointer tab-item active' : "fs-40 cursor-pointer tab-item"} onClick={() => { this.selectTab(1) }}>NFT Boosts</div>
+                            <div className={this.state.selected_tab === 0 ?
+                                'fs-40 cursor-pointer tab-item noto-bold active' : "fs-40 noto-bold cursor-pointer tab-item"}
+                                onClick={() => { this.selectTab(0) }}>My Nests</div>
+                            <div className={this.state.selected_tab === 1 ?
+                                'fs-40 cursor-pointer tab-item noto-bold active' : "fs-40 noto-bold cursor-pointer tab-item"}
+                                onClick={() => { this.selectTab(1) }}>NFT Boosts</div>
                         </div>
                         <div className='tab-content'>
                             {this.state.selected_tab === 0 ?
                                 <>
-                                    <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
+                                    <div className='h-60 flex align-center node-title-header' style={{ width: "100%" }}>
                                         <div className='padder-10' style={{ flex: "1" }}>Name</div>
                                         <div className='text-center' style={{ flex: "3" }}>Created</div>
                                         <div className='text-center' style={{ flex: "2" }}>My Rewards</div>
                                         <div className='text-center' style={{ flex: "2" }}>Fees</div>
-                                        <div className="pay-button list" style={{ flex: '2'}} onClick={this.PayAllNode.bind(this, -1)}>Pay all fees</div>
-                                        <div className="claim-button list" style={{ flex: '2' }}  onClick={this.claimNode.bind(this, -1)}> claim all</div>
+                                        <div className="pay-button" style={{ flex: "2" }} onClick={this.PayAllNode.bind(this, -1)}>Pay all fees</div>
+                                        <div className="claim-button" style={{ flex: "2" }} onClick={this.claimNode.bind(this, -1)}> claim all</div>
                                     </div>
                                     <div className='mynode-list-content'>
                                         <CustomScrollbars>

@@ -276,16 +276,20 @@
 }
 
 
-.noto-regular {
-    font-weight: 200;
-}
-
-.noto-medium {
+.noto-thin {
     font-weight: 400;
 }
 
-.noto-bold {
+.noto-regular {
     font-weight: 600;
+}
+
+.noto-medium {
+    font-weight: 800;
+}
+
+.noto-bold {
+    font-weight: 900;
 }
 
 

@@ -80,12 +80,12 @@ class RingMsg extends React.Component {
                             <div className="flex justify-around m-b-20">
                                 <div className="msg-content-item">
                                     <div className="fs-22 c-w">My nests</div>
-                                    <div className="fs-22 c-w"><span className="c-yellow">{this.props.my_nodes.length}</span>/100</div>
+                                    <div className="fs-22 c-w"><span className="c-yellow noto-bold">{this.props.my_nodes.length}</span> / 100</div>
                                     <div className="fs-18 c-gray">All nests: 43252</div>
                                 </div>
                                 <div className="msg-content-item">
                                     <div className="fs-22 c-w">Daily rewards</div>
-                                    <div className="fs-22 c-w"><span className="c-yellow">0.225</span>FIRE</div>
+                                    <div className="fs-22 c-w"><span className="c-yellow noto-bold">0.225</span> FIRE</div>
                                     <div className="fs-18 c-w">per nest</div>
                                 </div>
                             </div>
@@ -102,11 +102,11 @@ class RingMsg extends React.Component {
                             <div className="flex justify-around m-b-20">
                                 <div className="msg-content-item" style={{ justifyContent: "center" }}>
                                     <div className="fs-22 c-w">Treasury Balance</div>
-                                    <div className="fs-22 c-yellow">$6,004,500</div>
+                                    <div className="fs-22 c-yellow noto-bold">$6,004,500</div>
                                 </div>
                                 <div className="msg-content-item" style={{ justifyContent: "center" }}>
                                     <div className="fs-22 c-w">Total Investments</div>
-                                    <div className="fs-22 c-yellow">$1,205,430</div>
+                                    <div className="fs-22 c-yellow noto-bold">$1,205,430</div>
                                 </div>
                             </div>
                         </div>

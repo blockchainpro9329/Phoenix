@@ -6,7 +6,7 @@ const HomeHero = () => {
 
           <div className="hero-left">
             <div className="title">
-              <div className="fs-60 c-w">
+              <div className="fs-60 c-w noto-bold">
                 Phoenix Financial
               </div>
               <div className="fs-40 c-w">
@@ -15,9 +15,17 @@ const HomeHero = () => {
               </div>
             </div>
             <div className="flex">
-              <button className="btn deaction-btn m-r-20 fs-30 btn-middle" onClick={() => { window.location.href = "/app" }}
-              >create nest</button>
-              <button className="btn action-btn fs-30 btn-middle" onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}>buy fire</button>
+              <button className="btn deaction-btn m-r-20 btn-middle" onClick={() => { window.location.href = "/app" }}>
+                <div className="fs-30">
+                  Create nest
+                </div>
+
+              </button>
+              <button className="btn action-btn btn-middle" onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}>
+                <div className="fs-30">
+                  Buy fire
+                </div>
+              </button>
             </div>
           </div>
           <div className="hero-right">
@@ -30,26 +38,26 @@ const HomeHero = () => {
       <div className="statistics" >
         <div className="content">
           <span className="flex flex-col align-center">
-            <div className="fs-30 c-w noto-regular">
+            <div className="fs-30 c-w noto-thin">
               Treasury Balance
             </div>
-            <div className="c-w fs-30">
+            <div className="c-w fs-30 noto-bold">
               $2'690'670
             </div>
           </span>
           <span className="flex flex-col align-center">
-            <div className="fs-30 c-w">
+            <div className="fs-30 c-w noto-bold">
               Current Total investment
             </div>
-            <div className="c-w fs-30">
+            <div className="c-w fs-30 noto-bold">
               $7'690'670
             </div>
           </span>
           <span className="flex flex-col align-center">
-            <div className="fs-30 c-w">
+            <div className="fs-30 c-w noto-thin">
               Number of nests
             </div>
-            <div className="c-w fs-30">
+            <div className="c-w fs-30 noto-bold">
               $11'984
             </div>
           </span>

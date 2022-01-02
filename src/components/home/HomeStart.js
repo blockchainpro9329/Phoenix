@@ -94,11 +94,11 @@ class HomeStart extends React.Component {
           <div className="content mx-auto">
             <div className="nest-left">
               <div className="fs-20">
-                <b>Phoenix Finance</b> works for its investors
+                <span className="noto-medium">Phoenix Finance</span> works for its investors
                 by taking the guesswork out.
               </div>
               <div className="m-t-30 fs-20">
-                <b>What is the next big coin?</b><br/>
+                <span className="noto-medium">What is the next big coin?</span><br/>
                 How can you grow your wealth?
                 Let us research and invest for you.
               </div>
