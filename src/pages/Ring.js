@@ -18,11 +18,11 @@ class Ring extends React.Component {
             <>
                 <RingHeader></RingHeader>
                 <RingMsg></RingMsg>
-                <MyNodes></MyNodes>
-                <Create></Create>
+                {/* <MyNodes></MyNodes> */}
+                {/* <Create></Create> */}
                 <Nft></Nft>
                 {/* <RingNext></RingNext> */}
-                <Faq></Faq>
+                {/* <Faq></Faq> */}
                 <Footer></Footer>
             </>
         );

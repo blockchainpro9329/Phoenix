@@ -56,20 +56,18 @@ class RingHeader extends React.Component {
                         <div className='flex align-center'>
                             <img alt='' src='/img/logo.png' className="logo-img" />
                             <span className='logo-title'>
-                                PHOENIX
+                                PHOENIX  <span>Financial</span>
                             </span>
                         </div>
                         <div className='menu-container flex1 flex justify-center'>
-                            <span className='menu flex flex-col align-center'>
+                            {/* <span className='menu flex flex-col align-center'>
                                 <a>MY NESTS</a>
-                                {/* <br/> */}
                                 <a>{this.props.my_nodes.length}</a>
                             </span>
                             <span className='menu flex flex-col align-center'>
                                 <a>ALL NESTS</a>
-                                {/* <br/> */}
                                 <a>{this.props.all_nodes}</a>
-                            </span>
+                            </span> */}
                             {/* <span className='menu flex flex-col align-center'>
                                 <a>MINING</a>
                                 <br/>
@@ -79,7 +77,7 @@ class RingHeader extends React.Component {
                         <div className="launch_wallet f-row f1-end">
                             {
                                 !this.props.account ?
-                                    <div className="action-btn outline flex align-center justify-center" onClick={this.handleConnect}>
+                                    <div className="action-btn  flex align-center justify-center" onClick={this.handleConnect}>
                                         <span><i className="fas fa-wallet" style={{ marginRight: "1rem" }}></i>
                                             Connect Wallet
                                         </span>

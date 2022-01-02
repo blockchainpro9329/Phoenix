@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toast } from 'react-toastify';
+import TokenChart from "../common/chart";
+import Nodes from "./Nodes";
+
 
 
 class RingMsg extends React.Component {
@@ -71,7 +74,61 @@ class RingMsg extends React.Component {
                         }
                     </div>
                 </div>
-                <div className="custom-container mx-auto informations-container">
+                <section id="section-msg">
+                    <div className="content mx-auto">
+                        <div className="msg-left">
+                            <div className="flex justify-around m-b-20">
+                                <div className="msg-content-item">
+                                    <div className="fs-22 c-w">My nests</div>
+                                    <div className="fs-22 c-w"><span className="c-yellow">{this.props.my_nodes.length}</span>/100</div>
+                                    <div className="fs-18 c-gray">All nests: 43252</div>
+                                </div>
+                                <div className="msg-content-item">
+                                    <div className="fs-22 c-w">Daily rewards</div>
+                                    <div className="fs-22 c-w"><span className="c-yellow">0.225</span>FIRE</div>
+                                    <div className="fs-18 c-w">per nest</div>
+                                </div>
+                            </div>
+                            <div className="flex justify-around m-b-20">
+                                <div className="msg-content-item">
+                                    <div className="fs-22 c-w">My rewards</div>
+                                    <div className="fs-22 c-yellow">{Number(this.props.cur_all_reward).toFixed(9)}</div>
+                                    <div className="fs-18 c-gray">FIRE</div>
+                                </div>
+                                <div className="msg-content-item" style={{ justifyContent: 'center' }}>
+                                    <button className="btn action-btn" onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}>BUY $FIRE</button>
+                                </div>
+                            </div>
+                            <div className="flex justify-around m-b-20">
+                                <div className="msg-content-item" style={{ justifyContent: "center" }}>
+                                    <div className="fs-22 c-w">Treasury Balance</div>
+                                    <div className="fs-22 c-yellow">$6,004,500</div>
+                                </div>
+                                <div className="msg-content-item" style={{ justifyContent: "center" }}>
+                                    <div className="fs-22 c-w">Total Investments</div>
+                                    <div className="fs-22 c-yellow">$1,205,430</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="msg-right">
+                            <div className="token_chart">
+                                <TokenChart></TokenChart>
+                            </div>
+                            <div className="m-t-20 flex align-center" style={{ height: "160px", width: "100%;" }}>
+                                <p className="c-w">
+                                    Create a Nest with 10 $FIRE tokens to earn <span className="c-yellow">$FIRE</span> rewards.
+                                    You can use the rewards to create more Phoenix Nests and
+                                    grow your holding to a maximum of 100 Nests per wallet.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="nodes-content mx-auto">
+                        <Nodes></Nodes>
+                    </div>
+                </section>
+
+                {/* <div className="custom-container mx-auto informations-container">
                     <div className="info-container-1">
                         <img alt="" className="info-data-icon" src="/img/myNode.svg" />
                         <div className="info-datas">
@@ -97,7 +154,6 @@ class RingMsg extends React.Component {
                             <div className="c-4cce13" style={{ marginTop: "4px" }}>My Rewards</div>
                         </div>
                         <div className="flex1"></div>
-                        {/* <div className="btn action-btn outline m-r-20" style={{ width: "120px", height: "40px" }}>CLAIM ALL</div> */}
                     </div>
                 </div>
                 <div id="welcome-message" className="flex custom-container mx-auto m-t-100">
@@ -117,7 +173,7 @@ class RingMsg extends React.Component {
                             <button className="action-btn btn outline welcome-action-btn">DISCORD</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </>
         );
     }

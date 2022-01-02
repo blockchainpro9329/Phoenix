@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import PayDlg from '../common/PayDlg';
 import { toast } from 'react-toastify';
+import { touchRippleClasses } from '@mui/material';
 
 const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
@@ -30,6 +31,7 @@ class Nodes extends React.Component {
             my_nodes: [],
             open: false,
             fee_index: -1,
+            selected_tab: 0
         }
         this.props.dispatch({
             type: "GET_NODE_LIST"
@@ -39,6 +41,9 @@ class Nodes extends React.Component {
         }, 1000);
         this.handleModalClose = this.handleModalClose.bind(this);
         this.PayAllNode = this.PayAllNode.bind(this);
+        this.createNode = this.createNode.bind(this);
+
+
 
     }
 
@@ -101,6 +106,11 @@ class Nodes extends React.Component {
                 currentTime: curTime
             }
         });
+    }
+
+
+    selectTab = function (index) {
+        this.setState({ selected_tab: index });
     }
 
 
@@ -209,85 +219,138 @@ class Nodes extends React.Component {
         this.setState({ open: true, fee_index: id, pay_type: 1 });
     }
 
+    createNode() {
+        if (!this.props.can_perform) {
+            toast.info("Please wait. Another transaction is running.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        this.props.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: false } });
+        this.props.dispatch({
+            type: "CREATE_NODE"
+        });
+    }
+
+
+
+
+
     render() {
-        const List = this.state.my_nodes.map((item, index) => {
-        // const List = ["123", "222","543"].map((item, index) => {
+        // const List = this.state.my_nodes.map((item, index) => {
+        const List = ["123", "222", "543", "23", "2342", '234', '2342', '2333', '1231', '1231'].map((item, index) => {
             return (
-                <div key={index} className='item-font flex align-center' style={{ height: "50px" }}>
-                    <div className='padder-10' style={{ flex: "1" }}>
-                        {
-                            item.masterNFT ? <img alt='' src={this.props.master_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
-                        }
-                        {
-                            item.grandNFT ? <img alt='' src={this.props.grand_nft_url} style={{ width: "20px", marginRight: "10px" }} /> : <></>
-                        }
-                    </div>
+                <div key={index} className={index % 2 == 0 ? 'item-font nest-list-even' : 'item-font nest-list-odd'}>
+
                     <div className='text-center' style={{ flex: "1" }}>NEST {index + 1}</div>
-                    <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY HH:mm:ss")}</div>
-                    <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
+                    <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
-                    <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button list c-green" style={{ backgroundColor: "transparent !important" }} onClick={this.payNodeFee.bind(this, index)}>FEE</div>
-                        {/* {item.payable ? <button className="claim-button c-green" onClick={this.payNodeFee.bind(this, index)}>Pay Fee</button> :
-                            <button className='claim-button btn c-green' disabled>Pay Fee</button>
-                        } */}
-                    </div>
-                    <div className='text-center' style={{ flex: "1" }}>
-                        <div className="claim-button list text-green" onClick={this.claimNode.bind(this, index)}> CLAIM </div>
-                    </div>
+                    <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
+                    <div className="pay-button list" style={{ flex: '2'}} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
+                    <div className="claim-button list" style={{ flex: '2' }} onClick={this.claimNode.bind(this, index)}> claim </div>
                 </div>
             )
         });
 
-        if (this.state.my_nodes.length === 0) {
-            return <></>;
-        } else {
-            return (
-                <>
-                    <PayDlg
-                        selectedValue={this.state.selectedValue}
-                        open={this.state.open}
-                        onClose={this.handleModalClose}
-                    />
-                    <div className="mx-auto m-t-20 mynode-header flex align-center justify-between " style={{ flexWrap: "wrap" }}>
-                        <div className='flex'>
-                            <div className='c-yellow node-table-item flex align-center' style={{ width: "80px" }}>
-                                <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
-                                {this.props.my_nodes.length}
-                            </div>
-                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
-                                <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "30px" }} />
-                                : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
-                            </div>
-                            <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
-                                <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "30px" }} />
-                                : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
-                            </div>
+
+        return (
+            <>
+                <PayDlg
+                    selectedValue={this.state.selectedValue}
+                    open={this.state.open}
+                    onClose={this.handleModalClose}
+                />
+
+                <section id='section-nests'>
+                    <div className='content mx-auto'>
+                        <div className='nest-header'>
+                            <span className='fs-40 c-w'>
+                                Create a Phoenix Nest with 10 FIRE Tokens
+                            </span>
+                            <button className='btn action-btn' onClick={this.createNode}>Create your nest</button>
                         </div>
-                        <div className='flex align-center button-set'>
-                            <div className='claim-button btn-outline c-green claim-all' onClick={this.PayAllNode.bind(this, -1)}> Pay ALL FEE</div>
-                            <div className='claim-button c-green claim-all' onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
+                        <div className='tab-header flex'>
+                            <div className={this.state.selected_tab === 0 ? 'fs-40 cursor-pointer tab-item active' : "fs-40 cursor-pointer tab-item"} onClick={() => { this.selectTab(0) }}>My Nests</div>
+                            <div className={this.state.selected_tab === 1 ? 'fs-40 cursor-pointer tab-item active' : "fs-40 cursor-pointer tab-item"} onClick={() => { this.selectTab(1) }}>NFT Boosts</div>
+                        </div>
+                        <div className='tab-content'>
+                            {this.state.selected_tab === 0 ?
+                                <>
+                                    <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
+                                        <div className='padder-10' style={{ flex: "1" }}>Name</div>
+                                        <div className='text-center' style={{ flex: "3" }}>Created</div>
+                                        <div className='text-center' style={{ flex: "2" }}>My Rewards</div>
+                                        <div className='text-center' style={{ flex: "2" }}>Fees</div>
+                                        <div className="pay-button list" style={{ flex: '2'}} onClick={this.PayAllNode.bind(this, -1)}>Pay all fees</div>
+                                        <div className="claim-button list" style={{ flex: '2' }}  onClick={this.claimNode.bind(this, -1)}> claim all</div>
+                                    </div>
+                                    <div className='mynode-list-content'>
+                                        <CustomScrollbars>
+                                            {List}
+                                        </CustomScrollbars>
+                                    </div>
+                                </> :
+                                <>
+                                    <div className='flex justify-center align-center' style={{ width: "100%", height: "100%" }}>
+                                        <div className='c-yellow flex align-center m-l-20 fs-40' style={{ width: "200px" }}>
+                                            <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "60px" }} />
+                                            : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
+                                        </div>
+                                        <div className='c-yellow flex align-center m-l-20 fs-40' style={{ width: "200px" }}>
+                                            <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "60px" }} />
+                                            : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
+                                        </div>
+                                    </div>
+
+                                </>}
                         </div>
                     </div>
-                    <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
-                        <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
-                            <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NFT</div>
-                            <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NAME</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "3" }}>REWARD START TIME</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "2" }}>REWARDS</div>
-                            <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
-                            <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
+                </section>
+
+                {/* <div className="mx-auto m-t-20 mynode-header flex align-center justify-between " style={{ flexWrap: "wrap" }}>
+                    <div className='flex'>
+                        <div className='c-yellow node-table-item flex align-center' style={{ width: "80px" }}>
+                            <img alt="" src="/img/myNode.svg" style={{ marginRight: "10px", width: "30px" }} />
+                            {this.props.my_nodes.length}
                         </div>
-                        <div className='mynode-list-content'>
-                            <CustomScrollbars>
-                                {List}
-                            </CustomScrollbars>
+                        <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
+                            <img alt="" src={this.props.master_nft_url} style={{ marginRight: "10px", width: "30px" }} />
+                            : {this.props.my_nfts.length <= 10 ? this.props.my_nfts.length : 10}
+                        </div>
+                        <div className='c-yellow node-table-item flex align-center m-l-20' style={{ width: "80px" }}>
+                            <img alt="" src={this.props.grand_nft_url} style={{ marginRight: "10px", width: "30px" }} />
+                            : {this.props.my_nfts.length > 10 ? this.props.my_nfts.length - 10 : 0}
                         </div>
                     </div>
-                </>
-            );
-        }
+                    <div className='flex align-center button-set'>
+                        <div className='claim-button btn-outline c-green claim-all' onClick={this.PayAllNode.bind(this, -1)}> Pay ALL FEE</div>
+                        <div className='claim-button c-green claim-all' onClick={this.claimNode.bind(this, -1)}> CLAIM ALL</div>
+                    </div>
+                </div>
+                <div className="mx-auto custom-container mx-auto text-justify info-container m-b-30 mynode-list">
+                    <div className='h-40 flex align-center node-title-header' style={{ width: "100%" }}>
+                        <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NFT</div>
+                        <div className='c-4cce13 padder-10' style={{ flex: "1" }}>NAME</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "3" }}>REWARD START TIME</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "2" }}>REMAINS</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "2" }}>REWARDS</div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
+                        <div className='c-4cce13 text-center' style={{ flex: "1" }}></div>
+                    </div>
+                    <div className='mynode-list-content'>
+                        <CustomScrollbars>
+                            {List}
+                        </CustomScrollbars>
+                    </div>
+                </div> */}
+            </>
+        );
     }
 }
 

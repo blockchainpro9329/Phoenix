@@ -3,7 +3,6 @@ const Footer = () => {
     return (
         <footer>
             <div className="container mx-auto">
-
                 <div className="footer-main">
                     <div className="flex align-center">
                         <img className="img-spin logo-img" src="/img/logo.png" alt="" />

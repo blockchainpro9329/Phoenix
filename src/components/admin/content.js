@@ -146,21 +146,21 @@ class Content extends React.Component {
                         }
                     </div>
                 </div> */}
-                <section id="section-started" className="admin c-w flex flex-col align-center">
+                <section id="section-started" className="admin c-w flex flex-col align-center" style={{height:"1000px", padding:"30px"}}>
                     <h2>Setting FIRE NFT ART</h2>
                     <span className="subtitle" data-nsfw-filter-status="swf"> Only owners can change and update NFT arts.</span>
 
                     <div id="started-content" className="flex mx-auto m-t-40 started-content-admin" style={{ justifyContent: "space-around" }}>
-                        <div className="card-action shadow admin">
-                            <div className="badge-title text-purple" style={{ marginTop: "10px" }}>Master</div>
+                        <div className="card-action shadow admin admin-card">
+                            <div className="c-yellow fs-30" style={{ marginTop: "10px" }}>Master</div>
                             <img alt="" style={{ height: "250px", width: "250px", marginTop: "20px", marginBottom: "20px" }} src={this.state.master_nft_url}></img>
                             <a className="breath border-purple" data-nsfw-filter-status="swf" style={{ position: "relative" }}>
                                 Create & Change
                                 <input type="file" style={{ position: "absolute", top: "0px", left: "0px", width: "100%", height: "100%", opacity: "0" }} onChange={(event) => this.onSelectFile(event, "master")} />
                             </a>
                         </div>
-                        <div className="card-action shadow admin">
-                            <div className="badge-title text-pink" style={{ marginTop: "10px" }}>Grand</div>
+                        <div className="card-action shadow admin admin-card">
+                            <div className="c-yellow fs-30" style={{ marginTop: "10px" }}>Grand</div>
                             <img alt="" style={{ height: "250px", width: "250px", marginTop: "20px", marginBottom: "20px" }} src={this.state.grand_nft_url}></img>
                             <a className="breath border-pink" data-nsfw-filter-status="swf" style={{ position: "relative" }}>
                                 Create & Change
@@ -169,53 +169,50 @@ class Content extends React.Component {
                         </div>
                     </div>
 
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        {
+                            this.props.contract_status == 0 ?
+                                <button className="btn action-btn" onClick={this.setContractStatus.bind(this, 1)}>Stop Service</button> :
+                                <button className="btn action-btn outline" onClick={this.setContractStatus.bind(this, 0)}>Start Service</button>
+                        }
+                    </div>
+                    <div className="m-t-40">
+                        <div className="admin-input-item">
+                            <label className="admin-input-label">Claim Fee (AVAX): </label>
+                            <div className="flex align-center">
+                                <input type="number" className="form-contral admin-input-content" min={0} value={this.state.claim_fee}
+                                    onChange={(event) => { this.onChangeValue(event, "claim_fee") }} />
+                                <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("claim_fee") }}>SET</button>
+                            </div>
+                        </div>
+                        <div className="admin-input-item">
+                            <label className="admin-input-label">Maintenance Fee (AVAX): </label>
+                            <div className="flex align-center">
+                                <input type="number" className="form-contral admin-input-content" min={0} value={this.state.maintenance_fee}
+                                    onChange={(event) => { this.onChangeValue(event, "maintenance_fee") }} />
+                                <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("maintenance_fee") }}>SET</button>
+                            </div>
+                        </div>
+                        <div className="admin-input-item">
+                            <label className="admin-input-label">FIRE Price (AVAX): </label>
+                            <div className="flex align-center">
+                                <input type="number" className="form-contral admin-input-content" min={0} value={this.state.fire_price}
+                                    onChange={(event) => { this.onChangeValue(event, "fire_price") }}
+                                />
+                                <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("fire_price") }}>SET</button>
+                            </div>
+                        </div>
+                        <div className="admin-input-item">
+                            <label className="admin-input-label">FIRE PER NESTS: </label>
+                            <div className="flex align-center">
+                                <input type="number" className="form-contral admin-input-content" min={0} value={this.state.nest_price}
+                                    onChange={(event) => { this.onChangeValue(event, "nest_price") }}
+                                />
+                                <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("nest_price") }}>SET</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-                <section id="section-start-stop-service" style={{ display: "flex", justifyContent: "center" }}>
-                    {
-                        this.props.contract_status == 0 ?
-                            <button className="btn action-btn" onClick={this.setContractStatus.bind(this, 1)}>Stop Service</button> :
-                            <button className="btn action-btn outline" onClick={this.setContractStatus.bind(this, 0)}>Start Service</button>
-                    }
-                </section>
-                {/* <div className="flex justify-center m-t-30">
-                    <button className="btn action-btn outline" style={{width:"fit-content"}} onClick={this.changeOwnerShip}>Import Data</button>
-                </div> */}
-                <div className="m-t-40">
-                    <div className="admin-input-item">
-                        <label className="admin-input-label">Claim Fee (AVAX): </label>
-                        <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" min={0} value={this.state.claim_fee}
-                                onChange={(event) => { this.onChangeValue(event, "claim_fee") }} />
-                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("claim_fee") }}>SET</button>
-                        </div>
-                    </div>
-                    <div className="admin-input-item">
-                        <label className="admin-input-label">Maintenance Fee (AVAX): </label>
-                        <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" min={0} value={this.state.maintenance_fee}
-                                onChange={(event) => { this.onChangeValue(event, "maintenance_fee") }} />
-                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("maintenance_fee") }}>SET</button>
-                        </div>
-                    </div>
-                    <div className="admin-input-item">
-                        <label className="admin-input-label">FIRE Price (AVAX): </label>
-                        <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" min={0} value={this.state.fire_price}
-                                onChange={(event) => { this.onChangeValue(event, "fire_price") }}
-                            />
-                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("fire_price") }}>SET</button>
-                        </div>
-                    </div>
-                    <div className="admin-input-item">
-                        <label className="admin-input-label">FIRE PER NESTS: </label>
-                        <div className="flex align-center">
-                            <input type="number" className="form-contral admin-input-content" min={0} value={this.state.nest_price}
-                                onChange={(event) => { this.onChangeValue(event, "nest_price") }}
-                            />
-                            <button className="btn action-btn outline admin-setting-btn" onClick={() => { this.setValue("nest_price") }}>SET</button>
-                        </div>
-                    </div>
-                </div>
             </>
         );
     }

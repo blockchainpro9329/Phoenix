@@ -1,5 +1,5 @@
 body {
-    background-color: #0a273b;
+    background-color: black;
 }
 
 a {
@@ -50,7 +50,7 @@ a {
 .header_border {
     background-image: url(./img/header_gradient.png);
     background-repeat: repeat-x;
-    height: 4px;
+    /* height: 4px; */
     width: 100%;
 }
 
@@ -140,6 +140,110 @@ a {
 }
 
 
+#section-msg {
+    background-image: url(/img/bg1.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 2000px 1000px;
+}
+
+#section-msg>.content {
+    height: 810px;
+    width: 1150px;
+    display: flex;
+    align-items: center;
+
+}
+
+#section-msg>.nodes_content {
+    /* margin-top: 200px; */
+    height: 810px;
+    width: 1150px;
+    display: flex;
+    align-items: center;
+
+}
+
+.msg-left {
+    width: 700px;
+}
+
+.msg-right {
+    flex: 1;
+}
+
+.msg-content-item {
+    padding: 20px 30px;
+    background-color: #2f3136;
+    width: 45%;
+    max-width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.token_chart {
+    height: 330px;
+    width: 100%;
+    background-color: #2f3136;
+}
+
+
+#section-nests {
+    height: 900px;
+    /* background-color: #000000; */
+    /* background-image: url(/img/bg4-2.png);  */
+    /* background-repeat: no-repeat; */
+    /* background-position: top; */
+    /* background-size: contain; */
+
+}
+
+#section-nests>.content {
+    height: 900px;
+    width: 1150px;
+}
+
+
+
+
+.nest-header {
+    background-color: #2f3136;
+    display: flex;
+    justify-content: space-between;
+    height: 140px;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+
+.tab-header {
+    height: 80px;
+    background-color: #202225;
+}
+
+.tab-item {
+    background-color: #202225;
+    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.tab-item.active {
+    background-color: #949596;
+    color: #202225;
+    border-color: #949596;
+}
+
+.tab-content {
+    height: 600px;
+    background-color: #949596;
+    padding: 20px;
+}
 
 
 #section-hero {
@@ -185,6 +289,40 @@ a {
     width: 450px;
     height: 450px;
 }
+
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.node-title-header {
+    color: #202225;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.nest-list {
+    height: 60px;
+}
+
+.nest-list-odd {
+    display: flex;
+    align-items: center;
+    background-color: #c6c6c6;
+    height: 60px;
+}
+
+.nest-list-even {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #ffffff;
+}
+
+
+
+
 
 
 
@@ -262,6 +400,17 @@ a {
 
 
 
+#section-app-nft {
+    background-color: black;
+    height: 900px;
+}
+
+#section-app-nft > .content {
+    width: 1150px;
+    height: 1050px;
+}
+
+
 
 
 .cards {
@@ -279,7 +428,7 @@ a {
     padding: 25px;
 }
 
-.card + .card {
+.card+.card {
     margin-left: 20px;
 }
 
@@ -311,6 +460,10 @@ a {
     align-items: center;
 }
 
+
+.card-action.admin {
+    background-color: #333 !important;
+}
 .badge-action {
     width: 50px;
     height: 50px;
@@ -580,7 +733,7 @@ a {
 footer {
     padding-top: 120px;
     padding-bottom: 25px;
-    background-color: #0f283b;
+    background-color: black;
 }
 
 
@@ -672,22 +825,21 @@ footer {
 
 
 .claim-button {
-    width: 85px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
+    background-color: #202225;
     font-family: Nunito;
     font-style: normal;
     font-weight: 800;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 20px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    border-radius: 4px;
     cursor: pointer;
-    border: 1px solid var(--green);
-    margin-right: 16.5px;
-    color: #e2e8f0
+    color: #e2e8f0;
+
 }
 
 .claim-button.btn-outline {
@@ -703,6 +855,57 @@ footer {
 .claim-button:hover i {
     color: #fff
 }
+
+
+.pay-button {
+    width: 100%;
+    height: 100%;
+    background-color: #c89656;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #e2e8f0;
+
+}
+
+.pay-button.btn-outline {
+    border-color: 1px solid var(--green);
+    background-color: unset;
+}
+
+.pay-button:hover {
+    background-color: var(--green);
+    color: white !important;
+}
+
+.pay-button:hover i {
+    color: #fff
+}
+
+
+.nest-list-odd>.claim-button {
+    background-color: #2f3136 !important;
+}
+
+.nest-list-odd>.pay-button {
+    background-color: #d4a05e !important;
+}
+
+
+
+
+
+
+
+
+
 
 
 .earn-subtitle {
@@ -769,7 +972,7 @@ footer {
 
 .card-item-info {
     height: 80px;
-    color: #8fced5;
+    color: #fff;
     font-size: 16px;
 }
 
@@ -894,7 +1097,7 @@ footer {
 }
 
 .create_title {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .create_node_btn {
@@ -1023,14 +1226,14 @@ footer {
 }
 
 
-* {
+/* * {
     /* color: var(--primary-text); */
-    font-family: "Nunito", sans-serif;
-    font-style: normal;
-    font-weight: normal;
+font-family: "Nunito", sans-serif;
+font-style: normal;
+font-weight: normal;
 }
 
-.Toastify__toast-theme--light {
+*/ .Toastify__toast-theme--light {
     background: var(--toastify-color-light);
     color: black !important;
 }
