@@ -15,7 +15,9 @@ var config = {
     // Reward : "0x07A78Ec2Dcf6d65dcF5DEcBbcfb4fb3566fFa142",
     Reward : "0xA6AdaA7A538bb23B2e982Cc51C21505F6562e009",
     RewardAbi: rewardAbi ,
-    chainId: 0xa86a
+    chainId: 0xa86a,
+
+    treasuryAddr: "0x52Fd04AA057ba8Ca4bCc675B55De7366F607A677"
 }
 
 

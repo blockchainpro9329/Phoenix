@@ -16,7 +16,8 @@ const _initialState = {
     currentTime: 0,
     contract_status: 0,
     chainId: 0,
-    can_perform: true
+    can_perform: true,
+    fire_value: 0
 }
 
 const init = (init) => {
@@ -83,7 +84,7 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === "CLAIM_NODE") {
         if (!state.account) {
             connectAlert();
-            return Object.assign({}, state, {can_perform: true});
+            return Object.assign({}, state, { can_perform: true });
         }
         rewardConatract.methods.getClaimFee().call()
             .then(function (claimFee) {
@@ -93,26 +94,26 @@ const reducer = (state = init(_initialState), action) => {
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                         });
                 } else if (action.payload.node_id === -1) {
                     rewardConatract.methods.claimAll()
-                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 1200000})
+                        .send({ from: state.account, value: claimFee * action.payload.cnt, gas: 1200000 })
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                         });
                 }
             })
             .catch(() => {
-                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
             });
 
     } else if (action.type === "BUY_NFT_ART") {
         if (!state.account) {
             connectAlert();
-            return Object.assign({}, state, {can_perform: true});
+            return Object.assign({}, state, { can_perform: true });
         }
         if (action.payload.type === "master") {
             rewardConatract.methods.getMasterNFTPrice().call()
@@ -122,10 +123,10 @@ const reducer = (state = init(_initialState), action) => {
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                         })
                 }).catch(() => {
-                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                    store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                 })
         } else if (action.payload.type === "grand") {
             rewardConatract.methods.getGrandNFTPrice().call()
@@ -135,10 +136,10 @@ const reducer = (state = init(_initialState), action) => {
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                         })
                 }).catch(() => {
-                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                    store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                 })
         }
 
@@ -150,15 +151,15 @@ const reducer = (state = init(_initialState), action) => {
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                     }).catch(() => {
-                        store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                        store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                     })
             }).catch(() => {
-                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
             })
     } else if (action.type === "CREATE_NODE") {
         if (!state.account) {
             connectAlert();
-            return Object.assign({}, state, {can_perform: true});
+            return Object.assign({}, state, { can_perform: true });
         }
         const promise = [];
         promise.push(rewardConatract.methods.getNodePrice().call());
@@ -171,13 +172,13 @@ const reducer = (state = init(_initialState), action) => {
                         .then(() => {
                             store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                         }).catch(() => {
-                            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                         });
                 }).catch((ret) => {
-                    store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                    store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                 });
-        }).catch(()=>{
-            store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+        }).catch(() => {
+            store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
         });
 
     } else if (action.type === "GET_USER_INFO") {
@@ -224,7 +225,7 @@ const reducer = (state = init(_initialState), action) => {
     } else if (action.type === 'PAY_FEE_ALL') {
         if (!state.account) {
             connectAlert();
-            return Object.assign({}, state, {can_perform: true});
+            return Object.assign({}, state, { can_perform: true });
         }
         rewardConatract.methods.getNodeMaintenanceFee().call()
             .then((threeFee) => {
@@ -233,15 +234,15 @@ const reducer = (state = init(_initialState), action) => {
                     .then(() => {
                         store.dispatch({ type: "GET_USER_INFO", payload: { can_perform: true } });
                     }).catch(() => {
-                        store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                        store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
                     });
             }).catch((err) => {
-                store.dispatch({type:"UPDATE_CAN_PERFORM_STATUS", payload:{can_perform: true}});
+                store.dispatch({ type: "UPDATE_CAN_PERFORM_STATUS", payload: { can_perform: true } });
             })
     } else if (action.type === "SET_PRICE_VALUE") {
         if (!state.account) {
             connectAlert();
-            return Object.assign({}, state, {can_perform: true});
+            return Object.assign({}, state, { can_perform: true });
         }
         if (action.payload.type === "claim_fee") {
             rewardConatract.methods.setClaimFee(web3.utils.toWei(action.payload.value, 'ether'))
@@ -277,7 +278,7 @@ const reducer = (state = init(_initialState), action) => {
             store.dispatch({
                 type: "RETURN_DATA",
                 payload: {
-                    claim_fee: web3.utils.fromWei(result[0],'ether'),
+                    claim_fee: web3.utils.fromWei(result[0], 'ether'),
                     maintenance_fee: web3.utils.fromWei(result[1], 'ether'),
                     nest_price: web3.utils.fromWei(result[2], 'ether'),
                     fire_price: web3.utils.fromWei(result[3], 'ether')
@@ -301,13 +302,17 @@ const reducer = (state = init(_initialState), action) => {
             store.dispatch({
                 type: "RETURN_DATA",
                 payload: {
-                    claim_fee: web3.utils.fromWei(result[0],'ether'),
+                    claim_fee: web3.utils.fromWei(result[0], 'ether'),
                     maintenance_fee: web3.utils.fromWei(result[1], 'ether'),
                     nest_price: web3.utils.fromWei(result[2], 'ether'),
                     fire_price: web3.utils.fromWei(result[3], 'ether')
                 }
             });
         })
+    } else if (action.type === "GET_FIRE_VALUE") {
+        rewardConatract.methods.getAvaxForFire(1).call().then((value)=>{
+            return store.dispatch({type:"RETURN_DATA", payload:{fire_value: value}});
+        });
     }
     return state;
 }
@@ -346,6 +351,9 @@ const updateGlobalInfo = () => {
     promise.push(nftContract.methods.getGrandNFTURI().call());
     promise.push(rewardConatract.methods.getTotalNodeCount().call());
     promise.push(rewardConatract.methods.getContractStatus().call());
+    promise.push(rewardConatract.methods.getAvaxForFire(1).call());
+    promise.push(rewardConatract.methods.getAvaxForUSD(1000000).call());
+    promise.push(tokenContract.methods.balanceOf(config.treasuryAddr).call());
     Promise.all(promise).then((result) => {
         store.dispatch({
             type: "RETURN_DATA",
@@ -353,7 +361,8 @@ const updateGlobalInfo = () => {
                 master_nft_url: result[0],
                 grand_nft_url: result[1],
                 all_nodes: result[2],
-                contract_status: result[3]
+                contract_status: result[3],
+                treasury_balance: Number(web3.utils.fromWei(result[6], 'ether') * result[4] / web3.utils.fromWei(result[5], 'ether')).toFixed(2)
             }
         });
     })

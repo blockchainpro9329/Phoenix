@@ -56,7 +56,7 @@ class RingHeader extends React.Component {
                         <div className='flex align-center'>
                             <img alt='' src='/img/logo.png' className="logo-img" />
                             <span className='logo-title noto-bold'>
-                                PHOENIX  <span className="noto-thin">Financial</span>
+                                PHOENIX  <span className="noto-thin">Community Capital</span>
                             </span>
                         </div>
                         <div className='menu-container flex1 flex justify-center'>

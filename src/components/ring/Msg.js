@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import TokenChart from "../common/chart";
 import Nodes from "./Nodes";
 
+import RtChart from '../common/rt_chart'
+
+
 
 
 class RingMsg extends React.Component {
@@ -79,19 +82,19 @@ class RingMsg extends React.Component {
                         <div className="msg-left">
                             <div className="flex justify-around m-b-20">
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">My nests</div>
+                                    <div className="fs-22 c-w">My capitalized nests</div>
                                     <div className="fs-22 c-w"><span className="c-yellow noto-bold">{this.props.my_nodes.length}</span> / 100</div>
                                     <div className="fs-18 c-gray">All nests: 43252</div>
                                 </div>
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">Daily rewards</div>
+                                    <div className="fs-22 c-w">Daily capitalized rewards</div>
                                     <div className="fs-22 c-w"><span className="c-yellow noto-bold">0.225</span> FIRE</div>
                                     <div className="fs-18 c-w">per nest</div>
                                 </div>
                             </div>
                             <div className="flex justify-around m-b-20">
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">My rewards</div>
+                                    <div className="fs-22 c-w">My capitalized rewards</div>
                                     <div className="fs-22 c-yellow">{Number(this.props.cur_all_reward).toFixed(9)}</div>
                                     <div className="fs-18 c-gray">FIRE</div>
                                 </div>
@@ -102,7 +105,7 @@ class RingMsg extends React.Component {
                             <div className="flex justify-around m-b-20">
                                 <div className="msg-content-item" style={{ justifyContent: "center" }}>
                                     <div className="fs-22 c-w">Treasury Balance</div>
-                                    <div className="fs-22 c-yellow noto-bold">$6,004,500</div>
+                                    <div className="fs-22 c-yellow noto-bold">${String(this.props.treasury_balance).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</div>
                                 </div>
                                 <div className="msg-content-item" style={{ justifyContent: "center" }}>
                                     <div className="fs-22 c-w">Total Investments</div>
@@ -111,12 +114,14 @@ class RingMsg extends React.Component {
                             </div>
                         </div>
                         <div className="msg-right">
-                            <div className="token_chart">
-                                <TokenChart></TokenChart>
+                            <div className="token_chart flex justify-center">
+                                <RtChart></RtChart>
+                                {/* <div className="c-w fs-20">{this.props.fire_value}</div> */}
+                                {/* <TokenChart></TokenChart> */}
                             </div>
                             <div className="m-t-20 flex align-center" style={{ height: "160px", width: "100%;" }}>
                                 <p className="c-w">
-                                    Create a Nest with 10 $FIRE tokens to earn <span className="c-yellow">$FIRE</span> rewards.
+                                    Create a Nest with 10 <span className="c-yellow noto-bold"> $FIRE</span> tokens to earn <span className="c-yellow noto-bold">$FIRE</span> rewards.
                                     You can use the rewards to create more Phoenix Nests and
                                     grow your holding to a maximum of 100 Nests per wallet.
                                 </p>
@@ -189,7 +194,9 @@ const mapStateToProps = state => {
         my_nodes: state.my_nodes,
         cur_all_reward: state.cur_all_reward,
         all_nodes: state.all_nodes,
-        can_perform: state.can_perform
+        can_perform: state.can_perform,
+        treasury_balance: state.treasury_balance,
+        fire_value: state.fire_value
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RingMsg);

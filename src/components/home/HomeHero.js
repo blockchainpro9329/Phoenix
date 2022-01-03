@@ -1,4 +1,7 @@
-const HomeHero = () => {
+import { connect } from 'react-redux';
+
+
+const HomeHero = (props) => {
   return (
     <>
       <section id="section-hero" className="pos-rel">
@@ -42,7 +45,7 @@ const HomeHero = () => {
               Treasury Balance
             </div>
             <div className="c-w fs-30 noto-bold">
-              $2'690'670
+              ${String(props.treasury_balance).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
             </div>
           </span>
           <span className="flex flex-col align-center">
@@ -58,7 +61,7 @@ const HomeHero = () => {
               Number of nests
             </div>
             <div className="c-w fs-30 noto-bold">
-              $11'984
+              {String(props.all_nodes).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
             </div>
           </span>
         </div>
@@ -67,4 +70,11 @@ const HomeHero = () => {
   );
 }
 
-export default HomeHero;
+const mapStateToProps = state => {
+  return {
+    all_nodes: state.all_nodes,
+    treasury_balance: state.treasury_balance
+  };
+}
+
+export default connect(mapStateToProps)(HomeHero);

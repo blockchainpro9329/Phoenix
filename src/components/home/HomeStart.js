@@ -17,43 +17,9 @@ class HomeStart extends React.Component {
       <>
         <section id="section-started">
           < div id="started-content" className="container mx-auto" >
-
-            {/* 
-          <div className="fs-60 l-h-1-1 c-w card-title">
-            NFT
-          </div>
-          <div className="flex justify-end start-subtitle-container">
-            <span className="start-subtitle" data-nsfw-filter-status="swf">A non-fungible token is a unique and non-interchangeable unit of data stored on the blockchain, a form of a digital ledger. NFT’s can be associated with reproducible digital files such as photos, videos, and audio.
-            </span>
-          </div>
-          <div className="cards">
-            <div className="card">
-              <div className="card-img" style={{  backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
-              <div className="card-item-title">
-                <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                <span className="c-w text-center"> MASTER NFT</span>
-                <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
-              </div>
-              <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
-              <div className="card-item-title">
-                <img alt="" src="/img/left-bar.png" style={{ height: "2px" }} />
-                <span className="c-w text-center">GRAND NFT</span>
-                <img alt="" src="/img/right-bar.png" style={{ height: "2px" }} />
-              </div>
-              <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
-              </div>
-            </div>
-          </div>
-
- */}
-
             <div className="lifetime-title">
               <div className="c-w fs-40">
-                Start Earning Lifetime Rewards
+                Start Earning Rewards
               </div>
               <button className="action-btn btn" onClick={this.goAppPage}>Try it</button>
             </div>
@@ -94,13 +60,12 @@ class HomeStart extends React.Component {
           <div className="content mx-auto">
             <div className="nest-left">
               <div className="fs-20">
-                <span className="noto-medium">Phoenix Finance</span> works for its investors
-                by taking the guesswork out.
+                <span className="noto-medium">Phoenix Community Capital</span> works for its investors
+                by leveraging combined investment capital, which elevates into investment options that are not available to the average investor.
               </div>
               <div className="m-t-30 fs-20">
-                <span className="noto-medium">What is the next big coin?</span><br/>
-                How can you grow your wealth?
-                Let us research and invest for you.
+                <span className="noto-medium">How does your wealth grow?</span><br />
+                Phoenix Community Capital enlists trusted and experienced investment advisors, who research new trends and opportunities for the community investment portfolio. Each investment option is delivered to the community along with a report, which will be voted on by the DAO using blockchain to validate votes.
               </div>
               <button className="btn action-btn m-t-30">learn more</button>
             </div>
@@ -115,7 +80,7 @@ class HomeStart extends React.Component {
 
         <section id="chip-vision">
           <div className="chips-container">
-            <div id="chips-header">Benefits for Phoenix Network Members</div>
+            <div id="chips-header">Benefits for Phoenix Community Members</div>
             <div className="chips">
               <div className=" chip">
                 <img alt="" className="m-r-20" src="/img/icon_check.svg" />

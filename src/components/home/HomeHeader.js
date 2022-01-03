@@ -30,11 +30,11 @@ class HomeHeader extends React.Component {
                             <span className='menu'>
                                 <a href='/'>HOME</a>
                             </span>
-                            <span className='menu'>
+                            {/* <span className='menu'>
                                 <a>STORY</a>
-                            </span>
+                            </span> */}
                             <span className='menu'>
-                                <a>CONTACT</a>
+                                <a href='mailto:help@thephoenix.finance'>CONTACT</a>
                             </span>
                             <span className='menu'>
                                 <a>FAQ</a>
