@@ -59,8 +59,6 @@ class Content extends React.Component {
         try {
             const added = await client.add(file)
             const url = `https://ipfs.infura.io/ipfs/${added.path}`
-
-            console.log("url", url);
             // const tokenObject = {
             //     tokenName: "Fire NFT",
             //     tokenSymbol: "Fire",

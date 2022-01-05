@@ -23,7 +23,7 @@ const Footer = () => {
                             <span className="footer-link fs-20 cursor-pointer"><a title="Please read our whitepaper" className="c-gray" onClick={() => { window.open("/docs/Phoenix Community Capital White Paper.pdf") }}>Whitepaper</a></span>
                         </div>
                     </div>
-                    <div className="w-full mobile-show">
+                    <div className="w-full flex flex-col justify-center mobile-show">
                         <div className="c-w fs-30 flex justify-center">
                             Join the Community
                         </div>

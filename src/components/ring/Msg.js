@@ -95,7 +95,7 @@ class RingMsg extends React.Component {
                             <div className="msg-left-content-container">
                                 <div className="msg-content-item">
                                     <div className="fs-22 c-w">My rewards</div>
-                                    <div className="fs-22 c-yellow">{Number(this.props.cur_all_reward).toFixed(9)}</div>
+                                    <div className="fs-22 c-yellow">{Number(this.props.cur_all_reward).toFixed(6)}</div>
                                     <div className="fs-18 c-gray">FIRE</div>
                                 </div>
                                 <div className="msg-content-item" style={{ justifyContent: 'center' }}>

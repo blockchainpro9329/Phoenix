@@ -111,7 +111,7 @@
 
 
     .mobile-show {
-        display: block !important;
+        display: flex !important;
     }
 
 
@@ -461,10 +461,12 @@
     .started-content-admin {
         width: 80% !important;
         flex-direction: column;
+        align-items: center;
     }
 
     #section-started.admin {
-        margin-top: 100px !important;
+        /* margin-top: 100px !important; */
+        height: fit-content !important;
     }
 
     .card-action {
@@ -645,9 +647,9 @@
         padding-right: 40px;
     }
 
-    .logo-title {
+    /* .logo-title {
         font-size: 5vw;
-    }
+    } */
 
     .logo-img {
         height: 56px;
@@ -965,6 +967,7 @@
     .footer-link {
         width: 50%;
         height: 50px;
+        text-align: start;
     }
 
     .app-header-title {
@@ -972,7 +975,8 @@
     }
 
     #section-msg {
-        height: 2350px;
+        /* height: 2350px; */
+        height: fit-content;
         background-image: url(/img/bg1.jpg);
         background-repeat: no-repeat;
         background-position: top;
@@ -980,7 +984,8 @@
     }
 
     #section-msg>.content {
-        height: 1240px;
+        /* height: 1240px; */
+        height: fit-content;
         width: 100%;
         display: flex;
         align-items: center;
@@ -1020,8 +1025,12 @@
 
 
     #section-nests>.content {
-        height: 900px;
+        /* height: 900px; */
+        height: fit-content;
         width: 100%;
+    }
+    #section-nests {
+        height: fit-content;
     }
 
     .nest-header {

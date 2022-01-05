@@ -401,7 +401,7 @@ a {
 
 
 .mobile-hidden {
-    display: block !important;
+    display: flex !important;
 }
 
 .mobile-show {

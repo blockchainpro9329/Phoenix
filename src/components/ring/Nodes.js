@@ -71,7 +71,7 @@ class Nodes extends React.Component {
                 //     duration.hours() + ":" +
                 //     duration.minutes() + ":" +
                 //     duration.seconds();
-                temp['remains'] = "due in " + Math.floor(remain / (3600 * 24)) + " days";
+                temp['remains'] = "due in " + Math.floor((temp.lastTime - this.props.curTime) / (3600 * 24)) + " days";
 
                 var bonus = 0.225;
                 if (temp['masterNFT']) {
@@ -82,7 +82,7 @@ class Nodes extends React.Component {
                 }
                 temp['reward'] = Number(temp['reward']) + bonus / (3600 * 24);
                 sum += temp['reward'];
-                temp['reward'] = temp['reward'].toFixed(9);
+                temp['reward'] = temp['reward'].toFixed(6);
 
                 if (remain > 3600 * 24 * 30) {
                     temp['payable'] = false;
@@ -116,6 +116,19 @@ class Nodes extends React.Component {
 
 
     PayAllNode() {
+        if (this.props.my_nodes.length == 0) {
+            toast.info("There is no nest. Please create your own nest.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+
         if (!this.props.can_perform) {
             toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
@@ -139,6 +152,18 @@ class Nodes extends React.Component {
     }
 
     claimNode(id) {
+        if (this.props.my_nodes.length == 0) {
+            toast.info("There is no nest. Please create your own nest.", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
         if (!this.props.can_perform) {
             toast.info("Please wait. Another transaction is running.", {
                 position: "top-center",
@@ -240,8 +265,8 @@ class Nodes extends React.Component {
     }
 
     render() {
-        // const List = this.state.my_nodes.map((item, index) => {
-        const List = ["123", "222", "543", "23", "2342", '234', '2342', '2333', '1231', '1231'].map((item, index) => {
+        const List = this.state.my_nodes.map((item, index) => {
+            // const List = ["123", "222", "543", "23", "2342", '234', '2342', '2333', '1231', '1231'].map((item, index) => {
             return (
                 <div key={index} className={index % 2 == 0 ? 'item-font nest-list-even' : 'item-font nest-list-odd'}>
 
@@ -302,7 +327,7 @@ class Nodes extends React.Component {
                                             <span className='pos-rel noto-bold'>
                                                 Fees
                                                 <span className='pos-abs fs-14 flex align-center justify-center'
-                                                    style={{ top: "-8px", right:"-20px", width: "20px", height: "20px", backgroundColor: "black", borderRadius: "10px", color: "white" }}>
+                                                    style={{ top: "-8px", right: "-20px", width: "20px", height: "20px", backgroundColor: "black", borderRadius: "10px", color: "white" }}>
                                                     i
                                                 </span>
                                             </span>
@@ -312,7 +337,8 @@ class Nodes extends React.Component {
                                     </div>
                                     <div className='mynode-list-content'>
                                         <CustomScrollbars>
-                                            {List}
+                                            {this.props.my_nodes.length > 0 ? List :
+                                                <div className='fs-40 c-w w-full h-full flex align-center justify-center text-center'>You have no nest!<br /> Create your own nest</div>}
                                         </CustomScrollbars>
                                     </div>
                                 </> :
