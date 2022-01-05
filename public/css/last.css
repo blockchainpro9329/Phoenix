@@ -194,6 +194,12 @@ a {
 .msg-right {
     flex: 1;
 }
+ 
+.msg-left-content-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
 
 .msg-content-item {
     padding: 20px 30px;
@@ -229,6 +235,13 @@ a {
 }
 
 
+.chart-text {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    height: 160px;
+    width: 100%;
+}
 
 
 .nest-header {

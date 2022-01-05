@@ -80,21 +80,21 @@ class RingMsg extends React.Component {
                 <section id="section-msg">
                     <div className="content mx-auto">
                         <div className="msg-left">
-                            <div className="flex justify-around m-b-20">
+                            <div className="msg-left-content-container">
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">My capitalized nests</div>
+                                    <div className="fs-22 c-w">My nests</div>
                                     <div className="fs-22 c-w"><span className="c-yellow noto-bold">{this.props.my_nodes.length}</span> / 100</div>
                                     <div className="fs-18 c-gray">All nests: 43252</div>
                                 </div>
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">Daily capitalized rewards</div>
+                                    <div className="fs-22 c-w">Daily rewards</div>
                                     <div className="fs-22 c-w"><span className="c-yellow noto-bold">0.225</span> FIRE</div>
                                     <div className="fs-18 c-w">per nest</div>
                                 </div>
                             </div>
-                            <div className="flex justify-around m-b-20">
+                            <div className="msg-left-content-container">
                                 <div className="msg-content-item">
-                                    <div className="fs-22 c-w">My capitalized rewards</div>
+                                    <div className="fs-22 c-w">My rewards</div>
                                     <div className="fs-22 c-yellow">{Number(this.props.cur_all_reward).toFixed(9)}</div>
                                     <div className="fs-18 c-gray">FIRE</div>
                                 </div>
@@ -102,7 +102,7 @@ class RingMsg extends React.Component {
                                     <button className="btn action-btn" onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}>BUY $FIRE</button>
                                 </div>
                             </div>
-                            <div className="flex justify-around m-b-20">
+                            <div className="msg-left-content-container">
                                 <div className="msg-content-item" style={{ justifyContent: "center" }}>
                                     <div className="fs-22 c-w">Treasury Balance</div>
                                     <div className="fs-22 c-yellow noto-bold">${String(this.props.treasury_balance).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</div>
@@ -119,9 +119,11 @@ class RingMsg extends React.Component {
                                 {/* <div className="c-w fs-20">{this.props.fire_value}</div> */}
                                 {/* <TokenChart></TokenChart> */}
                             </div>
-                            <div className="m-t-20 flex align-center" style={{ height: "160px", width: "100%;" }}>
+                            <div className="chart-text">
                                 <p className="c-w">
-                                    Create a Nest with 10 <span className="c-yellow noto-bold"> $FIRE</span> tokens to earn <span className="c-yellow noto-bold">$FIRE</span> rewards.
+                                    Create a Nest with 10 <span className="c-yellow noto-bold"> $FIRE</span> tokens to earn <span className="c-yellow noto-bold">$FIRE</span> rewards. 
+                                    <br className="mobile-show"></br>
+                                    <br className="mobile-show"></br>
                                     You can use the rewards to create more Phoenix Nests and
                                     grow your holding to a maximum of 100 Nests per wallet.
                                 </p>
