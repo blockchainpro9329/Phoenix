@@ -340,7 +340,7 @@
     }
 
     .item-font {
-        font-size: 2vw;
+        font-size: 18px;
     }
 
     .cards {
@@ -801,7 +801,7 @@
 
 
     .node-title-header {
-        font-size: 2.1vw;
+        font-size: 18px;
     }
 
     .node-table-item {
@@ -916,7 +916,7 @@
 
     .claim-button.list {
         width: 100%;
-        font-size: 1.2vw;
+        font-size: 18px;
         margin-right: 0.2vw;
     }
 
@@ -972,7 +972,7 @@
     }
 
     #section-msg {
-        height: 2540px;
+        height: 2350px;
         background-image: url(/img/bg1.jpg);
         background-repeat: no-repeat;
         background-position: top;
@@ -1019,4 +1019,50 @@
     }
 
 
+    #section-nests>.content {
+        height: 900px;
+        width: 100%;
+    }
+
+    .nest-header {
+        flex-direction: column;
+        padding:30px 70px;
+        height: fit-content;
+        text-align: center;
+
+    }
+
+    .nest-header-title {
+        font-size: 30px;
+    }
+
+    .tab-item {
+        flex: 1;
+    }
+
+    .mobile-flex {
+        display: flex !important;
+    }
+
+    .mobile-visible-false {
+        visibility: hidden;
+    }
+
+    .tab-content {
+        height: 770px;
+    }
+
+    .mynode-list-content {
+        height: 600px;
+    }
+
+    .mobile-fee-item {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .mobile-fee-list {
+        flex: 1;
+        font-size: 16px;
+    }
 }

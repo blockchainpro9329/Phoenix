@@ -10,7 +10,7 @@ const Chart = require("react-chartjs-2").Chart;
 const chartColors = {
     red: "rgb(255, 99, 132)",
     orange: "rgb(255, 159, 64)",
-    yellow: "rgb(255, 205, 86)",
+    yellow: "rgb(200, 150, 86)",
     green: "rgb(75, 192, 192)",
     blue: "rgb(54, 162, 235)",
     purple: "rgb(153, 102, 255)",
@@ -22,10 +22,10 @@ const data = {
     datasets: [
         {
             label: "FIRE-AVAX",
-            backgroundColor: color(chartColors.red)
+            backgroundColor: color(chartColors.yellow)
                 .alpha(0.5)
                 .rgbString(),
-            borderColor: chartColors.red,
+            borderColor: chartColors.yellow,
             fill: false,
             lineTension: 0,
             //   borderDash: [8, 4],
@@ -94,10 +94,10 @@ class MyChart extends React.Component {
                 datasets: [
                     {
                         label: "FIRE-AVAX",
-                        backgroundColor: color(chartColors.red)
+                        backgroundColor: color(chartColors.yellow)
                             .alpha(0.5)
                             .rgbString(),
-                        borderColor: chartColors.red,
+                        borderColor: chartColors.yellow,
                         fill: false,
                         lineTension: 0,
                         //   borderDash: [8, 4],

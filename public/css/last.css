@@ -1411,3 +1411,17 @@ footer {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+
+.nest-header-title {
+    font-size: 40px;
+    color: white;
+}
+
+.mobile-flex {
+    display: none !important;
+}
+
+.mobile-visible-false {
+    visibility:visible;
+}

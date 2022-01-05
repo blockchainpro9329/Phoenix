@@ -66,11 +66,12 @@ class Nodes extends React.Component {
             var remain = moment(temp.lastTime * 1000).diff(this.props.currentTime * 1000);
             if (remain > 0) {
                 var duration = moment.duration(remain);
-                temp['remains'] = duration.months() + "m - " +
-                    duration.days() + "d " +
-                    duration.hours() + ":" +
-                    duration.minutes() + ":" +
-                    duration.seconds();
+                // temp['remains'] = duration.months() + "m - " +
+                //     duration.days() + "d " +
+                //     duration.hours() + ":" +
+                //     duration.minutes() + ":" +
+                //     duration.seconds();
+                temp['remains'] = "due in " + Math.floor(remain / (3600 * 24)) + " days";
 
                 var bonus = 0.225;
                 if (temp['masterNFT']) {
@@ -239,16 +240,23 @@ class Nodes extends React.Component {
     }
 
     render() {
-        const List = this.state.my_nodes.map((item, index) => {
-        // const List = ["123", "222", "543", "23", "2342", '234', '2342', '2333', '1231', '1231'].map((item, index) => {
+        // const List = this.state.my_nodes.map((item, index) => {
+        const List = ["123", "222", "543", "23", "2342", '234', '2342', '2333', '1231', '1231'].map((item, index) => {
             return (
                 <div key={index} className={index % 2 == 0 ? 'item-font nest-list-even' : 'item-font nest-list-odd'}>
 
                     <div className='text-center' style={{ flex: "1" }}>NEST {index + 1}</div>
-                    <div className='text-center' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY")}</div>
+                    <div className='text-center mobile-hidden' style={{ flex: "3" }}>{moment(item.createTime * 1000).format("MMM DD YYYY")}</div>
                     <div className='text-center' style={{ flex: "2" }}>{item.reward}</div>
-                    <div className='text-center' style={{ flex: "2" }}>{item.remains}</div>
-                    <div className="pay-button list" style={{ width: "150px" }} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
+                    <div className='text-center mobile-fee-item' style={{ flex: "2" }}>
+                        <div className='mobile-fee-list'>
+                            {item.remains}
+                        </div>
+                        <div className='mobile-show flex1'>
+                            <div className="pay-button list" style={{ width: "100%" }} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
+                        </div>
+                    </div>
+                    <div className="pay-button list mobile-hidden" style={{ width: "150px" }} onClick={this.payNodeFee.bind(this, index)}>Pay fee</div>
                     <div className="claim-button list" style={{ width: "150px" }} onClick={this.claimNode.bind(this, index)}> claim </div>
                 </div>
             )
@@ -266,7 +274,7 @@ class Nodes extends React.Component {
                 <section id='section-nests'>
                     <div className='content mx-auto'>
                         <div className='nest-header'>
-                            <span className='fs-40 c-w'>
+                            <span className='nest-header-title'>
                                 Create a Phoenix Nest with <span className='noto-bold'>10</span> <span className='c-yellow'>$FIRE</span> Tokens
                             </span>
                             <button className='btn action-btn' onClick={this.createNode}>Create your nest</button>
@@ -282,13 +290,25 @@ class Nodes extends React.Component {
                         <div className='tab-content'>
                             {this.state.selected_tab === 0 ?
                                 <>
-                                    <div className='h-60 flex align-center node-title-header' style={{ width: "100%" }}>
-                                        <div className='padder-10 noto-bold' style={{ flex: "1" }}>Name</div>
-                                        <div className='text-center noto-bold' style={{ flex: "3" }}>Created</div>
-                                        <div className='text-center noto-bold' style={{ flex: "2" }}>My Rewards</div>
-                                        <div className='text-center noto-bold' style={{ flex: "2" }}>Fees</div>
+                                    <div className='h-60  node-title-header mobile-flex' style={{ display: "flex !important", width: "100%" }}>
                                         <div className="pay-button" style={{ width: "150px" }} onClick={this.PayAllNode.bind(this, -1)}>Pay all fees</div>
                                         <div className="claim-button" style={{ width: "150px" }} onClick={this.claimNode.bind(this, -1)}> claim all</div>
+                                    </div>
+                                    <div className='h-60 flex align-center node-title-header' style={{ width: "100%" }}>
+                                        <div className='padder-10 noto-bold' style={{ flex: "1" }}>Name</div>
+                                        <div className='text-center noto-bold mobile-hidden' style={{ flex: "3" }}>Created</div>
+                                        <div className='text-center noto-bold' style={{ flex: "2" }}>My Rewards</div>
+                                        <div className='text-center noto-bold' style={{ flex: "2" }}>
+                                            <span className='pos-rel noto-bold'>
+                                                Fees
+                                                <span className='pos-abs fs-14 flex align-center justify-center'
+                                                    style={{ top: "-8px", right:"-20px", width: "20px", height: "20px", backgroundColor: "black", borderRadius: "10px", color: "white" }}>
+                                                    i
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div className="pay-button mobile-hidden" style={{ width: "150px" }} onClick={this.PayAllNode.bind(this, -1)}>Pay all fees</div>
+                                        <div className="claim-button mobile-visible-false" style={{ width: "150px" }} onClick={this.claimNode.bind(this, -1)}> claim all</div>
                                     </div>
                                     <div className='mynode-list-content'>
                                         <CustomScrollbars>
