@@ -60,7 +60,7 @@ class RingMsg extends React.Component {
     render() {
         return (
             <>
-                <div id="launch_sm_connect_btn" className="flex">
+                {/* <div id="launch_sm_connect_btn" className="flex">
                     <div>
                         {
                             !this.props.account ?
@@ -76,7 +76,7 @@ class RingMsg extends React.Component {
                                 </div>
                         }
                     </div>
-                </div>
+                </div> */}
                 <section id="section-msg">
                     <div className="content mx-auto">
                         <div className="msg-left">
@@ -132,53 +132,6 @@ class RingMsg extends React.Component {
                         <Nodes></Nodes>
                     </div>
                 </section>
-
-                {/* <div className="custom-container mx-auto informations-container">
-                    <div className="info-container-1">
-                        <img alt="" className="info-data-icon" src="/img/myNode.svg" />
-                        <div className="info-datas">
-                            <div className="info-data-value">{this.props.my_nodes.length}<span style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>/
-                                100</span></div>
-                            <div className="c-yellow" style={{ marginTop: "4px" }}>My NESTS</div>
-                        </div>
-                        <div className="flex1"></div>
-                        <div className="btn action-btn outline m-r-20 create_node_btn" onClick={this.createNode}>CREATE NEST</div>
-                    </div>
-                    <div className="info-container-1">
-                        <img alt="" className="info-data-icon" src="/img/allNode.svg" />
-                        <div className="info-datas">
-                            <div className="info-data-value">{this.props.all_nodes}</div>
-                            <div className="c-yellow" style={{ marginTop: "4px" }}>All NESTS</div>
-                        </div>
-                    </div>
-                    <div className="info-container-1"><img alt="" className="info-data-icon"
-                        src="/img/rewards.svg" />
-                        <div className="info-datas">
-                            <div className="info-data-value" title="0">{Number(this.props.cur_all_reward).toFixed(9)}<span className="ml-1"
-                                style={{ color: "rgb(160, 174, 192)", marginLeft: "0.5rem" }}>FIRE</span></div>
-                            <div className="c-4cce13" style={{ marginTop: "4px" }}>My Rewards</div>
-                        </div>
-                        <div className="flex1"></div>
-                    </div>
-                </div>
-                <div id="welcome-message" className="flex custom-container mx-auto m-t-100">
-                    <div className="c-w">
-                        <div className="msg-title">
-                            Welcome to Phoenix Community Finance
-                        </div>
-                        <p className="msg-content">
-                            From this console, you can view, manage, and launch Phoenix Nests. You can also
-                            see how many rewards have been allocated and claim them here. You can use the rewards to create more
-                            Phoenix Nests and grow your holding to a maximum of 100 Nests per wallet.</p>
-                        <div id="welcome-buttons" className="mt-2">
-                            <button className="action-btn btn welcome-action-btn"
-                                onClick={() => { window.open("https://traderjoexyz.com/#/trade?outputCurrency=0xfcc6CE74f4cd7eDEF0C5429bB99d38A3608043a5") }}>
-                                BUY $FIRE
-                            </button>
-                            <button className="action-btn btn outline welcome-action-btn">DISCORD</button>
-                        </div>
-                    </div>
-                </div> */}
             </>
         );
     }

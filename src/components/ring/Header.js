@@ -55,7 +55,7 @@ class RingHeader extends React.Component {
                     <div className="content mx-auto">
                         <div className='flex align-center'>
                             <img alt='' src='/img/logo.png' className="logo-img" />
-                            <span className='logo-title noto-bold'>
+                            <span className='logo-title noto-bold app-header-title'>
                                 PHOENIX  <span className="noto-thin">Community Capital</span>
                             </span>
                         </div>
@@ -74,11 +74,12 @@ class RingHeader extends React.Component {
                                 <a>123</a>
                             </span> */}
                         </div>
-                        <div className="launch_wallet f-row f1-end">
+                        <div className="f-row f1-end">
                             {
                                 !this.props.account ?
                                     <div className="action-btn  flex align-center justify-center" onClick={this.handleConnect}>
-                                        <span><i className="fas fa-wallet" style={{ marginRight: "1rem" }}></i>
+                                        <span>
+                                            {/* <i className="fas fa-wallet" style={{ marginRight: "1rem" }}></i> */}
                                             Connect Wallet
                                         </span>
                                     </div>

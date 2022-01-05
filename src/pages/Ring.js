@@ -20,7 +20,7 @@ class Ring extends React.Component {
                 <RingMsg></RingMsg>
                 {/* <MyNodes></MyNodes> */}
                 {/* <Create></Create> */}
-                <Nft></Nft>
+                {/* <Nft></Nft> */}
                 {/* <RingNext></RingNext> */}
                 {/* <Faq></Faq> */}
                 <Footer></Footer>

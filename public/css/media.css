@@ -1,8 +1,8 @@
 @media screen and (max-width: 1080px) {
 
-    .bg-img {
+    /* .bg-img {
         background-position: 0px 2264px, 0px 8145px, 131px 1119px;
-    }
+    } */
 
 
     .launch_wallet {
@@ -10,7 +10,7 @@
     }
 
     .header {
-        height: 110px;
+        height: 80px;
         display: flex;
         align-items: center;
     }
@@ -55,9 +55,9 @@
         margin-left: 10px;
     }
 
-    #launch_btn {
+    /* #launch_btn {
         display: none;
-    }
+    } */
 
 
     #launch_sm_btn {
@@ -66,13 +66,87 @@
     }
 
 
+
+    #section-hero {
+        height: 850px;
+    }
+
+
     #section-hero>.content {
         height: fit-content;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
     }
+
+
+    .phoenix_img {
+        background-size: cover;
+        background-image: url(/img/phoenix.png);
+        width: 334px;
+        height: 338px;
+    }
+
+
+    .phoenix_img_info {
+        display: none;
+    }
+
+    .title-main {
+        font-size: 36px;
+        text-shadow: 4px 5px #222;
+    }
+
+    .title-sub {
+        font-size: 26px;
+        color: #ffcc99;
+        line-height: 1.5;
+        margin-top: 20px;
+    }
+
+    .mobile-hidden {
+        display: none !important;
+    }
+
+
+    .mobile-show {
+        display: block !important;
+    }
+
+
+    .create-nest-btn {
+        margin-right: 0px;
+        margin-top: 25px;
+    }
+
+    .hero-left>.title {
+        height: 250px;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .title-sub1 {
+        display: block;
+        font-size: 28px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 30px;
+        line-height: 1.2;
+    }
+
+
+    .create-buy-btn {
+        margin-top: 30px;
+        flex-direction: column-reverse;
+        width: 215px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
 
     .flower-pos {
         top: 1000px !important;
@@ -104,7 +178,7 @@
     }
 
     .statistics {
-        margin-top: 100px;
+        /* margin-top: 100px; */
         height: fit-content;
         width: 100%;
         display: flex;
@@ -112,6 +186,58 @@
         align-items: center;
         justify-content: start;
     }
+
+    .statistics>.content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .statistics-item1 {
+        height: 150px;
+        background-color: #202225;
+        justify-content: center;
+    }
+
+    .statistics-item2 {
+        height: 150px;
+        background-color: #000000;
+        justify-content: center;
+    }
+
+    .statistics-item3 {
+        height: 150px;
+        background-color: #202225;
+        justify-content: center;
+    }
+
+
+
+    .statistics-item1-title {
+        font-size: 30px;
+        color: #cc9966;
+        font-weight: 200;
+    }
+
+    .statistics-item2-title {
+        font-size: 30px;
+        color: #cc9966;
+        font-weight: 200;
+    }
+
+    .statistics-item3-title {
+        font-size: 30px;
+        color: #cc9966;
+        font-weight: 200;
+    }
+
+
+
+
+
+
 
     .sub_statistics {
         flex-direction: column;
@@ -133,11 +259,11 @@
         margin-top: 100px;
     }
 
-    .action-btn {
+    /* .action-btn {
         width: 40vw;
         height: 9vw;
         font-size: 2.6vw;
-    }
+    } */
 
 
     .buy_nft_btn {
@@ -181,27 +307,36 @@
 
 
     #section-started {
-        margin-top: 20vw;
+        width: 100%;
+        height: 1230px;
     }
 
 
     .card-title {
-        font-size: 5vw !important;
-        color: white;
+        font-size: 55px;
         line-height: 1.1;
         width: 100%;
         text-align: center;
-        font-weight: 600;
+        font-weight: 900;
+    }
+
+    .nft-left {
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 40px;
     }
 
     .start-subtitle-container {
         display: flex;
         justify-content: center !important;
+        margin-top: 30px;
     }
 
     .start-subtitle {
-        font-size: 3vw;
-        width: unset;
+        font-size: 28px;
+        padding-right: 20px;
+        padding-left: 20px;
+        width: 100%;
     }
 
     .item-font {
@@ -210,36 +345,38 @@
 
     .cards {
         flex-direction: column;
+        align-items: center;
     }
 
     .card {
-        width: 100%;
+        width: 415px;
         height: fit-content;
-        padding: 5vw;
+        /* padding: 5vw; */
     }
 
     .card+.card {
-        margin-top: 200px;
+        margin-top: 40px;
+        margin-left: 0px;
     }
 
 
     .card-img {
-        height: 70vw;
-        width: 100%;
+        height: 318px;
+        width: 358px;
     }
 
 
     .card-item-title {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        height: 100px;
-        font-size: 6vw;
+        height: 70px;
+        font-size: 33px;
     }
 
     .card-item-info {
         height: unset;
-        font-size: 2.6vw;
+        font-size: 16px;
     }
 
     .card-item-collection {
@@ -253,20 +390,46 @@
 
 
     .section-vision {
-
-
         width: 100%;
     }
 
 
+    #section-vision {
+        background-image: url(/img/bg6.png);
+        padding-top: 0px;
+        background-position: center, center;
+        height: 1410px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    #vision-content {
+        width: 100%;
+    }
+
+
+
+    #started-content {
+        height: 1180px;
+        width: 100%;
+        padding-top: 20px;
+    }
+
     .lifetime-title {
         padding-left: 2vw;
         padding-right: 2vw;
-        margin-top: 110px;
-        font-size: 5vw;
-        font-weight: 600;
+        /* margin-top: 110px; */
         text-align: center;
+        justify-content: center;
         height: fit-content;
+        height: 112px;
+    }
+
+
+    .lifetime-title-main {
+        color: white;
+        font-size: 33px;
+        font-weight: 900;
     }
 
     .try_btn_container {
@@ -278,7 +441,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-top: 110px;
+        align-items: center;
+        /* margin-top: 110px; */
+        background-color: transparent;
     }
 
     .card-action+.card-action {
@@ -303,10 +468,12 @@
     }
 
     .card-action {
-        width: 100%;
+        width: 400px;
         /* height: 345px; */
         /* padding: 50px; */
-        padding: 4vw 3vw;
+        height: 280px;
+        /* padding: 4vw 3vw; */
+        padding: 25px 35px 30px 35px;
     }
 
     .badge-title {
@@ -316,20 +483,23 @@
 
 
     .card-action p {
-        font-size: 3.5vw;
-        line-height: 1.1;
+        /* font-size: 3.5vw; */
+        font-size: 20px;
+        line-height: 1.8;
         text-align: center;
         height: fit-content;
     }
 
 
     #vision-content>.title {
-        font-size: 6vw;
-        font-weight: 600;
+        font-size: 35px;
+        font-weight: 900;
         padding-left: 60px;
         padding-right: 60px;
         text-align: center;
         line-height: 1.1;
+        height: 167px;
+        margin-top: 40px;
     }
 
     #vision-content>.subtitle {
@@ -343,21 +513,22 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 70px;
+        margin-top: 170px;
     }
 
 
     .vision-left-item {
-        width: 70vw;
-        height: 70vw;
-        border-radius: 35vw;
+        width: 470px;
+        height: 470px;
+        border-radius: 235px;
+        background-color: #7d402baa;
     }
 
     .vision-right-item {
         margin-top: 50px;
-        width: 70vw;
-        height: 70vw;
-        border-radius: 35vw;
+        width: 470px;
+        height: 470px;
+        border-radius: 235px;
     }
 
 
@@ -369,7 +540,7 @@
     .vision-item-info {
         margin-top: 20px;
         margin-bottom: 20px;
-        font-size: 2.2vw;
+        font-size: 23px;
     }
 
     #chip-vision {
@@ -377,7 +548,8 @@
         display: flex;
         justify-content: center;
         background-color: transparent;
-        padding-bottom: 110px;
+        /* padding-bottom: 110px; */
+        height: 600px;
     }
 
 
@@ -393,12 +565,23 @@
         width: 100%;
         padding-left: 40px;
         padding-right: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .chip {
-        font-size: 3vw;
-        width: 49%;
+        font-size: 18px;
+        width: 260px;
         margin-bottom: 20px;
+    }
+
+    .chips {
+        margin-top: 60px;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        width: 300px;
     }
 
     /* .chip>img {
@@ -407,8 +590,11 @@
     } */
 
     #chips-header {
-        font-size: 6vw;
+        font-size: 30px;
+        width: 400px;
         text-align: center;
+        display: flex;
+        justify-content: center;
     }
 
     .work-content {
@@ -464,8 +650,8 @@
     }
 
     .logo-img {
-        height: 8vw;
-        width: 8vw;
+        height: 56px;
+        width: 56px;
     }
 
     .footer-main {
@@ -473,6 +659,7 @@
         flex-wrap: nowrap;
         height: fit-content;
         align-items: flex-start;
+        border: none;
     }
 
     .link-container {
@@ -485,7 +672,8 @@
     }
 
     .footer-privacy {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     .link-div {
@@ -495,6 +683,7 @@
         display: flex;
         justify-content: space-around;
         margin-bottom: 30px;
+        margin-top: 60px;
     }
 
 
@@ -594,6 +783,14 @@
     }
 
 
+    footer {
+        padding-top: 60px;
+        padding-bottom: 25px;
+    }
+    
+
+
+
     footer>.container {
         width: 100%;
         padding-left: 40px;
@@ -641,7 +838,7 @@
     }
 
     .container {
-        max-width: 90vw;
+        max-width: 100vw;
     }
 
 
@@ -721,6 +918,57 @@
         width: 100%;
         font-size: 1.2vw;
         margin-right: 0.2vw;
+    }
+
+
+    #section-nest>.content {
+        width: 100%;
+        height: 836px;
+        padding-right: 30px;
+        padding-left: 30px;
+        align-items: unset;
+        justify-content: center;
+    }
+
+    #section-nest {
+        height: 836px;
+    }
+
+    .nest-left {
+        margin-top: 60px;
+        align-items: center;
+    }
+
+    .nest-left-content {
+        font-size: 22px;
+    }
+
+    #section-nft {
+        /* background-color: white; */
+        background-position: center;
+        background-size: cover;
+        background-image: url(/img/marble-bg1.png);
+        height: 2050px;
+    }
+
+    #section-nft>.content {
+        padding-top: 60px;
+        width: 100%;
+        height: 2050px;
+        display: flex;
+        flex-direction: column;
+        justify-content: unset;
+    }
+
+
+
+    .footer-link {
+        width:50%;
+        height:50px;
+    }
+
+    .app-header-title {
+        display: none;
     }
 
 }

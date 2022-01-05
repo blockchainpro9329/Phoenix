@@ -40,14 +40,17 @@ class HomeVision extends React.Component {
                 <section id="section-nft">
                     <div className="content mx-auto">
                         <div className='nft-left'>
-                            <div className="fs-60 l-h-1-1 card-title noto-bold">
-                                BOOST<br />
+                            <div className="card-title noto-bold">
+                                BOOST  <br className='mobile-hidden' /> 
                                 REWARDS
                             </div>
                             <div className="flex start-subtitle-container">
                                 <span className="start-subtitle" data-nsfw-filter-status="swf">
-                                    NFTs are available for purchase upon certain milestones. Our NFTs boost your daily reward rate and increase your earning potential. For more information regarding out NFT's, please see our <a className='cursor-pointer' onClick={() => { window.open("/docs/Phoenix Community Capital White Paper.pdf") }}>whitepaper</a>.
+                                    NFTs are available for purchase upon certain milestones. Our NFTs boost your daily reward rate and increase your earning potential. For more information regarding out NFT's, please see our whitepaper.
                                 </span>
+                            </div>
+                            <div className='action-btn btn fs-28 m-t-30 mx-auto' style={{width:"330px", height:"50px"}} onClick={() => { window.open("/docs/Phoenix Community Capital White Paper.pdf") }}>
+                                SEE WHITEPAPER
                             </div>
                         </div>
                         <div className='nft-right'>
@@ -55,7 +58,7 @@ class HomeVision extends React.Component {
                                 <div className="card">
                                     <div className="card-img" style={{ backgroundImage: "url(" + this.props.master_nft_url + ")" }}></div>
                                     <div className="card-item-title">
-                                        <span className="c-w text-center noto-bold"> MASTER NFT</span>
+                                        <span className="text-center noto-bold"> MASTER NFT</span>
                                     </div>
                                     <div className="card-item-info">The Master NFT is available once you build at least 10 Nests. The Master NFT will be applied to 10 Nests and boosts rewards by 0.025 for each day. Each wallet will be limited to a total of 10 Master NFT’s.
                                     </div>
@@ -63,7 +66,7 @@ class HomeVision extends React.Component {
                                 <div className="card">
                                     <div className="card-img" style={{ backgroundImage: "url(" + this.props.grand_nft_url + ")" }}></div>
                                     <div className="card-item-title">
-                                        <span className="c-w text-center noto-bold">GRAND MASTER</span>
+                                        <span className="text-center noto-bold">GRAND MASTER</span>
                                     </div>
                                     <div className="card-item-info">The Grand Master NFT is available once you build all 100 NESTS. The Grand Master NFT boosts rewards by 0.05 for each Nest per day. Each wallet will be limited to a total of one Grand Master NFT.
                                     </div>

@@ -9,16 +9,19 @@ const HomeHero = (props) => {
 
           <div className="hero-left">
             <div className="title">
-              <div className="fs-60 c-w noto-bold">
-                Phoenix Financial
+              <div className="title-main c-w noto-bold">
+                Phoenix Community Capital
               </div>
-              <div className="fs-40 c-w">
-                large-scale, high yield<br />
+              <div className="title-sub">
+                large-scale, high yield<br className='mobile-hidden'/>
                 return investments
               </div>
+              <div className='c-w title-sub1'>
+              Rise from the <br/>Ashes of <br/>Traditional finance
+              </div>
             </div>
-            <div className="flex">
-              <button className="btn deaction-btn m-r-20 btn-middle" onClick={() => { window.location.href = "/app" }}>
+            <div className="flex create-buy-btn">
+              <button className="btn deaction-btn create-nest-btn btn-middle" onClick={() => { window.location.href = "/app" }}>
                 <div className="fs-30">
                   Create nest
                 </div>
@@ -34,30 +37,30 @@ const HomeHero = (props) => {
           <div className="hero-right">
             <div className="phoenix_img">
             </div>
-            <div className="c-w fs-30 flex align-center">Rise from the ashes of traditional finance</div>
+            <div className="c-w fs-30 phoenix_img_info">Rise from the ashes of traditional finance</div>
           </div>
         </div>
       </section>
       <div className="statistics" >
         <div className="content">
-          <span className="flex flex-col align-center">
-            <div className="fs-30 c-w noto-thin">
+          <span className="flex flex-col align-center statistics-item1">
+            <div className=" statistics-item1-title">
               Treasury Balance
             </div>
             <div className="c-w fs-30 noto-bold">
               ${String(props.treasury_balance).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
             </div>
           </span>
-          <span className="flex flex-col align-center">
-            <div className="fs-30 c-w noto-bold">
+          <span className="flex flex-col align-center statistics-item2">
+            <div className="statistics-item2-title">
               Current Total investment
             </div>
             <div className="c-w fs-30 noto-bold">
               $7'690'670
             </div>
           </span>
-          <span className="flex flex-col align-center">
-            <div className="fs-30 c-w noto-thin">
+          <span className="flex flex-col align-center statistics-item3">
+            <div className="statistics-item3-title">
               Number of nests
             </div>
             <div className="c-w fs-30 noto-bold">

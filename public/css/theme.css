@@ -334,3 +334,8 @@
 .text-blue {
     color: var(--blue);
 }
+
+
+.w-full {
+    width: 100%;
+}
