@@ -71,7 +71,8 @@ class Nodes extends React.Component {
                 //     duration.hours() + ":" +
                 //     duration.minutes() + ":" +
                 //     duration.seconds();
-                temp['remains'] = "due in " + Math.floor((temp.lastTime - this.props.curTime) / (3600 * 24)) + " days";
+                // temp['remains'] = "due in " + Math.floor((temp.lastTime - this.props.curTime) / (3600 * 24)) + " days";
+                temp['remains'] = "due in " + Math.floor((remain/1000) / (3600 * 24)) + " days";
 
                 var bonus = 0.225;
                 if (temp['masterNFT']) {
